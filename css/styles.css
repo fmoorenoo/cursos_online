@@ -1,0 +1,144 @@
+:root {
+    /* PALETA MINIMALISTA */
+    --color-primary: #2563eb;       /* Azul principal */
+    
+    --color-secondary: #1e293b;     /* Gris azulado oscuro */
+    --color-secondary-light: #334155; /* Gris azulado claro */
+    
+    --color-background: #f9fafb;    /* Fondo principal */
+    
+    --color-text: #1f2937;          /* Texto principal */
+    --color-text-light: #6b7280;    /* Texto secundario */
+    --color-text-on-dark: #ffffff;  /* Texto sobre fondo oscuro */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+/* HEADER */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-secondary);
+    padding: 18px 40px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-logo {
+    color: var(--color-text-on-dark);
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.header-nav {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.header-nav a {
+    color: var(--color-text-on-dark);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.header-nav a:hover {
+    background-color: var(--color-secondary-light);
+    transform: translateY(-2px);
+}
+
+.header-nav a:last-child {
+    background-color: var(--color-primary);
+    padding: 8px 16px;
+    border-radius: 20px;
+}
+
+.header-nav a:last-child:hover {
+    background-color: var(--color-primary);
+}
+
+/* PROMOS */
+.promos {
+    background-color: var(--color-primary);
+    color: var(--color-text-on-dark);
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.promos h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 32px;
+    font-weight: 700;
+    position: relative;
+    z-index: 1;
+}
+
+.promos-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    position: relative;
+    z-index: 1;
+}
+
+.promo-card {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    padding: 30px;
+    width: 280px;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid #e5e7eb;
+    position: relative;
+    overflow: hidden;
+}
+
+.promo-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.promo-card h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--color-primary);
+}
+
+.promo-card p {
+    color: var(--color-text-light);
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.promo-card .price {
+    display: block;
+    margin-top: 15px;
+    font-weight: 700;
+    color: var(--color-primary);
+    font-size: 24px;
+}
