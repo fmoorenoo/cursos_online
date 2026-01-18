@@ -142,3 +142,189 @@ body {
     color: var(--color-primary);
     font-size: 24px;
 }
+
+/* CONTENIDO */
+.content {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 40px;
+    padding: 60px 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* PRINCIPAL */
+.main-section {
+    background-color: var(--color-background);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+}
+
+.main-section h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: var(--color-secondary);
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.course-detail {
+    margin-top: 30px;
+    padding: 30px;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    background-color: var(--color-background);
+    transition: all 0.3s ease;
+}
+
+.course-detail:hover {
+    border-color: var(--color-primary);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.1);
+}
+
+.course-detail h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--color-secondary);
+    margin-bottom: 15px;
+}
+
+.course-detail p {
+    margin-bottom: 15px;
+    color: var(--color-text-light);
+}
+
+.course-detail .price {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 20px 0;
+}
+
+.course-detail button {
+    margin-top: 20px;
+    padding: 14px 32px;
+    background-color: var(--color-primary);
+    color: var(--color-text-on-dark);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.course-detail button:hover {
+    background-color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(37, 99, 235, 0.4);
+}
+
+.course-detail button:active {
+    transform: translateY(0);
+}
+
+.other-courses {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 2px solid #e5e7eb;
+}
+
+.other-courses h3 {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--color-secondary);
+    margin-bottom: 20px;
+}
+
+.other-courses ul {
+    list-style: none;
+    padding: 0;
+}
+
+.other-courses li {
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    background-color: var(--color-background);
+    border-radius: 8px;
+    border-left: 4px solid var(--color-primary);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.other-courses li:hover {
+    background-color: var(--color-background);
+    transform: translateX(5px);
+}
+
+/* LATERAL */
+.side-section {
+    background-color: var(--color-background);
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    height: fit-content;
+}
+
+.side-section h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--color-secondary);
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--color-primary);
+}
+
+.side-section h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-secondary);
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+.side-section p {
+    color: var(--color-text-light);
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.side-section ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+.side-section li {
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    background-color: var(--color-background);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-left: 3px solid var(--color-primary);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    user-select: none;
+}
+
+.side-section li:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* FOOTER */
+.footer {
+    background-color: var(--color-secondary);
+    color: var(--color-text-on-dark);
+    text-align: center;
+    padding: 40px 20px;
+    margin-top: 60px;
+    font-size: 15px;
+    border-top: 4px solid var(--color-primary);
+}
