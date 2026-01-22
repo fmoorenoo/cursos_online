@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <title>Plataforma de Cursos Online</title>
@@ -13,65 +14,55 @@
     <div id="app">
         <!-- MENÚ SUPERIOR -->
         <header class="header">
-            <div class="header-logo">Cursos Online</div>
+            <div class="header-logo">{{ t.siteName }}</div>
             <nav class="header-nav">
-                <a class="nav-link" href="#">Inicio</a>
-                <a class="nav-link" href="#">Cursos</a>
-                <a class="nav-link" href="#">Acerca de</a>
-                <a class="nav-link" href="#">Carrito</a>
-                
+                <a class="nav-link" href="#">{{ t.nav.home }}</a>
+                <a class="nav-link" href="#">{{ t.nav.courses }}</a>
+                <a class="nav-link" href="#">{{ t.nav.about }}</a>
+                <a class="nav-link" href="#">{{ t.nav.cart }}</a>
+
                 <!-- SELECTOR DE PALETA DE COLORES -->
                 <div class="palette-selector-container">
-                    <button class="nav-link palette-toggle-btn" @click="togglePaletteSelector">Tema</button>
+                    <button class="nav-link palette-toggle-btn" @click="togglePaletteSelector">{{ t.nav.theme
+                        }}</button>
                     <div v-if="showPaletteSelector" class="palette-selector">
                         <div class="palette-grid">
-                            <div v-for="key in paletteKeys" 
-                                 :key="key"
-                                 class="palette-option"
-                                 @click="changePalette(key)"
-                                 :class="{ active: selectedPalette === key }"
-                                 :title="availablePalettes[key].name">
+                            <div v-for="key in paletteKeys" :key="key" class="palette-option"
+                                @click="changePalette(key)" :class="{ active: selectedPalette === key }"
+                                :title="getPaletteName(key)">
                                 <div class="palette-preview">
-                                    <div class="color-box" 
-                                         :style="{ backgroundColor: getPaletteColor(key, 'primary') }"></div>
-                                    <div class="color-box" 
-                                         :style="{ backgroundColor: getPaletteColor(key, 'secondary') }"></div>
-                                    <div class="color-box" 
-                                         :style="{ backgroundColor: getPaletteColor(key, 'background') }"></div>
+                                    <div class="color-box"
+                                        :style="{ backgroundColor: getPaletteColor(key, 'primary') }"></div>
+                                    <div class="color-box"
+                                        :style="{ backgroundColor: getPaletteColor(key, 'secondary') }"></div>
+                                    <div class="color-box"
+                                        :style="{ backgroundColor: getPaletteColor(key, 'background') }"></div>
                                 </div>
-                                <span class="palette-name">{{ availablePalettes[key].name }}</span>
+                                <span class="palette-name">{{ getPaletteName(key) }}</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- SELECTOR DE IDIOMA -->
                 <div id="lang">
-                    <div id="es" 
-                         class="lang-option" 
-                         :class="{ active: selectedLang === 'es' }"
-                         @click="selectedLang = 'es'"
-                         data-lang="es">ES</div>
-                    <div id="en" 
-                         class="lang-option" 
-                         :class="{ active: selectedLang === 'en' }"
-                         @click="selectedLang = 'en'"
-                         data-lang="en">EN</div>
+                    <div id="es" class="lang-option" :class="{ active: selectedLang === 'es' }"
+                        @click="selectedLang = 'es'" data-lang="es">ES</div>
+                    <div id="en" class="lang-option" :class="{ active: selectedLang === 'en' }"
+                        @click="selectedLang = 'en'" data-lang="en">EN</div>
                 </div>
-                
+
                 <!-- REGISTRO / LOGIN -->
-                <a class="nav-link" href="#">Registro / Login</a>
+                <a class="nav-link" href="#">{{ t.nav.login }}</a>
             </nav>
         </header>
 
         <!-- CARRUSEL DE CURSOS DESTACADOS -->
         <section class="promos">
-            <h2>Cursos Destacados</h2>
+            <h2>{{ t.featuredCourses }}</h2>
             <div class="promos-container">
                 <div class="carousel-track" :style="trackStyle">
-                    <div v-for="(curso, index) in cursos" 
-                         :key="curso.id" 
-                         class="carousel-slide">
+                    <div v-for="(curso, index) in cursos" :key="curso.id" class="carousel-slide">
                         <div class="promo-card" @click="selectCourse(curso)">
                             <div class="course-content">
                                 <div class="course-image">
@@ -83,11 +74,12 @@
                                     <span class="price">{{ curso.precio }}</span>
                                     <div class="course-meta">
                                         <span class="duration">
-                                            {{ curso.duracion }} ({{ Math.round(parseInt(curso.duracion) / 60) }} horas)
+                                            {{ curso.duracion }} ({{ Math.round(parseInt(curso.duracion) / 60) }} {{
+                                            t.hours }})
                                         </span>
-                                        <div class="availability" 
-                                             :class="{ 'available': curso.disponible, 'unavailable': !curso.disponible }">
-                                            {{ curso.disponible ? 'Disponible' : 'Agotado' }}
+                                        <div class="availability"
+                                            :class="{ 'available': curso.disponible, 'unavailable': !curso.disponible }">
+                                            {{ curso.disponible ? t.available : t.unavailable }}
                                         </div>
                                     </div>
                                 </div>
@@ -99,11 +91,8 @@
             <div class="carousel-controls">
                 <button class="carousel-btn prev-btn" @click="prevSlide">&#10094;</button>
                 <div class="carousel-dots">
-                    <div v-for="(curso, index) in cursos" 
-                         :key="'dot-' + curso.id"
-                         class="carousel-dot"
-                         :class="{ active: currentSlide === index }"
-                         @click="goToSlide(index)"></div>
+                    <div v-for="(curso, index) in cursos" :key="'dot-' + curso.id" class="carousel-dot"
+                        :class="{ active: currentSlide === index }" @click="goToSlide(index)"></div>
                 </div>
                 <button class="carousel-btn next-btn" @click="nextSlide">&#10095;</button>
             </div>
@@ -112,7 +101,7 @@
         <!-- CONTENIDO CENTRAL -->
         <main class="content">
             <div class="main-section">
-                <h1>Catálogo de Cursos</h1>
+                <h1>{{ t.catalogTitle }}</h1>
                 <div class="courses-grid">
                     <div v-for="curso in cursos" :key="curso.id" class="course-card">
                         <img :src="curso.imagen" :alt="curso.titulo" class="course-thumbnail">
@@ -131,16 +120,18 @@
 
         <!-- FOOTER -->
         <footer class="footer">
-            <p>© 2026 Cursos Online</p>
-            <p>Dirección: Calle 123</p>
-            <p>Email: info@cursosonline.com | Tel: 600 000 000</p>
-            <p v-if="selectedLang === 'es'">Idioma actual: Español</p>
-            <p v-else>Current language: English</p>
+            <p>{{ t.footer.rights }}</p>
+            <p>{{ t.footer.address }}</p>
+            <p>{{ t.footer.contact }}</p>
+            <p v-if="selectedLang === 'es'">{{ t.currentLangEs }}</p>
+            <p v-else>{{ t.currentLangEn }}</p>
         </footer>
     </div>
 
     <!-- Cargar scripts en orden correcto -->
+    <script src="js/i18n.js"></script>
     <script src="js/palettes.js"></script>
     <script src="js/app.js"></script>
 </body>
+
 </html>

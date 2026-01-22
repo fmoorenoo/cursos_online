@@ -1,7 +1,7 @@
 // palettes.js - Definir como variable global
 window.PALETTES = {
     'minimalista-azul': {
-        name: 'Minimalista Azul',
+        nameKey: 'palette.minimalistaAzul',
         colors: {
             primary: '#3e67be',
             secondary: '#1e293b',
@@ -13,7 +13,7 @@ window.PALETTES = {
         }
     },
     'purpura-oscura': {
-        name: 'Púrpura Oscura',
+        nameKey: 'palette.purpuraOscura',
         colors: {
             primary: '#8b5cf6',
             secondary: '#0f172a',
@@ -25,7 +25,7 @@ window.PALETTES = {
         }
     },
     'tecnologia-verde': {
-        name: 'Tecnología Verde',
+        nameKey: 'palette.tecnologiaVerde',
         colors: {
             primary: '#10b981',
             secondary: '#064e3b',
@@ -37,7 +37,7 @@ window.PALETTES = {
         }
     },
     'moderna-naranja': {
-        name: 'Moderna Naranja',
+        nameKey: 'palette.modernaNaranja',
         colors: {
             primary: '#f97316',
             secondary: '#7c2d12',
@@ -49,7 +49,7 @@ window.PALETTES = {
         }
     },
     'fresca-turquesa': {
-        name: 'Fresca Turquesa',
+        nameKey: 'palette.frescaTurquesa',
         colors: {
             primary: '#06b6d4',
             secondary: '#0e7490',
@@ -61,7 +61,7 @@ window.PALETTES = {
         }
     },
     'vibrante-amarillo': {
-        name: 'Vibrante Amarillo',
+        nameKey: 'palette.vibranteAmarillo',
         colors: {
             primary: '#eab308',
             secondary: '#713f12',
@@ -73,7 +73,7 @@ window.PALETTES = {
         }
     },
     'energetico-rojo': {
-        name: 'Energético Rojo',
+        nameKey: 'palette.energeticoRojo',
         colors: {
             primary: '#ef4444',
             secondary: '#7f1d1d',
@@ -85,7 +85,7 @@ window.PALETTES = {
         }
     },
     'profesional-indigo': {
-        name: 'Profesional Índigo',
+        nameKey: 'palette.profesionalIndigo',
         colors: {
             primary: '#6366f1',
             secondary: '#3730a3',

@@ -9,6 +9,7 @@ createApp({
     data() {
         return {
             selectedLang: 'es',
+            translations: window.I18N || {},
             currentSlide: 0,
             slideInterval: null,
             selectedPalette: 'minimalista-azul',
@@ -19,6 +20,12 @@ createApp({
         };
     },
     computed: {
+        t() {
+            return this.translations?.[this.selectedLang]
+                || this.translations?.es
+                || {};
+        },
+
         trackStyle() {
             return {
                 transform: `translateX(-${this.currentSlide * 100}%)`
@@ -26,8 +33,13 @@ createApp({
         },
 
         currentPaletteName() {
-            return this.availablePalettes[this.selectedPalette]?.name || 'Minimalista Azul';
+            const palette = this.availablePalettes[this.selectedPalette];
+            if (!palette) return '';
+
+            const key = palette.nameKey.split('.').pop();
+            return this.t.palette[key];
         }
+
     },
 
     methods: {
@@ -93,6 +105,27 @@ createApp({
 
         getPaletteColor(paletteKey, colorName) {
             return this.availablePalettes[paletteKey]?.colors[colorName] || '#000000';
+        },
+
+        getPaletteName(key) {
+            const palette = this.availablePalettes?.[key];
+            if (!palette) return '—';
+
+            const nameKey = palette.nameKey;
+            if (!nameKey || typeof nameKey !== 'string') {
+                console.warn(`Paleta sin nameKey: ${key}`);
+                return key;
+            }
+
+            const shortKey = nameKey.split('.').pop();
+            const translated = this.t?.palette?.[shortKey];
+
+            if (!translated) {
+                console.warn(`Traducción faltante para: ${nameKey}`);
+                return shortKey;
+            }
+
+            return translated;
         },
 
         async cargarCursos() {
