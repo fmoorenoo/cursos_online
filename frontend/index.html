@@ -3,49 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <title>Plataforma de Cursos Online</title>
+    <!-- Vue.js CDN -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
-    <!--  MENÚ SUPERIOR  -->
-    <header class="header">
-        <div class="header-logo">Cursos Online</div>
-        <nav class="header-nav">
-            <a class="nav-link" href="#">Inicio</a>
-            <a class="nav-link" href="#">Productos</a>
-            <a class="nav-link" href="#">Acerca de</a>
-            <a class="nav-link" href="#">Carrito</a>
-            <div id="lang">
-                <div id="es" class="lang-option active" data-lang="es">ES</div>
-                <div id="en" class="lang-option" data-lang="en">EN</div>
+    <div id="app">
+        <!-- MENÚ SUPERIOR -->
+        <header class="header">
+            <div class="header-logo">Cursos Online</div>
+            <nav class="header-nav">
+                <a class="nav-link" href="#">Inicio</a>
+                <a class="nav-link" href="#">Cursos</a>
+                <a class="nav-link" href="#">Acerca de</a>
+                <a class="nav-link" href="#">Carrito</a>
+                
+                <!-- SELECTOR DE PALETA DE COLORES -->
+                <div class="palette-selector-container">
+                    <button class="nav-link palette-toggle-btn" @click="togglePaletteSelector">Tema</button>
+                    <div v-if="showPaletteSelector" class="palette-selector">
+                        <div class="palette-grid">
+                            <div v-for="key in paletteKeys" 
+                                 :key="key"
+                                 class="palette-option"
+                                 @click="changePalette(key)"
+                                 :class="{ active: selectedPalette === key }"
+                                 :title="availablePalettes[key].name">
+                                <div class="palette-preview">
+                                    <div class="color-box" 
+                                         :style="{ backgroundColor: getPaletteColor(key, 'primary') }"></div>
+                                    <div class="color-box" 
+                                         :style="{ backgroundColor: getPaletteColor(key, 'secondary') }"></div>
+                                    <div class="color-box" 
+                                         :style="{ backgroundColor: getPaletteColor(key, 'background') }"></div>
+                                </div>
+                                <span class="palette-name">{{ availablePalettes[key].name }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- SELECTOR DE IDIOMA -->
+                <div id="lang">
+                    <div id="es" 
+                         class="lang-option" 
+                         :class="{ active: selectedLang === 'es' }"
+                         @click="selectedLang = 'es'"
+                         data-lang="es">ES</div>
+                    <div id="en" 
+                         class="lang-option" 
+                         :class="{ active: selectedLang === 'en' }"
+                         @click="selectedLang = 'en'"
+                         data-lang="en">EN</div>
+                </div>
+                
+                <!-- REGISTRO / LOGIN -->
+                <a class="nav-link" href="#">Registro / Login</a>
+            </nav>
+        </header>
+
+        <!-- CARRUSEL DE CURSOS DESTACADOS -->
+        <section class="promos">
+            <h2>Cursos Destacados</h2>
+            <div class="promos-container">
+                <div class="carousel-track" :style="trackStyle">
+                    <div v-for="(curso, index) in cursos" 
+                         :key="curso.id" 
+                         class="carousel-slide">
+                        <div class="promo-card" @click="selectCourse(curso)">
+                            <div class="course-content">
+                                <div class="course-image">
+                                    <img :src="curso.imagen" :alt="curso.titulo">
+                                </div>
+                                <div class="course-info">
+                                    <h3>{{ curso.titulo }}</h3>
+                                    <p>{{ curso.descripcion }}</p>
+                                    <span class="price">{{ curso.precio }}</span>
+                                    <div class="course-meta">
+                                        <span class="duration">
+                                            {{ curso.duracion }} ({{ Math.round(parseInt(curso.duracion) / 60) }} horas)
+                                        </span>
+                                        <div class="availability" 
+                                             :class="{ 'available': curso.disponible, 'unavailable': !curso.disponible }">
+                                            {{ curso.disponible ? 'Disponible' : 'Agotado' }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <a class="nav-link" href="#">Registro / Login</a>
-        </nav>
-    </header>
+            <div class="carousel-controls">
+                <button class="carousel-btn prev-btn" @click="prevSlide">&#10094;</button>
+                <div class="carousel-dots">
+                    <div v-for="(curso, index) in cursos" 
+                         :key="'dot-' + curso.id"
+                         class="carousel-dot"
+                         :class="{ active: currentSlide === index }"
+                         @click="goToSlide(index)"></div>
+                </div>
+                <button class="carousel-btn next-btn" @click="nextSlide">&#10095;</button>
+            </div>
+        </section>
 
-    <!--  CARRUSEL DE CURSOS DESTACADOS  -->
-    <section class="promos">
-        <h2>Cursos Destacados</h2>
-        <div class="promos-container">
-            <div class="carousel-track"></div>
-        </div>
-        <div class="carousel-controls">
-            <button class="carousel-btn prev-btn">&#10094;</button>
-            <div class="carousel-dots"></div>
-            <button class="carousel-btn next-btn">&#10095;</button>
-        </div>
-    </section>
+        <!-- CONTENIDO CENTRAL -->
+        <main class="content">
+            <div class="main-section">
+                <h1>Catálogo de Cursos</h1>
+                <div class="courses-grid">
+                    <div v-for="curso in cursos" :key="curso.id" class="course-card">
+                        <img :src="curso.imagen" :alt="curso.titulo" class="course-thumbnail">
+                        <div class="course-details">
+                            <h3>{{ curso.titulo }}</h3>
+                            <p>{{ curso.descripcion }}</p>
+                            <div class="course-footer">
+                                <span class="course-price">{{ curso.precio }}</span>
+                                <span class="course-duration">{{ Math.round(parseInt(curso.duracion) / 60) }}h</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
 
-    <!--  CONTENIDO CENTRAL  -->
-    <main class="content"></main>
+        <!-- FOOTER -->
+        <footer class="footer">
+            <p>© 2026 Cursos Online</p>
+            <p>Dirección: Calle 123</p>
+            <p>Email: info@cursosonline.com | Tel: 600 000 000</p>
+            <p v-if="selectedLang === 'es'">Idioma actual: Español</p>
+            <p v-else>Current language: English</p>
+        </footer>
+    </div>
 
-    <!--  FOOTER  -->
-    <footer class="footer">
-        <p>© 2026 Cursos Online</p>
-        <p>Dirección: Calle 123</p>
-        <p>Email: info@cursosonline.com | Tel: 600 000 000</p>
-    </footer>
-
+    <!-- Cargar scripts en orden correcto -->
+    <script src="js/palettes.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>

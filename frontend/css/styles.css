@@ -6,9 +6,10 @@
     --color-background: #f9fafb;
     --color-text: #1f2937;
     --color-text-light: #6b7280;
-    --color-text-on-dark: #ffffff; 
+    --color-text-on-dark: #ffffff;
 }
 
+/* RESET Y BASE */
 * {
     margin: 0;
     padding: 0;
@@ -44,7 +45,7 @@ body {
 
 .header-nav {
     display: flex;
-    gap: 25px;
+    gap: 20px;
     align-items: center;
 }
 
@@ -55,17 +56,29 @@ body {
     font-weight: 500;
     padding: 8px 12px;
     border-radius: 6px;
+    min-width: 90px;
+    height: 40px;
+    text-align: center;
     transition: all 0.3s ease;
 }
 
 .header-nav .nav-link:hover {
     background-color: var(--color-secondary-light);
-    transform: translateY(-2px);
+    transform: scale(1.08);
+}
+
+.header-nav a:last-child {
+    background-color: var(--color-primary);
+    padding: 8px 12px;
+    border-radius: 20px;
+}
+
+.header-nav a:last-child:hover {
+    background-color: var(--color-primary);
 }
 
 /* SELECTOR DE IDIOMAS */
 #lang {
-    background-color: var(--color-primary);
     border-radius: 20px;
     display: flex;
     color: var(--color-text-on-dark);
@@ -74,6 +87,7 @@ body {
     overflow: hidden;
     width: 80px;
     cursor: pointer;
+    border: solid 2px var(--color-secondary-light);
 }
 
 #es, #en {
@@ -91,15 +105,25 @@ body {
 #es {
     border-radius: 20px 0 0 20px;
     background-image: url('../assets/spanish.png');
-    border-right: solid 2px var(--color-text-on-dark);
 }
 
 #en {
     border-radius: 0 20px 20px 0;
     background-image: url('../assets/english.png');
-    border-left: solid 2px var(--color-text-on-dark);
 }
 
+#es, #en {
+    transition: all 0.3s ease, filter 0.3s ease, background-color 0.3s ease;
+}
+
+#es.active {
+    box-shadow: 5px 0 5px rgba(0, 0, 0, 0.6);
+    z-index: 999;
+}
+
+#en.active {
+    box-shadow: -5px 0 5px rgba(0, 0, 0, 0.6);
+}
 .lang-option.active {
     opacity: 1;
     filter: brightness(1);
@@ -107,33 +131,130 @@ body {
 }
 
 .lang-option:not(.active) {
-    opacity: 0.4;
-    filter: brightness(0.7);
+    filter: brightness(0.55);
     background-color: rgba(0, 0, 0, 0.2);
 }
 
 .lang-option:not(.active):hover {
     filter: brightness(1.1);
-    opacity: 0.9;
+    opacity: 0.8;
 }
 
-#es, #en {
-    transition: opacity 0.3s ease, filter 0.3s ease, background-color 0.3s ease;
+/* SELECTOR DE PALETAS DE COLORES */
+.palette-selector-container {
+    position: relative;
 }
 
-.header-nav a:last-child {
-    background-color: var(--color-primary);
-    padding: 8px 16px;
-    border-radius: 20px;
+.palette-toggle-btn.nav-link {
+    background-color: transparent;
+    color: var(--color-text-on-dark);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    align-items: center;
+    gap: 8px;
+    font-family: inherit;
 }
 
-.header-nav a:last-child:hover {
-    background-color: var(--color-primary);
+.palette-toggle-btn:hover {
+    background-color: var(--color-secondary-light);
+    transform: scale(1.08);
 }
+
+.palette-selector {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 10px;
+    background: var(--color-background);
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 320px;
+    z-index: 2000;
+    border: 1px solid var(--color-secondary-light);
+    max-height: 290px;
+    overflow-y: auto;
+}
+
+.palette-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.palette-option {
+    cursor: pointer;
+    padding: 12px;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    background: var(--color-background);
+}
+
+.palette-option:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-color: var(--color-primary);
+}
+
+.palette-option.active {
+    border-color: var(--color-primary);
+    background-color: rgba(var(--color-primary-rgb, 73, 123, 231), 0.1);
+}
+
+.palette-preview {
+    display: flex;
+    height: 20px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.color-box {
+    flex: 1;
+    height: 100%;
+}
+
+.palette-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text);
+    text-align: center;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Estilos para scrollbar en el selector */
+.palette-selector::-webkit-scrollbar {
+    width: 6px;
+}
+
+.palette-selector::-webkit-scrollbar-track {
+    background: var(--color-background);
+    border-radius: 3px;
+}
+
+.palette-selector::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 3px;
+}
+
+.palette-selector::-webkit-scrollbar-thumb:hover {
+    background: var(--color-secondary-light);
+}
+
 
 /* CARRUSEL DE CURSOS DESTACADOS */
 .promos {
-    background-color: var(--color-primary);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary-light));
     color: var(--color-text-on-dark);
     padding: 20px 20px;
     position: relative;
@@ -146,7 +267,6 @@ body {
     font-size: 35px;
     font-weight: 700;
     position: relative;
-    z-index: 1;
 }
 
 .promos-container {
@@ -161,6 +281,7 @@ body {
     padding: 0 80px;
 }
 
+/* COMPONENTES DEL CARRUSEL */
 .carousel-track {
     display: flex;
     transition: transform 0.5s ease-in-out;
@@ -176,6 +297,7 @@ body {
     box-sizing: border-box;
 }
 
+/* TARJETA PROMOCIONAL */
 .promo-card {
     background-color: var(--color-background);
     color: var(--color-text);
@@ -185,31 +307,29 @@ body {
     border-radius: 16px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     border: 1px solid #e5e7eb;
-    min-height: 340px;              
+    min-height: 340px;
     display: flex;
     flex-direction: column;
-
 }
-
 
 .promo-card:hover {
     background-color: rgb(206, 229, 255);
     cursor: pointer;
 }
 
-/* Contenedor para imagen y texto */
+/* CONTENIDO DE CURSO */
 .course-content {
     display: flex;
     gap: 30px;
-    align-items: stretch;  
-    flex: 1;               
+    align-items: stretch;
+    flex: 1;
 }
 
-/* Imagen cuadrada */
+/* IMAGEN DE CURSO */
 .course-image {
-    flex: 0 0 220px; 
+    flex: 0 0 220px;
     width: 100%;
-    height: auto; 
+    height: auto;
     border-radius: 12px;
     overflow: hidden;
 }
@@ -221,19 +341,11 @@ body {
     border-radius: 12px;
 }
 
-/* Información del curso */
+/* INFORMACIÓN DE CURSO */
 .course-info {
     flex: 1;
     display: flex;
     flex-direction: column;
-}
-
-
-.course-meta {
-    margin-top: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .promo-card h3 {
@@ -250,17 +362,24 @@ body {
     line-height: 1.5;
     display: -webkit-box;
     -webkit-line-clamp: 2;
-    line-clamp: 3;
+    line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
-
 
 .promo-card .price {
     display: block;
     font-weight: 700;
     color: var(--color-primary);
     font-size: 28px;
+}
+
+/* META INFORMACIÓN DEL CURSO */
+.course-meta {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .promo-card .duration {
@@ -323,6 +442,7 @@ body {
     transform: scale(1.1);
 }
 
+/* PUNTOS DE NAVEGACIÓN DEL CARRUSEL */
 .carousel-dots {
     display: flex;
     gap: 12px;
@@ -347,7 +467,7 @@ body {
     background-color: var(--color-text-on-dark);
 }
 
-/* CONTENIDO */
+/* CONTENIDO PRINCIPAL */
 .content {
     display: grid;
     grid-template-columns: 3fr 1fr;
@@ -357,7 +477,7 @@ body {
     margin: 0 auto;
 }
 
-/* PRINCIPAL */
+/* SECCIÓN PRINCIPAL */
 .main-section {
     background-color: var(--color-background);
     padding: 40px;
@@ -375,16 +495,165 @@ body {
     padding-bottom: 15px;
 }
 
+/* GRID DE CURSOS */
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+/* TARJETA DE CURSO INDIVIDUAL */
+.course-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #e5e7eb;
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.course-thumbnail {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.course-details {
+    padding: 20px;
+}
+
+.course-details h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: var(--color-secondary);
+}
+
+.course-details p {
+    font-size: 14px;
+    color: var(--color-text-light);
+    margin-bottom: 15px;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.course-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.course-price {
+    font-weight: 700;
+    color: var(--color-primary);
+    font-size: 20px;
+}
+
+.course-duration {
+    background-color: var(--color-secondary-light);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 12px;
+}
+
 /* FOOTER */
 .footer {
     background-color: var(--color-secondary);
     color: var(--color-text-on-dark);
     text-align: center;
     padding: 40px 20px;
-    position: fixed;
+    position: static;
     z-index: 1000;
     bottom: 0;
     width: 100%;
     font-size: 15px;
     border-top: 4px solid var(--color-primary);
+}
+
+/* ANIMACIONES PARA VUE */
+.v-enter-active,
+.v-leave-active {
+    transition: opacity 0.3s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+    opacity: 0;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .course-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .course-image {
+        flex: 0 0 200px;
+        width: 200px;
+        height: 200px;
+        margin-bottom: 20px;
+    }
+    
+    .carousel-controls {
+        gap: 15px;
+    }
+    
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+    
+    .promos-container {
+        padding: 0 20px;
+    }
+    
+    .header-nav {
+        gap: 10px;
+    }
+    
+    .header {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .content {
+        grid-template-columns: 1fr;
+        padding: 30px 20px;
+    }
+}
+
+/* Responsive para el selector de paletas */
+@media (max-width: 768px) {
+    .palette-selector {
+        width: 280px;
+        right: -50%;
+        transform: translateX(50%);
+    }
+    
+    .palette-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .palette-toggle-btn span {
+        display: none;
+    }
+    
+    .palette-toggle-btn::after {
+        content: "🎨";
+    }
 }
