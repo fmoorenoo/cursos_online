@@ -18,7 +18,11 @@ createApp({
             availablePalettes: palettes,
             paletteKeys: paletteKeys,
             showAuthModal: false,
-            authMode: 'login'
+            authMode: 'login',
+            auth: {
+                email: '',
+                password: ''
+            }
         };
     },
     computed: {
@@ -159,20 +163,51 @@ createApp({
         openLogin() {
             this.authMode = 'login';
             this.showAuthModal = true;
+            document.body.classList.add('no-scroll');
         },
 
         openRegister() {
             this.authMode = 'register';
             this.showAuthModal = true;
+            document.body.classList.add('no-scroll');
         },
 
         closeAuth() {
             this.showAuthModal = false;
+            document.body.classList.remove('no-scroll');
         },
 
-        submitAuth() {
-            console.log('Enviar', this.authMode);
-            this.closeAuth();
+        async submitAuth() {
+            if (this.authMode !== 'login') {
+                console.log('Registro aún no implementado');
+                return;
+            }
+
+            try {
+                const res = await fetch('../backend/auth/check_login.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: this.auth.email,
+                        password: this.auth.password
+                    })
+                });
+
+                const data = await res.json();
+
+                if (data.success) {
+                    console.log('Login correcto', data.user);
+                    this.closeAuth();
+                } else {
+                    alert(data.message || 'Credenciales incorrectas');
+                }
+
+            } catch (error) {
+                console.error('Error en login:', error);
+                alert('Error de conexión con el servidor');
+            }
         }
     },
 

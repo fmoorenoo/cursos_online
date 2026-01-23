@@ -2,7 +2,7 @@
 .modal-overlay {
     position: fixed;
     inset: 0;
-    background-color: rgba(0, 0, 0, 0.55);
+    background-color: rgba(0, 0, 0, 0.70);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -11,10 +11,12 @@
 
 .modal {
     background: var(--surface-card);
+    opacity: 0.9;
     padding: 35px;
     border-radius: 14px;
     width: 100%;
-    max-width: 400px;
+    width: 500px;
+    height: auto;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
     text-align: center;
 }

@@ -42,6 +42,10 @@ body {
     line-height: 1.6;
 }
 
+.no-scroll {
+    overflow: hidden;
+}
+
 
 /* ======================================================
    ANIMACIONES (VUE)

@@ -119,18 +119,29 @@
         </main>
 
         <!-- MODAL LOGIN / REGISTRO -->
-        <div v-if="showAuthModal" class="modal-overlay" @click.self="closeAuth">
-            <div class="modal">
+        <div v-if="showAuthModal" class="modal-overlay" @mousedown.self="closeAuth">
+            <div class="modal" @mousedown.stop>
 
                 <h2>{{ authMode === 'login' ? 'Iniciar sesión' : 'Registro' }}</h2>
 
                 <form @submit.prevent="submitAuth">
 
-                    <input type="email" placeholder="Correo electrónico" required>
+                    <!-- ===== CAMPOS SOLO REGISTRO ===== -->
+                    <input v-if="authMode === 'register'" type="text" placeholder="DNI" required
+                        title="DNI válido (8 números y una letra)">
 
-                    <input type="password" placeholder="Contraseña" required>
+                    <input v-if="authMode === 'register'" type="text" placeholder="Nombre completo" required
+                        title="Solo letras y espacios">
 
-                    <!-- SOLO REGISTRO -->
+                    <input type="email" placeholder="Correo electrónico" v-model="auth.email" required
+                        title="Correo electrónico válido">
+
+                    <input v-if="authMode === 'register'" type="tel" placeholder="Teléfono" required
+                        title="Teléfono móvil español">
+
+                    <!-- ===== CONTRASEÑA ===== -->
+                    <input type="password" placeholder="Contraseña" v-model="auth.password" required>
+
                     <input v-if="authMode === 'register'" type="password" placeholder="Confirmar contraseña" required>
 
                     <button type="submit">

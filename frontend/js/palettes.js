@@ -44,8 +44,8 @@ window.PALETTES = {
             /* Superficies */
             surfacePage: '#0f172a',
             surfaceSection: '#020617',
-            surfaceCard: '#020617',
-            surfaceDark: '#020617',
+            surfaceCard: '#0a1233',
+            surfaceDark: '#060b25',
             surfaceOverlay: '#1e293b',
 
             /* Texto */
