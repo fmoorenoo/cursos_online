@@ -1,15 +1,33 @@
+/* ======================================================
+   VARIABLES DE COLORES BASE
+   ====================================================== */
 :root {
-    /* PALETA MINIMALISTA */
+    /* ---------- Superficies ---------- */
+    --surface-page: #f9fafb;
+    --surface-section: #ffffff;
+    --surface-card: #ffffff;
+    --surface-dark: #1e293b;
+    --surface-overlay: #ffffff;
+
+    /* ---------- Texto ---------- */
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --text-on-light: #1f2937;
+    --text-on-dark: #ffffff;
+
+    /* ---------- Marca ---------- */
     --color-primary: #497be7;
     --color-secondary: #1e293b;
     --color-secondary-light: #334155;
-    --color-background: #f9fafb;
-    --color-text: #1f2937;
-    --color-text-light: #6b7280;
-    --color-text-on-dark: #ffffff;
+
+    /* ---------- Estados ---------- */
+    --color-success: #10b981;
+    --color-danger: #ef4444;
 }
 
-/* RESET Y BASE */
+/* ======================================================
+   RESET Y BASE
+   ====================================================== */
 * {
     margin: 0;
     padding: 0;
@@ -18,17 +36,19 @@
 
 body {
     font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    background-color: var(--color-background);
-    color: var(--color-text);
+    background-color: var(--surface-page);
+    color: var(--text-primary);
     line-height: 1.6;
 }
 
-/* HEADER */
+/* ======================================================
+   HEADER
+   ====================================================== */
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--color-secondary);
+    background-color: var(--surface-dark);
     padding: 18px 40px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     position: sticky;
@@ -37,7 +57,7 @@ body {
 }
 
 .header-logo {
-    color: var(--color-text-on-dark);
+    color: var(--text-on-dark);
     font-size: 26px;
     font-weight: 800;
     letter-spacing: 1px;
@@ -50,7 +70,7 @@ body {
 }
 
 .header-nav .nav-link {
-    color: var(--color-text-on-dark);
+    color: var(--text-on-dark);
     text-decoration: none;
     font-size: 15px;
     font-weight: 500;
@@ -69,21 +89,15 @@ body {
 
 .header-nav a:last-child {
     background-color: var(--color-primary);
-    padding: 8px 12px;
     border-radius: 20px;
 }
 
-.header-nav a:last-child:hover {
-    background-color: var(--color-primary);
-}
-
-/* SELECTOR DE IDIOMAS */
+/* ======================================================
+   SELECTOR DE IDIOMA
+   ====================================================== */
 #lang {
     border-radius: 20px;
     display: flex;
-    color: var(--color-text-on-dark);
-    text-decoration: none;
-    font-size: 15px;
     overflow: hidden;
     width: 80px;
     cursor: pointer;
@@ -140,24 +154,23 @@ body {
     opacity: 0.8;
 }
 
-/* SELECTOR DE PALETAS DE COLORES */
+/* ======================================================
+   SELECTOR DE PALETAS
+   ====================================================== */
 .palette-selector-container {
     position: relative;
 }
 
 .palette-toggle-btn.nav-link {
-    background-color: transparent;
-    color: var(--color-text-on-dark);
+    background: transparent;
+    color: var(--text-on-dark);
     border: none;
     padding: 8px 12px;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 15px;
     font-weight: 500;
     transition: all 0.3s ease;
-    text-decoration: none;
     align-items: center;
-    gap: 8px;
     font-family: inherit;
 }
 
@@ -171,7 +184,7 @@ body {
     top: 100%;
     right: 0;
     margin-top: 10px;
-    background: var(--color-background);
+    background: var(--surface-overlay);
     border-radius: 12px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     padding: 20px;
@@ -192,9 +205,9 @@ body {
     cursor: pointer;
     padding: 12px;
     border-radius: 8px;
+    background: var(--surface-card);
     border: 2px solid transparent;
     transition: all 0.3s ease;
-    background: var(--color-background);
 }
 
 .palette-option:hover {
@@ -224,7 +237,7 @@ body {
 .palette-name {
     font-size: 12px;
     font-weight: 500;
-    color: var(--color-text);
+    color: var(--text-primary);
     text-align: center;
     display: block;
     overflow: hidden;
@@ -252,21 +265,21 @@ body {
 }
 
 
-/* CARRUSEL DE CURSOS DESTACADOS */
+/* ======================================================
+   CARRUSEL DE CURSOS
+   ====================================================== */
 .promos {
     background: linear-gradient(135deg, var(--color-primary), var(--color-secondary-light));
-    color: var(--color-text-on-dark);
-    padding: 20px 20px;
+    color: var(--text-on-dark);
+    padding: 20px;
     position: relative;
     overflow: hidden;
 }
 
 .promos h2 {
     text-align: center;
-    margin-bottom: 15px;
     font-size: 35px;
-    font-weight: 700;
-    position: relative;
+    margin-bottom: 15px;
 }
 
 .promos-container {
@@ -281,7 +294,6 @@ body {
     padding: 0 80px;
 }
 
-/* COMPONENTES DEL CARRUSEL */
 .carousel-track {
     display: flex;
     transition: transform 0.5s ease-in-out;
@@ -299,8 +311,8 @@ body {
 
 /* TARJETA PROMOCIONAL */
 .promo-card {
-    background-color: var(--color-background);
-    color: var(--color-text);
+    background-color: var(--surface-card);
+    color: var(--text-primary);
     padding: 35px;
     width: 100%;
     max-width: 800px;
@@ -313,7 +325,7 @@ body {
 }
 
 .promo-card:hover {
-    background-color: rgb(206, 229, 255);
+    background-color: var(--surface-overlay);
     cursor: pointer;
 }
 
@@ -357,7 +369,7 @@ body {
 }
 
 .promo-card p {
-    color: var(--color-text-light);
+    color: var(--text-secondary);
     font-size: 16px;
     line-height: 1.5;
     display: -webkit-box;
@@ -385,7 +397,7 @@ body {
 .promo-card .duration {
     display: inline-block;
     background-color: var(--color-secondary-light);
-    color: var(--color-text-on-dark);
+    color: var(--text-on-dark);
     padding: 8px 18px;
     border-radius: 20px;
     font-size: 14px;
@@ -401,13 +413,13 @@ body {
 }
 
 .promo-card .available {
-    background-color: #10b981;
-    color: white;
+    background-color: var(--color-success);
+    color: var(--text-on-dark);
 }
 
 .promo-card .unavailable {
-    background-color: #ef4444;
-    color: white;
+    background-color: var(--color-danger);
+    color: var(--text-on-dark);
 }
 
 /* CONTROLES DEL CARRUSEL */
@@ -423,8 +435,8 @@ body {
 
 .carousel-btn {
     background-color: rgba(255, 255, 255, 0.2);
-    color: var(--color-text-on-dark);
-    border: 2px solid var(--color-text-on-dark);
+    color: var(--text-on-dark);
+    border: 2px solid var(--text-on-dark);
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -437,7 +449,7 @@ body {
 }
 
 .carousel-btn:hover {
-    background-color: var(--color-text-on-dark);
+    background-color: var(--text-on-dark);
     color: var(--color-primary);
     transform: scale(1.1);
 }
@@ -459,12 +471,12 @@ body {
 }
 
 .carousel-dot.active {
-    background-color: var(--color-text-on-dark);
+    background-color: var(--text-on-dark);
     transform: scale(1.2);
 }
 
 .carousel-dot:hover {
-    background-color: var(--color-text-on-dark);
+    background-color: var(--text-on-dark);
 }
 
 /* CONTENIDO PRINCIPAL */
@@ -479,18 +491,18 @@ body {
 
 /* SECCIÓN PRINCIPAL */
 .main-section {
-    background-color: var(--color-background);
+    background-color: var(--surface-section);
     padding: 40px;
     border-radius: 12px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--surface-overlay);
 }
 
 .main-section h1 {
     font-size: 32px;
     font-weight: 700;
     margin-bottom: 30px;
-    color: var(--color-secondary);
+    color: var(--text-primary);
     position: relative;
     padding-bottom: 15px;
 }
@@ -505,12 +517,12 @@ body {
 
 /* TARJETA DE CURSO INDIVIDUAL */
 .course-card {
-    background: white;
+    background: var(--surface-card);
+    border: 1px solid var(--surface-overlay);
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid #e5e7eb;
 }
 
 .course-card:hover {
@@ -531,12 +543,12 @@ body {
 .course-details h3 {
     font-size: 18px;
     margin-bottom: 10px;
-    color: var(--color-secondary);
+    color: var(--text-primary);
 }
 
 .course-details p {
     font-size: 14px;
-    color: var(--color-text-light);
+    color: var(--text-secondary);
     margin-bottom: 15px;
     line-height: 1.4;
     display: -webkit-box;
@@ -569,8 +581,8 @@ body {
 
 /* FOOTER */
 .footer {
-    background-color: var(--color-secondary);
-    color: var(--color-text-on-dark);
+    background-color: var(--surface-dark);
+    color: var(--text-on-dark);
     text-align: center;
     padding: 40px 20px;
     position: static;
@@ -651,9 +663,5 @@ body {
     
     .palette-toggle-btn span {
         display: none;
-    }
-    
-    .palette-toggle-btn::after {
-        content: "🎨";
     }
 }

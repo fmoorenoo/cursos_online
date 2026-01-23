@@ -87,15 +87,13 @@ createApp({
 
             const root = document.documentElement;
 
-            // Aplicar todas las variables CSS
             Object.entries(palette.colors).forEach(([key, value]) => {
-                root.style.setProperty(`--color-${key}`, value);
+                const cssVar = key.replace(/[A-Z]/g, m => '-' + m.toLowerCase());
+                root.style.setProperty(`--${cssVar}`, value);
             });
 
             // Guardar en localStorage para persistencia
             localStorage.setItem('selectedPalette', this.selectedPalette);
-
-            // Cerrar el selector después de elegir
             this.showPaletteSelector = false;
         },
 
@@ -103,8 +101,17 @@ createApp({
             this.showPaletteSelector = !this.showPaletteSelector;
         },
 
-        getPaletteColor(paletteKey, colorName) {
-            return this.availablePalettes[paletteKey]?.colors[colorName] || '#000000';
+        getPaletteColor(paletteKey, role) {
+            const palette = this.availablePalettes?.[paletteKey];
+            if (!palette) return '#f5f5f5';
+
+            const map = {
+                primary: 'colorPrimary',
+                secondary: 'colorSecondary',
+                background: 'surfacePage'
+            };
+
+            return palette.colors[map[role]] || '#f5f5f5';
         },
 
         getPaletteName(key) {
@@ -149,10 +156,11 @@ createApp({
     },
 
     mounted() {
-        // Cargar cursos al iniciar
         this.cargarCursos();
 
-        // Cargar paleta guardada o usar la paleta por defecto
+        // ===== Probar paleta de colores durante desarrollo =====
+        localStorage.removeItem('selectedPalette');
+
         const savedPalette = localStorage.getItem('selectedPalette');
         if (savedPalette && this.availablePalettes[savedPalette]) {
             this.selectedPalette = savedPalette;
