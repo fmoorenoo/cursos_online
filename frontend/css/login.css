@@ -1,0 +1,63 @@
+/* ===== MODAL PARA LOGIN/REGISTRO ===== */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3000;
+}
+
+.modal {
+    background: var(--surface-card);
+    padding: 35px;
+    border-radius: 14px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.modal h2 {
+    margin-bottom: 25px;
+    color: var(--color-primary);
+}
+
+.modal form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.modal input {
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.modal button {
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--color-primary);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.modal button:hover {
+    background-color: var(--color-secondary-light);
+}
+
+.switch {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.switch a {
+    color: var(--color-primary);
+    cursor: pointer;
+    font-weight: 600;
+}

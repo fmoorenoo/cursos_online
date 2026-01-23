@@ -16,7 +16,9 @@ createApp({
             cursos: [],
             showPaletteSelector: false,
             availablePalettes: palettes,
-            paletteKeys: paletteKeys
+            paletteKeys: paletteKeys,
+            showAuthModal: false,
+            authMode: 'login'
         };
     },
     computed: {
@@ -152,13 +154,32 @@ createApp({
             } catch (error) {
                 console.error('Error cargando cursos:', error);
             }
+        },
+
+        openLogin() {
+            this.authMode = 'login';
+            this.showAuthModal = true;
+        },
+
+        openRegister() {
+            this.authMode = 'register';
+            this.showAuthModal = true;
+        },
+
+        closeAuth() {
+            this.showAuthModal = false;
+        },
+
+        submitAuth() {
+            console.log('Enviar', this.authMode);
+            this.closeAuth();
         }
     },
 
     mounted() {
         this.cargarCursos();
 
-        
+
 
         const savedPalette = localStorage.getItem('selectedPalette');
         if (savedPalette && this.availablePalettes[savedPalette]) {

@@ -53,7 +53,7 @@
                 </div>
 
                 <!-- REGISTRO / LOGIN -->
-                <a class="nav-link" href="#">{{ t.nav.login }}</a>
+                <a class="nav-link" href="#" @click.prevent="openLogin">{{ t.nav.login }}</a>
             </nav>
         </header>
 
@@ -117,6 +117,41 @@
                 </div>
             </div>
         </main>
+
+        <!-- MODAL LOGIN / REGISTRO -->
+        <div v-if="showAuthModal" class="modal-overlay" @click.self="closeAuth">
+            <div class="modal">
+
+                <h2>{{ authMode === 'login' ? 'Iniciar sesión' : 'Registro' }}</h2>
+
+                <form @submit.prevent="submitAuth">
+
+                    <input type="email" placeholder="Correo electrónico" required>
+
+                    <input type="password" placeholder="Contraseña" required>
+
+                    <!-- SOLO REGISTRO -->
+                    <input v-if="authMode === 'register'" type="password" placeholder="Confirmar contraseña" required>
+
+                    <button type="submit">
+                        {{ authMode === 'login' ? 'Entrar' : 'Registrarse' }}
+                    </button>
+                </form>
+
+                <p class="switch">
+                    <span v-if="authMode === 'login'">
+                        ¿No tienes cuenta?
+                        <a @click="authMode = 'register'">Regístrate</a>
+                    </span>
+                    <span v-else>
+                        ¿Ya tienes cuenta?
+                        <a @click="authMode = 'login'">Inicia sesión</a>
+                    </span>
+                </p>
+
+            </div>
+        </div>
+
 
         <!-- FOOTER -->
         <footer class="footer">

@@ -12,6 +12,9 @@
 /* Contenido principal */
 @import url('content.css');
 
+/* Estilos de login y registro */
+@import url('login.css');
+
 /* Footer */
 @import url('footer.css');
 
