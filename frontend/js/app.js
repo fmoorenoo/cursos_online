@@ -158,14 +158,15 @@ createApp({
     mounted() {
         this.cargarCursos();
 
-        // ===== Probar paleta de colores durante desarrollo =====
-        localStorage.removeItem('selectedPalette');
+        
 
         const savedPalette = localStorage.getItem('selectedPalette');
         if (savedPalette && this.availablePalettes[savedPalette]) {
             this.selectedPalette = savedPalette;
         }
         this.applyPalette();
+        // ===== Probar paleta de colores durante desarrollo =====
+        localStorage.removeItem('selectedPalette');
 
         // Pausar carrusel al pasar el mouse
         const carousel = document.querySelector('.promos-container');

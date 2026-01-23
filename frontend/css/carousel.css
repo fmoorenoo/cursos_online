@@ -51,7 +51,7 @@
     max-width: 800px;
     border-radius: 16px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--text-on-dark);
     min-height: 340px;
     display: flex;
     flex-direction: column;

@@ -1,8 +1,6 @@
 /* CONTENIDO PRINCIPAL */
 .content {
     display: grid;
-    grid-template-columns: 3fr 1fr;
-    gap: 40px;
     padding: 60px 40px;
     max-width: 1400px;
     margin: 0 auto;
