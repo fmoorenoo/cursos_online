@@ -1,0 +1,13 @@
+/* FOOTER */
+.footer {
+    background-color: var(--surface-dark);
+    color: var(--text-on-dark);
+    text-align: center;
+    padding: 40px 20px;
+    position: static;
+    z-index: 1000;
+    bottom: 0;
+    width: 100%;
+    font-size: 15px;
+    border-top: 4px solid var(--color-primary);
+}

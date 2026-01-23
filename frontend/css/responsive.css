@@ -1,0 +1,61 @@
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .course-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .course-image {
+        flex: 0 0 200px;
+        width: 200px;
+        height: 200px;
+        margin-bottom: 20px;
+    }
+    
+    .carousel-controls {
+        gap: 15px;
+    }
+    
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+    
+    .promos-container {
+        padding: 0 20px;
+    }
+    
+    .header-nav {
+        gap: 10px;
+    }
+    
+    .header {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .content {
+        grid-template-columns: 1fr;
+        padding: 30px 20px;
+    }
+}
+
+/* Responsive para el selector de paletas */
+@media (max-width: 768px) {
+    .palette-selector {
+        width: 280px;
+        right: -50%;
+        transform: translateX(50%);
+    }
+    
+    .palette-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .palette-toggle-btn span {
+        display: none;
+    }
+}

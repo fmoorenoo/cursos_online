@@ -92,7 +92,7 @@ createApp({
                 root.style.setProperty(`--${cssVar}`, value);
             });
 
-            // Guardar en localStorage para persistencia
+            // Guardar en localStorage
             localStorage.setItem('selectedPalette', this.selectedPalette);
             this.showPaletteSelector = false;
         },

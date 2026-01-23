@@ -25,7 +25,7 @@ window.PALETTES = {
             textOnDark: '#ffffff',
 
             /* Estados */
-            colorSuccess: '#10b981',
+            colorSuccess: '#239640',
             colorDanger: '#ef4444'
         }
     },
@@ -85,7 +85,7 @@ window.PALETTES = {
             textOnDark: '#f0fdf4',
 
             /* Estados */
-            colorSuccess: '#10b981',
+            colorSuccess: '#239640',
             colorDanger: '#ef4444'
         }
     },
@@ -115,7 +115,7 @@ window.PALETTES = {
             textOnDark: '#fff7ed',
 
             /* Estados */
-            colorSuccess: '#10b981',
+            colorSuccess: '#239640',
             colorDanger: '#ef4444'
         }
     },
@@ -145,7 +145,7 @@ window.PALETTES = {
             textOnDark: '#f0f9ff',
 
             /* Estados */
-            colorSuccess: '#10b981',
+            colorSuccess: '#239640',
             colorDanger: '#ef4444'
         }
     },
@@ -175,7 +175,7 @@ window.PALETTES = {
             textOnDark: '#fefce8',
 
             /* Estados */
-            colorSuccess: '#10b981',
+            colorSuccess: '#239640',
             colorDanger: '#ef4444'
         }
     },
@@ -205,7 +205,7 @@ window.PALETTES = {
             textOnDark: '#fef2f2',
 
             /* Estados */
-            colorSuccess: '#10b981',
+            colorSuccess: '#239640',
             colorDanger: '#ef4444'
         }
     },
@@ -235,7 +235,7 @@ window.PALETTES = {
             textOnDark: '#eef2ff',
 
             /* Estados */
-            colorSuccess: '#10b981',
+            colorSuccess: '#239640',
             colorDanger: '#ef4444'
         }
     }

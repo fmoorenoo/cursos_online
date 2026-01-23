@@ -1,0 +1,222 @@
+/* ======================================================
+   HEADER
+   ====================================================== */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--surface-dark);
+    padding: 18px 40px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-logo {
+    color: var(--text-on-dark);
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.header-nav {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.header-nav .nav-link {
+    color: var(--text-on-dark);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 6px;
+    min-width: 90px;
+    height: 40px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.header-nav .nav-link:hover {
+    background-color: var(--color-secondary-light);
+    transform: scale(1.08);
+}
+
+.header-nav a:last-child {
+    background-color: var(--color-primary);
+    border-radius: 20px;
+}
+
+/* ======================================================
+   SELECTOR DE IDIOMA
+   ====================================================== */
+#lang {
+    border-radius: 20px;
+    display: flex;
+    overflow: hidden;
+    width: 90px;
+    cursor: pointer;
+    border: solid 2px var(--color-secondary-light);
+}
+
+#es, #en {
+    width: 100%;
+    padding: 4px 3px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-indent: -9999px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+#es {
+    border-radius: 20px 0 0 20px;
+    background-image: url('../assets/spanish.png');
+}
+
+#en {
+    border-radius: 0 20px 20px 0;
+    background-image: url('../assets/english.png');
+}
+
+#es, #en {
+    transition: all 0.3s ease, filter 0.3s ease, background-color 0.3s ease;
+}
+
+#es.active {
+    box-shadow: 5px 0 5px rgba(0, 0, 0, 0.6);
+    z-index: 999;
+}
+
+#en.active {
+    box-shadow: -5px 0 5px rgba(0, 0, 0, 0.6);
+}
+.lang-option.active {
+    opacity: 1;
+    filter: brightness(1);
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.lang-option:not(.active) {
+    filter: brightness(0.55);
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.lang-option:not(.active):hover {
+    filter: brightness(1.1);
+    opacity: 0.8;
+}
+
+/* ======================================================
+   SELECTOR DE PALETAS
+   ====================================================== */
+.palette-selector-container {
+    position: relative;
+}
+
+.palette-toggle-btn.nav-link {
+    background: transparent;
+    color: var(--text-on-dark);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    align-items: center;
+    font-family: inherit;
+}
+
+.palette-toggle-btn:hover {
+    background-color: var(--color-secondary-light);
+    transform: scale(1.08);
+}
+
+.palette-selector {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 10px;
+    background: var(--surface-overlay);
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 320px;
+    z-index: 2000;
+    border: 1px solid var(--color-secondary-light);
+    max-height: 290px;
+    overflow-y: auto;
+}
+
+.palette-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.palette-option {
+    cursor: pointer;
+    padding: 12px;
+    border-radius: 8px;
+    background: var(--surface-card);
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.palette-option:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border-color: var(--color-primary);
+}
+
+.palette-option.active {
+    border-color: var(--color-primary);
+    background-color: rgba(var(--color-primary-rgb, 73, 123, 231), 0.1);
+}
+
+.palette-preview {
+    display: flex;
+    height: 20px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.color-box {
+    flex: 1;
+    height: 100%;
+}
+
+.palette-name {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-primary);
+    text-align: center;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Estilos para scrollbar en el selector */
+.palette-selector::-webkit-scrollbar {
+    width: 6px;
+}
+
+.palette-selector::-webkit-scrollbar-track {
+    background: var(--color-background);
+    border-radius: 3px;
+}
+
+.palette-selector::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 3px;
+}
+
+.palette-selector::-webkit-scrollbar-thumb:hover {
+    background: var(--color-secondary-light);
+}

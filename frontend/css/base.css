@@ -1,0 +1,57 @@
+/* ======================================================
+   VARIABLES DE COLORES BASE
+   ====================================================== */
+:root {
+    /* ---------- Superficies ---------- */
+    --surface-page: #f9fafb;
+    --surface-section: #ffffff;
+    --surface-card: #ffffff;
+    --surface-dark: #1e293b;
+    --surface-overlay: #ffffff;
+
+    /* ---------- Texto ---------- */
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --text-on-light: #1f2937;
+    --text-on-dark: #ffffff;
+
+    /* ---------- Marca ---------- */
+    --color-primary: #497be7;
+    --color-secondary: #1e293b;
+    --color-secondary-light: #334155;
+
+    /* ---------- Estados ---------- */
+    --color-success: #10b981;
+    --color-danger: #ef4444;
+}
+
+
+/* ======================================================
+   RESET Y BASE
+   ====================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: var(--surface-page);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+
+/* ======================================================
+   ANIMACIONES (VUE)
+   ====================================================== */
+.v-enter-active,
+.v-leave-active {
+    transition: opacity 0.3s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+    opacity: 0;
+}

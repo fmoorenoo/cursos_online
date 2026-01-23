@@ -1,0 +1,19 @@
+/* Importar todas las hojas de estilo */
+
+/* Variables de colores y estilos base */
+@import url('base.css');
+
+/* Menú superior */
+@import url('header.css');
+
+/* Carrusel de promociones */
+@import url('carousel.css');
+
+/* Contenido principal */
+@import url('content.css');
+
+/* Footer */
+@import url('footer.css');
+
+/* Responsive */
+@import url('responsive.css');

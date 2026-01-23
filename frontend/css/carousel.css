@@ -1,0 +1,213 @@
+/* ======================================================
+   CARRUSEL DE CURSOS
+   ====================================================== */
+.promos {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary-light));
+    color: var(--text-on-dark);
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.promos h2 {
+    text-align: center;
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.promos-container {
+    display: flex;
+    justify-content: center;
+    gap: 0px;
+    position: relative;
+    z-index: 1;
+    max-width: 1000px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 0 80px;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+}
+
+.carousel-slide {
+    flex: 0 0 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+/* TARJETA PROMOCIONAL */
+.promo-card {
+    background-color: var(--surface-card);
+    color: var(--text-primary);
+    padding: 35px;
+    width: 100%;
+    max-width: 800px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border: 1px solid #e5e7eb;
+    min-height: 340px;
+    display: flex;
+    flex-direction: column;
+}
+
+.promo-card:hover {
+    background-color: var(--surface-overlay);
+    cursor: pointer;
+}
+
+/* CONTENIDO DE CURSO */
+.course-content {
+    display: flex;
+    gap: 30px;
+    align-items: stretch;
+    flex: 1;
+}
+
+/* IMAGEN DE CURSO */
+.course-image {
+    flex: 0 0 220px;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.course-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* INFORMACIÓN DE CURSO */
+.course-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.promo-card h3 {
+    font-size: 22px;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.promo-card p {
+    color: var(--text-secondary);
+    font-size: 16px;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.promo-card .price {
+    display: block;
+    font-weight: 700;
+    color: var(--color-primary);
+    font-size: 28px;
+}
+
+/* META INFORMACIÓN DEL CURSO */
+.course-meta {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.promo-card .duration {
+    display: inline-block;
+    background-color: var(--color-secondary-light);
+    color: var(--text-on-dark);
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+.promo-card .availability {
+    display: inline-block;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-left: 15px;
+}
+
+.promo-card .available {
+    background-color: var(--color-success);
+    color: var(--text-on-dark);
+}
+
+.promo-card .unavailable {
+    background-color: var(--color-danger);
+    color: var(--text-on-dark);
+}
+
+/* CONTROLES DEL CARRUSEL */
+.carousel-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 30px;
+    position: relative;
+    z-index: 2;
+}
+
+.carousel-btn {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: var(--text-on-dark);
+    border: 2px solid var(--text-on-dark);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.carousel-btn:hover {
+    background-color: var(--text-on-dark);
+    color: var(--color-primary);
+    transform: scale(1.1);
+}
+
+/* PUNTOS DE NAVEGACIÓN DEL CARRUSEL */
+.carousel-dots {
+    display: flex;
+    gap: 12px;
+    margin: 0 20px;
+}
+
+.carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-dot.active {
+    background-color: var(--text-on-dark);
+    transform: scale(1.2);
+}
+
+.carousel-dot:hover {
+    background-color: var(--text-on-dark);
+}
