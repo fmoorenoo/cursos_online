@@ -127,24 +127,28 @@
                 <form @submit.prevent="submitAuth">
 
                     <!-- ===== CAMPOS SOLO REGISTRO ===== -->
-                    <input v-if="authMode === 'register'" type="text" placeholder="DNI" required
-                        title="DNI válido (8 números y una letra)">
+                    <input v-if="authMode === 'register'" type="text" placeholder="DNI" v-model="auth.dni"
+                        :class="inputClass('dni')" required title="DNI válido (8 números y una letra)">
 
-                    <input v-if="authMode === 'register'" type="text" placeholder="Nombre completo" required
+                    <input v-if="authMode === 'register'" type="text" placeholder="Nombre completo"
+                        v-model="auth.nombre" :class="inputClass('nombre')" required
                         title="Solo letras y espacios">
 
-                    <input type="email" placeholder="Correo electrónico" v-model="auth.email" required
-                        title="Correo electrónico válido">
+                    <input type="text" placeholder="Correo electrónico" v-model="auth.email"
+                        :class="inputClass('email')" required title="Correo electrónico válido">
 
-                    <input v-if="authMode === 'register'" type="tel" placeholder="Teléfono" required
-                        title="Teléfono móvil español">
+                    <input v-if="authMode === 'register'" type="text" placeholder="Teléfono" v-model="auth.telefono"
+                        :class="inputClass('telefono')" required title="Teléfono español">
 
                     <!-- ===== CONTRASEÑA ===== -->
-                    <input type="password" placeholder="Contraseña" v-model="auth.password" required>
+                    <input type="password" placeholder="Contraseña" v-model="auth.password"
+                        :class="inputClass('password')" required>
 
-                    <input v-if="authMode === 'register'" type="password" placeholder="Confirmar contraseña" required>
+                    <input v-if="authMode === 'register'" type="password" placeholder="Confirmar contraseña"
+                        v-model="auth.password2" :class="inputClass('password2')" required>
 
-                    <button type="submit">
+                    <button type="submit"
+                        :disabled="authMode === 'register' && !isRegisterFormValid">
                         {{ authMode === 'login' ? 'Entrar' : 'Registrarse' }}
                     </button>
                 </form>

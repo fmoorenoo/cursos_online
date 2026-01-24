@@ -20,8 +20,12 @@ createApp({
             showAuthModal: false,
             authMode: 'login',
             auth: {
+                dni: '',
+                nombre: '',
                 email: '',
-                password: ''
+                telefono: '',
+                password: '',
+                password2: ''
             }
         };
     },
@@ -44,6 +48,19 @@ createApp({
 
             const key = palette.nameKey.split('.').pop();
             return this.t.palette[key];
+        },
+
+        isLoginFormValid() {
+            return this.validateEmail(this.auth.email) && this.validatePassword(this.auth.password);
+        },
+
+        isRegisterFormValid() {
+            return this.validateDNI(this.auth.dni)
+                && this.validateNombre(this.auth.nombre)
+                && this.validateEmail(this.auth.email)
+                && this.validateTelefono(this.auth.telefono)
+                && this.validatePassword(this.auth.password)
+                && this.validatePassword2(this.auth.password, this.auth.password2);
         }
 
     },
@@ -161,24 +178,39 @@ createApp({
         },
 
         openLogin() {
+            this.resetAuthForm();
             this.authMode = 'login';
             this.showAuthModal = true;
             document.body.classList.add('no-scroll');
         },
 
         openRegister() {
+            this.resetAuthForm();
             this.authMode = 'register';
             this.showAuthModal = true;
             document.body.classList.add('no-scroll');
         },
 
         closeAuth() {
+            this.resetAuthForm();
             this.showAuthModal = false;
             document.body.classList.remove('no-scroll');
         },
 
+        resetAuthForm() {
+            this.auth = {
+                dni: '',
+                nombre: '',
+                email: '',
+                telefono: '',
+                password: '',
+                password2: ''
+            };
+        },
+
         async submitAuth() {
-            if (this.authMode !== 'login') {
+            if (this.authMode === 'register') {
+                if (!this.isRegisterFormValid) return;
                 console.log('Registro aún no implementado');
                 return;
             }
@@ -186,9 +218,7 @@ createApp({
             try {
                 const res = await fetch('../backend/auth/check_login.php', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
+                    headers: {'Content-Type': 'application/json'},
                     body: JSON.stringify({
                         email: this.auth.email,
                         password: this.auth.password
@@ -205,24 +235,90 @@ createApp({
                 }
 
             } catch (error) {
-                console.error('Error en login:', error);
                 alert('Error de conexión con el servidor');
             }
-        }
+        },
+
+        inputClass(field) {
+            if (this.authMode === 'login') {
+                return '';
+            }
+
+            const val = (this.auth?.[field] ?? '').toString();
+
+            // Vacío => sin borde
+            if (!val.length) return '';
+
+            return this.isFieldValid(field) ? 'is-valid' : 'is-invalid';
+        },
+
+        isFieldValid(field) {
+            switch (field) {
+                case 'dni': return this.validateDNI(this.auth.dni);
+                case 'nombre': return this.validateNombre(this.auth.nombre);
+                case 'email': return this.validateEmail(this.auth.email);
+                case 'telefono': return this.validateTelefono(this.auth.telefono);
+                case 'password': return this.validatePassword(this.auth.password);
+                case 'password2': return this.validatePassword2(this.auth.password, this.auth.password2);
+                default: return false;
+            }
+        },
+
+        // ====== VALIDACIONES CON REGEX ======
+        validateDNI(dniRaw) {
+            const dni = (dniRaw || '').trim().toUpperCase();
+            const re = /^\d{8}[A-Z]$/;
+            if (!re.test(dni)) return false;
+
+            const num = parseInt(dni.slice(0, 8), 10);
+            const letra = dni.slice(8);
+            const letras = 'TRWAGMYFPDXBNJZSQVHLCKE';
+            const letraCorrecta = letras[num % 23];
+            return letra === letraCorrecta;
+        },
+
+        validateNombre(nombreRaw) {
+            const nombre = (nombreRaw || '').trim();
+            // 1 o más palabras, solo letras (incluye tildes/ñ) y espacios entre palabras
+            const re = /^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ]+(?:\s+[A-Za-zÁÉÍÓÚÜÑáéíóúüñ]+)*$/;
+            return re.test(nombre);
+        },
+
+        validateEmail(emailRaw) {
+            const email = (emailRaw || '').trim();
+            // Regex práctica (sin espacios, con @ y dominio)
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+            return re.test(email);
+        },
+
+        validateTelefono(telRaw) {
+            // Permitimos +34 opcional y quitamos espacios
+            const tel = (telRaw || '').replace(/\s+/g, '');
+            const re = /^(?:\+34)?(?:6|7)\d{8}$/;
+            return re.test(tel);
+        },
+
+        validatePassword(passRaw) {
+            const pass = (passRaw || '');
+            return pass.length >= 4;
+        },
+
+        validatePassword2(pass1, pass2) {
+            return this.validatePassword(pass2) && (pass1 === pass2);
+        },
     },
 
     mounted() {
         this.cargarCursos();
-
-
 
         const savedPalette = localStorage.getItem('selectedPalette');
         if (savedPalette && this.availablePalettes[savedPalette]) {
             this.selectedPalette = savedPalette;
         }
         this.applyPalette();
+
         // ===== Probar paleta de colores durante desarrollo =====
-        localStorage.removeItem('selectedPalette');
+        // localStorage.removeItem('selectedPalette');
 
         // Pausar carrusel al pasar el mouse
         const carousel = document.querySelector('.promos-container');

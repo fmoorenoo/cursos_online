@@ -35,7 +35,7 @@
 .modal input {
     padding: 10px 12px;
     border-radius: 8px;
-    border: 1px solid #ccc;
+    border: 2px solid var(--surface-dark);
 }
 
 .modal button {
@@ -47,10 +47,12 @@
     color: white;
     font-weight: 600;
     cursor: pointer;
+    transition: all 0.2s ease;
 }
 
-.modal button:hover {
-    background-color: var(--color-secondary-light);
+.modal button:not(:disabled):hover {
+    filter: brightness(1.2);
+    transform: scale(1.03);
 }
 
 .switch {
@@ -62,4 +64,31 @@
     color: var(--color-primary);
     cursor: pointer;
     font-weight: 600;
+}
+
+.modal input.is-valid {
+  border: solid 2px var(--color-success);
+}
+
+.modal input.is-invalid {
+  border: solid 2px var(--color-danger);
+}
+
+.modal button:disabled {
+  background-color: var(--text-on-light);
+  cursor: not-allowed;
+}
+
+.modal input.is-valid:focus {
+    border: 2px solid var(--color-success);
+    outline: none;
+}
+
+.modal input.is-invalid:focus {
+    border: 2px solid var(--color-danger);
+    outline: none;
+}
+
+.modal input:focus {
+    outline: none;
 }
