@@ -38,7 +38,7 @@
     border: 2px solid var(--surface-dark);
 }
 
-.modal button {
+.modal form button {
     margin-top: 10px;
     padding: 12px;
     border-radius: 10px;
@@ -50,7 +50,7 @@
     transition: all 0.2s ease;
 }
 
-.modal button:not(:disabled):hover {
+.modal form button:not(:disabled):hover {
     filter: brightness(1.2);
     transform: scale(1.03);
 }
@@ -91,4 +91,40 @@
 
 .modal input:focus {
     outline: none;
+}
+
+.modal {
+    position: relative;
+}
+
+.modal-header {
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+
+/* Título centrado */
+.modal-title {
+    margin: 0;
+    color: var(--color-primary);
+}
+
+/* Botón X pegado a la derecha */
+.modal-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: transparent;
+    border: none;
+    font-size: 40px;
+    font-weight: bold;
+    color: var(--color-primary);
+    cursor: pointer;
+    transition: all 0.1s ease;
+}
+
+.modal-close:hover {
+    transform: scale(1.07);
+    color: var(--color-secondary);
+
 }

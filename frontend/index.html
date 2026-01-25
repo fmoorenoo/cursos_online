@@ -122,45 +122,46 @@
         <div v-if="showAuthModal" class="modal-overlay" @mousedown.self="closeAuth">
             <div class="modal" @mousedown.stop>
 
-                <h2>{{ authMode === 'login' ? 'Iniciar sesión' : 'Registro' }}</h2>
+                <div class="modal-header">
+                    <h2 class="modal-title">{{ authMode === 'login' ? t.login.title : t.register.title }}</h2>
+                    <button class="modal-close" @click="closeAuth" aria-label="Cerrar">&times;</button>
+                </div>
 
                 <form @submit.prevent="submitAuth">
 
                     <!-- ===== CAMPOS SOLO REGISTRO ===== -->
-                    <input v-if="authMode === 'register'" type="text" placeholder="DNI" v-model="auth.dni"
+                    <input v-if="authMode === 'register'" type="text" :placeholder="t.register.dni" v-model="auth.dni"
                         :class="inputClass('dni')" required title="DNI válido (8 números y una letra)">
 
-                    <input v-if="authMode === 'register'" type="text" placeholder="Nombre completo"
-                        v-model="auth.nombre" :class="inputClass('nombre')" required
-                        title="Solo letras y espacios">
+                    <input v-if="authMode === 'register'" type="text" :placeholder="t.register.nombre"
+                        v-model="auth.nombre" :class="inputClass('nombre')" required title="Solo letras y espacios">
 
-                    <input type="text" placeholder="Correo electrónico" v-model="auth.email"
-                        :class="inputClass('email')" required title="Correo electrónico válido">
+                    <input type="text" :placeholder="t.register.email" v-model="auth.email" :class="inputClass('email')"
+                        required title="Correo electrónico válido">
 
-                    <input v-if="authMode === 'register'" type="text" placeholder="Teléfono" v-model="auth.telefono"
-                        :class="inputClass('telefono')" required title="Teléfono español">
+                    <input v-if="authMode === 'register'" type="text" :placeholder="t.register.telefono"
+                        v-model="auth.telefono" :class="inputClass('telefono')" required title="Teléfono español">
 
                     <!-- ===== CONTRASEÑA ===== -->
-                    <input type="password" placeholder="Contraseña" v-model="auth.password"
+                    <input type="password" :placeholder="t.login.password" v-model="auth.password"
                         :class="inputClass('password')" required>
 
-                    <input v-if="authMode === 'register'" type="password" placeholder="Confirmar contraseña"
+                    <input v-if="authMode === 'register'" type="password" :placeholder="t.register.password2"
                         v-model="auth.password2" :class="inputClass('password2')" required>
 
-                    <button type="submit"
-                        :disabled="authMode === 'register' && !isRegisterFormValid">
-                        {{ authMode === 'login' ? 'Entrar' : 'Registrarse' }}
+                    <button type="submit" :disabled="authMode === 'register' && !isRegisterFormValid">
+                        {{ authMode === 'login' ? t.login.loginButton : t.register.registerButton }}
                     </button>
                 </form>
 
                 <p class="switch">
                     <span v-if="authMode === 'login'">
-                        ¿No tienes cuenta?
-                        <a @click="authMode = 'register'">Regístrate</a>
+                        {{ t.login.question }}
+                        <a @click="authMode = 'register'">{{ t.register.registerButton }}</a>
                     </span>
                     <span v-else>
-                        ¿Ya tienes cuenta?
-                        <a @click="authMode = 'login'">Inicia sesión</a>
+                        {{ t.register.question }}
+                        <a @click="authMode = 'login'">{{ t.login.loginButton }}</a>
                     </span>
                 </p>
 

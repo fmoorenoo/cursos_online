@@ -40,6 +40,29 @@ window.I18N = {
             vibranteAmarillo: "Vibrante Amarillo",
             energeticoRojo: "Energético Rojo",
             profesionalIndigo: "Profesional Índigo"
+        },
+
+        // Login / Register
+        login: {
+            title: "Iniciar Sesión",
+            email: "Correo Electrónico",
+            password: "Contraseña",
+            loginButton: "Entrar",
+            question: "¿No tienes cuenta?",
+            registerLink: "Regístrate aquí"
+        },
+
+        register: {
+            title: "Registro",
+            dni: "DNI",
+            nombre: "Nombre",
+            email: "Correo Electrónico",
+            telefono: "Teléfono",
+            password: "Contraseña",
+            password2: "Confirmar Contraseña",
+            registerButton: "Registrarse",
+            question: "¿Ya tienes cuenta?",
+            loginLink: "Inicia sesión aquí"
         }
     },
 
@@ -84,6 +107,29 @@ window.I18N = {
             vibranteAmarillo: "Vibrant Yellow",
             energeticoRojo: "Energetic Red",
             profesionalIndigo: "Professional Indigo"
+        },
+
+        // Login / Register
+        login: {
+            title: "Login",
+            email: "Email",
+            password: "Password",
+            loginButton: "Enter",
+            question: "Don't have an account?",
+            registerLink: "Register here"
+        },
+
+        register: {
+            title: "Create an account",
+            dni: "ID",
+            nombre: "Name",
+            email: "Email",
+            telefono: "Phone",
+            password: "Password",
+            password2: "Confirm Password",
+            registerButton: "Register",
+            question: "Already have an account?",
+            loginLink: "Login here"
         }
     }
 };

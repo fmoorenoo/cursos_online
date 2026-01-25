@@ -167,7 +167,7 @@ createApp({
                     id: curso.id,
                     titulo: curso.nombre,
                     descripcion: curso.descripcion,
-                    precio: `$${curso.precio}`,
+                    precio: `${curso.precio}€`,
                     duracion: `${curso.duracion} min`,
                     disponible: curso.disponible == 1,
                     imagen: curso.imagen_url
@@ -211,14 +211,42 @@ createApp({
         async submitAuth() {
             if (this.authMode === 'register') {
                 if (!this.isRegisterFormValid) return;
-                console.log('Registro aún no implementado');
+
+                try {
+                    const res = await fetch('../backend/auth/register.php', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            dni: this.auth.dni,
+                            nombre: this.auth.nombre,
+                            email: this.auth.email,
+                            telefono: this.auth.telefono,
+                            password: this.auth.password
+                        })
+                    });
+
+                    const data = await res.json();
+
+                    if (data.success) {
+                        alert('Registro correcto. Ya puedes iniciar sesión.');
+                        this.authMode = 'login';
+                        this.resetAuthForm();
+                    } else {
+                        alert(data.message || 'Error en el registro');
+                    }
+
+                } catch (error) {
+                    alert('Error de conexión con el servidor');
+                }
+
                 return;
             }
 
+
             try {
-                const res = await fetch('../backend/auth/check_login.php', {
+                const res = await fetch('../backend/auth/login.php', {
                     method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         email: this.auth.email,
                         password: this.auth.password
