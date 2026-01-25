@@ -2,12 +2,92 @@
 .main-footer {
     background-color: var(--surface-dark);
     color: var(--text-on-dark);
-    text-align: center;
-    padding: 40px 20px;
-    position: static;
-    z-index: 1000;
-    bottom: 0;
-    width: 100%;
-    font-size: 15px;
     border-top: 4px solid var(--color-primary);
+    font-size: 15px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 35px 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+}
+
+.footer-column h4 {
+    color: var(--color-primary);
+    margin-bottom: 15px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.footer-column p {
+    opacity: 0.85;
+    line-height: 1.6;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column li {
+    margin-bottom: 10px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    opacity: 0.85;
+}
+
+.footer-column a {
+    color: var(--text-on-dark);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+    color: var(--color-primary);
+}
+
+.footer-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.lang-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.85;
+}
+
+.back-to-top-btn {
+    background: transparent;
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
+    padding: 10px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    width: fit-content;
+}
+
+.back-to-top-btn:hover {
+    background-color: var(--color-primary);
+    color: #fff;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0.8;
 }

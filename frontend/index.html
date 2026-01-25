@@ -6,8 +6,12 @@
     <title>Plataforma de Cursos Online</title>
     <!-- Vue.js CDN -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- Hoja principal de estilos (importa otras hojas) -->
     <link rel="stylesheet" href="css/main.css">
+    <!-- Icono de la página -->
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+    <!-- Font Awesome CDN para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 </head>
 
 <body>
@@ -52,8 +56,20 @@
                         @click="selectedLang = 'en'" data-lang="en">EN</div>
                 </div>
 
-                <!-- REGISTRO / LOGIN -->
-                <a class="nav-link" href="#" @click.prevent="openLogin">{{ t.nav.login }}</a>
+                <!-- LOGIN / USUARIO -->
+                <div class="palette-selector-container" v-if="isLoggedIn">
+                    <button class="nav-link palette-toggle-btn user-name" @click="toggleUserMenu" :title="sessionUser.nombre">
+                        {{ sessionUser.nombre }}
+                    </button>
+
+                    <div v-if="showUserMenu" class="palette-selector user-dropdown-like">
+                        <button class="user-dropdown-item" @click="logout">
+                            <i class="fa-solid fa-right-from-bracket"></i>{{ t.nav.logout }}
+                        </button>
+                    </div>
+                </div>
+
+                <a v-else class="nav-link" href="#" @click.prevent="openLogin">{{ t.nav.login }}</a>
             </nav>
         </header>
 
@@ -112,7 +128,8 @@
                                 <p class="course-description">{{ curso.descripcion }}</p>
                                 <div class="course-card-footer">
                                     <span class="course-price">{{ curso.precio }}</span>
-                                    <span class="course-duration">{{ Math.round(parseInt(curso.duracion) / 60) }}h</span>
+                                    <span class="course-duration">{{ Math.round(parseInt(curso.duracion) / 60)
+                                        }}h</span>
                                 </div>
                             </div>
                         </div>
@@ -161,7 +178,8 @@
                     <input v-if="authMode === 'register'" type="password" :placeholder="t.register.password2"
                         v-model="auth.password2" :class="inputClass('password2')" required>
 
-                    <button type="submit" class="auth-submit-btn" :disabled="authMode === 'register' && !isRegisterFormValid">
+                    <button type="submit" class="auth-submit-btn"
+                        :disabled="authMode === 'register' && !isRegisterFormValid">
                         {{ authMode === 'login' ? t.login.loginButton : t.register.registerButton }}
                     </button>
                 </form>
@@ -182,11 +200,37 @@
 
         <!-- FOOTER -->
         <footer class="main-footer">
-            <p>{{ t.footer.rights }}</p>
-            <p>{{ t.footer.address }}</p>
-            <p>{{ t.footer.contact }}</p>
-            <p v-if="selectedLang === 'es'">{{ t.currentLangEs }}</p>
-            <p v-else>{{ t.currentLangEn }}</p>
+            <div class="footer-container">
+
+                <div class="footer-column">
+                    <h4>{{ t.siteName }}</h4>
+                    <p>{{ t.footer.rights }}</p>
+                </div>
+
+                <div class="footer-column">
+                    <h4>{{ t.nav.about }}</h4>
+                    <ul>
+                        <li><i class="fa-solid fa-location-dot"></i> {{ t.footer.address }}</li>
+                        <li><i class="fa-solid fa-envelope"></i> {{ t.footer.email }}</li>
+                        <li><i class="fa-solid fa-phone"></i> {{ t.footer.contact }}</li>
+                    </ul>
+                </div>
+
+                <div class="footer-column footer-actions">
+                    <span class="lang-indicator">
+                        <i class="fa-solid fa-globe"></i>
+                        {{ selectedLang === 'es' ? t.currentLangEs : t.currentLangEn }}
+                    </span>
+
+                    <button class="back-to-top-btn" @click="scrollTo('app')">
+                        <i class="fa-solid fa-arrow-up"></i> {{ t.footer.backToTop }}
+                    </button>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                © {{ new Date().getFullYear() }} · {{ t.siteName }}
+            </div>
         </footer>
     </div>
 

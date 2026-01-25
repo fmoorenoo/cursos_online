@@ -27,7 +27,10 @@ createApp({
                 password: '',
                 password2: ''
             },
-            currentView: 'home'
+            currentView: 'home',
+            isLoggedIn: false,
+            sessionUser: null,
+            showUserMenu: false
         };
     },
     computed: {
@@ -91,7 +94,7 @@ createApp({
             this.slideInterval = setInterval(() => {
                 if (!this.cursos.length) return;
                 this.currentSlide = (this.currentSlide + 1) % this.cursos.length;
-            }, 3500);
+            }, 3000);
         },
 
         stopAutoSlide() {
@@ -222,6 +225,7 @@ createApp({
         },
 
         async submitAuth() {
+            // Modo registro
             if (this.authMode === 'register') {
                 if (!this.isRegisterFormValid) return;
 
@@ -255,7 +259,7 @@ createApp({
                 return;
             }
 
-
+            // Modo login
             try {
                 const res = await fetch('../backend/auth/login.php', {
                     method: 'POST',
@@ -270,14 +274,28 @@ createApp({
 
                 if (data.success) {
                     console.log('Login correcto', data.user);
+
+                    this.sessionUser = data.user;
+                    this.isLoggedIn = true;
+
+                    sessionStorage.setItem('sessionUser', JSON.stringify(data.user));
+
                     this.closeAuth();
                 } else {
                     alert(data.message || 'Credenciales incorrectas');
                 }
 
+
             } catch (error) {
                 alert('Error de conexión con el servidor');
             }
+        },
+
+        logout() {
+            sessionStorage.removeItem('sessionUser');
+            this.sessionUser = null;
+            this.isLoggedIn = false;
+            this.showUserMenu = false;
         },
 
         inputClass(field) {
@@ -376,6 +394,10 @@ createApp({
                 });
             }
         },
+
+        toggleUserMenu() {
+            this.showUserMenu = !this.showUserMenu;
+        },
     },
 
     watch: {
@@ -387,11 +409,29 @@ createApp({
             } else {
                 this.stopAutoSlide();
             }
+        },
+
+        currentView() {
+            this.showUserMenu = false;
+        },
+
+        selectedLang(newLang) {
+            localStorage.setItem('selectedLang', newLang);
         }
     },
 
     mounted: async function () {
         await this.cargarCursos();
+
+        const savedLang = localStorage.getItem('selectedLang');
+        if (savedLang) this.selectedLang = savedLang;
+
+        const savedUser = sessionStorage.getItem('sessionUser');
+        if (savedUser) {
+            this.sessionUser = JSON.parse(savedUser);
+            this.isLoggedIn = true;
+        }
+
 
         const savedPalette = localStorage.getItem('selectedPalette');
         if (savedPalette && this.availablePalettes[savedPalette]) {
@@ -406,15 +446,33 @@ createApp({
             if (this.currentView === 'home') this.startAutoSlide();
         });
 
-        // Cerrar selector de paletas al hacer clic fuera
         document.addEventListener('click', (event) => {
-            const selector = document.querySelector('.palette-selector');
-            const toggleBtn = document.querySelector('.palette-toggle-btn');
+            /* ===== PALETTE SELECTOR ===== */
+            const paletteSelector = document.querySelector('.palette-selector');
+            const paletteToggle = document.querySelector('.palette-toggle-btn');
 
-            if (selector && toggleBtn &&
-                !selector.contains(event.target) &&
-                !toggleBtn.contains(event.target)) {
+            if (
+                this.showPaletteSelector &&
+                paletteSelector &&
+                paletteToggle &&
+                !paletteSelector.contains(event.target) &&
+                !paletteToggle.contains(event.target)
+            ) {
                 this.showPaletteSelector = false;
+            }
+
+            /* ===== USER MENU ===== */
+            const userDropdown = document.querySelector('.user-dropdown-like');
+            const userToggle = document.querySelector('.user-name');
+
+            if (
+                this.showUserMenu &&
+                userDropdown &&
+                userToggle &&
+                !userDropdown.contains(event.target) &&
+                !userToggle.contains(event.target)
+            ) {
+                this.showUserMenu = false;
             }
         });
     },

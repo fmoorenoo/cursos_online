@@ -221,3 +221,42 @@
 .palette-selector::-webkit-scrollbar-thumb:hover {
     background: var(--color-secondary-light);
 }
+
+/* USER MENU */
+.user-menu {
+    position: relative;
+}
+
+/* USER DROPDOWN LIKE PALETTE */
+.user-dropdown-like {
+    width: 220px;
+    padding: 10px;
+}
+
+.user-dropdown-item {
+    width: 100%;
+    background: var(--color-danger);
+    border: none;
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.25s ease;
+}
+
+.user-dropdown-item:hover {
+    background-color: var(--color-secondary-light);
+    transform: translateY(-1px);
+}
+
+.user-name {
+    max-width: 132px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+

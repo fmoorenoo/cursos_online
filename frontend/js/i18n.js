@@ -1,14 +1,15 @@
 window.I18N = {
     es: {
         // Header
-        siteName: "Cursos Online",
+        siteName: "CulturLan",
         nav: {
             home: "Inicio",
             courses: "Cursos",
             about: "Acerca de",
             cart: "Carrito",
             theme: "Tema",
-            login: "Registro / Login"
+            login: "Registro / Login",
+            logout: "Cerrar Sesión"
         },
 
         // Language
@@ -25,9 +26,11 @@ window.I18N = {
 
         // Footer
         footer: {
-            rights: "© 2026 Cursos Online",
+            rights: "© 2026 CulturLan",
             address: "Dirección: Calle 123",
-            contact: "Email: info@cursosonline.com | Tel: 600 000 000"
+            email: "Correo: info@culturLan.com",
+            contact: "Tel: 928 67 67 67",
+            backToTop: "Volver arriba"
         },
 
         // Palettes
@@ -68,14 +71,15 @@ window.I18N = {
 
     en: {
         // Header
-        siteName: "Online Courses",
+        siteName: "CulturLan",
         nav: {
             home: "Home",
             courses: "Courses",
             about: "About",
             cart: "Cart",
             theme: "Theme",
-            login: "Register / Login"
+            login: "Register / Login",
+            logout: "Logout"
         },
 
         // Language
@@ -92,9 +96,11 @@ window.I18N = {
 
         // Footer
         footer: {
-            rights: "© 2026 Online Courses",
+            rights: "© 2026 CulturLan",
             address: "Address: 123 Street",
-            contact: "Email: info@onlinecourses.com | Phone: +34 600 000 000"
+            email: "Email: info@culturLan.com",
+            contact: "Phone: +34 928 67 67 67",
+            backToTop: "Back to Top"
         },
 
         // Palettes
