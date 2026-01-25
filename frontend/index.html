@@ -16,8 +16,8 @@
         <header class="header">
             <div class="header-logo">{{ t.siteName }}</div>
             <nav class="header-nav">
-                <a class="nav-link" href="#" @click.prevent="goTo('home')">{{ t.nav.home }}</a>
-                <a class="nav-link" href="#">{{ t.nav.courses }}</a>
+                <a class="nav-link" href="#" @click.prevent="scrollTo('app')">{{ t.nav.home }}</a>
+                <a class="nav-link" href="#" @click.prevent="scrollTo('catalog')">{{ t.nav.courses }}</a>
                 <a class="nav-link" href="#">{{ t.nav.about }}</a>
                 <a class="nav-link" href="#" @click.prevent="goTo('cart')">{{ t.nav.cart }}</a>
 
@@ -62,7 +62,7 @@
             <!-- CARRUSEL DE CURSOS DESTACADOS -->
             <section class="featured-courses-section">
                 <h2 class="section-title">{{ t.featuredCourses }}</h2>
-                <div class="carousel-container">
+                <div class="carousel-container" @mouseenter="stopAutoSlide" @mouseleave="startAutoSlide">
                     <div class="carousel-track" :style="trackStyle">
                         <div v-for="(curso, index) in cursos" :key="curso.id" class="carousel-slide">
                             <div class="featured-course-card" @click="selectCourse(curso)">
@@ -101,7 +101,7 @@
             </section>
 
             <!-- CATÁLOGO DE TODOS LOS CURSOS -->
-            <main class="main-content">
+            <main class="main-content" id="catalog">
                 <div class="content-section">
                     <h1 class="page-title">{{ t.catalogTitle }}</h1>
                     <div class="courses-grid">
@@ -127,7 +127,6 @@
                 <h1 class="page-title">{{ t.nav.cart }}</h1>
                 <p>Aquí irá el contenido del carrito.</p>
 
-                <button class="nav-link back-btn" @click="goTo('home')">← Volver</button>
             </div>
         </section>
 

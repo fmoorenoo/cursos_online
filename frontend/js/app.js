@@ -84,16 +84,28 @@ createApp({
         },
 
         startAutoSlide() {
+            if (this.currentView !== 'home') return;
             if (!this.cursos.length) return;
+            if (this.slideInterval) return; // evita duplicados
+
             this.slideInterval = setInterval(() => {
-                this.nextSlide();
+                if (!this.cursos.length) return;
+                this.currentSlide = (this.currentSlide + 1) % this.cursos.length;
             }, 3500);
         },
 
+        stopAutoSlide() {
+            if (this.slideInterval) {
+                clearInterval(this.slideInterval);
+                this.slideInterval = null;
+            }
+        },
+
         resetAutoSlide() {
-            clearInterval(this.slideInterval);
+            this.stopAutoSlide();
             this.startAutoSlide();
         },
+
 
         selectCourse(curso) {
             console.log('Curso seleccionado:', curso.titulo);
@@ -338,18 +350,48 @@ createApp({
 
         goTo(view) {
             this.currentView = view;
+        },
 
-            // Parar el carrusel
-            if (view === 'cart') {
-                clearInterval(this.slideInterval);
+        scrollTo(id) {
+            // Si no estamos en home, cambiamos primero
+            if (this.currentView !== 'home') {
+                this.currentView = 'home';
+
+                this.$nextTick(() => {
+                    const el = document.getElementById(id);
+                    if (!el) return;
+
+                    el.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                });
             } else {
-                this.startAutoSlide();
+                const el = document.getElementById(id);
+                if (!el) return;
+
+                el.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
             }
         },
     },
 
-    mounted() {
-        this.cargarCursos();
+    watch: {
+        currentView(newView) {
+            if (newView === 'home') {
+                setTimeout(() => {
+                    this.startAutoSlide();
+                }, 100);
+            } else {
+                this.stopAutoSlide();
+            }
+        }
+    },
+
+    mounted: async function () {
+        await this.cargarCursos();
 
         const savedPalette = localStorage.getItem('selectedPalette');
         if (savedPalette && this.availablePalettes[savedPalette]) {
@@ -360,17 +402,9 @@ createApp({
         // ===== Probar paleta de colores durante desarrollo =====
         // localStorage.removeItem('selectedPalette');
 
-        // Pausar carrusel al pasar el mouse
-        const carousel = document.querySelector('.promos-container');
-        if (carousel) {
-            carousel.addEventListener('mouseenter', () => {
-                clearInterval(this.slideInterval);
-            });
-
-            carousel.addEventListener('mouseleave', () => {
-                this.startAutoSlide();
-            });
-        }
+        this.$nextTick(() => {
+            if (this.currentView === 'home') this.startAutoSlide();
+        });
 
         // Cerrar selector de paletas al hacer clic fuera
         document.addEventListener('click', (event) => {
@@ -386,6 +420,9 @@ createApp({
     },
 
     beforeUnmount() {
-        clearInterval(this.slideInterval);
+        if (this.slideInterval) {
+            clearInterval(this.slideInterval);
+            this.slideInterval = null;
+        }
     }
 }).mount('#app');

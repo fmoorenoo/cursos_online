@@ -1,4 +1,4 @@
-/* CONTENIDO PRINCIPAL */
+/* CONTENEDOR GENERAL */
 .main-content {
     display: grid;
     padding: 60px 40px;
@@ -6,92 +6,113 @@
     margin: 0 auto;
 }
 
-/* SECCIÓN PRINCIPAL */
+/* SECCIÓN BLANCA CONTENEDORA */
 .content-section {
     background-color: var(--surface-section);
     padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
     border: 1px solid var(--surface-overlay);
 }
 
+/* TÍTULO DE PÁGINA */
 .page-title {
     font-size: 32px;
     font-weight: 700;
     margin-bottom: 30px;
     color: var(--text-primary);
-    position: relative;
     padding-bottom: 15px;
+    border-bottom: 1px solid var(--surface-overlay);
 }
 
 /* GRID DE CURSOS */
 .courses-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 30px;
+    gap: 32px;
     margin-top: 30px;
 }
 
-/* TARJETA DE CURSO INDIVIDUAL */
-.course-card {
+/* TARJETA DE CURSO (CATÁLOGO) */
+
+.courses-grid .course-card {
+    display: flex;
+    flex-direction: column;
     background: var(--surface-card);
-    border: 1px solid var(--surface-overlay);
-    border-radius: 12px;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--surface-overlay);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+    transition: all 0.18s ease;
+    cursor: pointer;
 }
 
-.course-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+.courses-grid .course-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(0,0,0,0.12);
 }
 
-.course-thumbnail {
+/* IMAGEN DEL CURSO */
+.courses-grid .course-thumbnail {
     width: 100%;
-    height: 180px;
+    height: 190px;
     object-fit: cover;
+    border-bottom: 1px solid var(--surface-overlay);
 }
 
-.course-card-content {
-    padding: 20px;
+/* CONTENIDO INTERNO */
+.courses-grid .course-card-content {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 22px 18px;
+    gap: 10px;
+    flex-grow: 1;
 }
 
-.course-card-content h3 {
+/* TÍTULO */
+.courses-grid .course-card-content h3 {
     font-size: 18px;
-    margin-bottom: 10px;
+    font-weight: 600;
     color: var(--text-primary);
+    line-height: 1.3;
 }
 
-.course-card-content p {
+/* DESCRIPCIÓN */
+.courses-grid .course-card-content p {
     font-size: 14px;
     color: var(--text-secondary);
-    margin-bottom: 15px;
-    line-height: 1.4;
+    line-height: 1.5;
+
     display: -webkit-box;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
-.course-card-footer {
+/* FOOTER DE LA TARJETA */
+.courses-grid .course-card-footer {
+    margin-top: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 15px;
+    padding-top: 14px;
+    border-top: 1px solid var(--surface-overlay);
 }
 
-.course-price {
+/* PRECIO */
+.courses-grid .course-price {
+    font-size: 20px;
     font-weight: 700;
     color: var(--color-primary);
-    font-size: 20px;
 }
 
-.course-duration {
-    background-color: var(--color-secondary-light);
-    color: white;
-    padding: 5px 12px;
-    border-radius: 15px;
+/* DURACIÓN */
+.courses-grid .course-duration {
+    background-color: rgba(30, 41, 59, 0.08);
+    color: var(--text-primary);
+    padding: 6px 12px;
+    border-radius: 999px;
     font-size: 12px;
+    font-weight: 500;
 }
