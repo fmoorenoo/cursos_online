@@ -1,7 +1,7 @@
 /* ======================================================
    CARRUSEL DE CURSOS
    ====================================================== */
-.promos {
+.featured-courses-section {
     background: linear-gradient(135deg, var(--color-primary), var(--color-secondary-light));
     color: var(--text-on-dark);
     padding: 20px;
@@ -9,13 +9,13 @@
     overflow: hidden;
 }
 
-.promos h2 {
+.featured-courses-section h2 {
     text-align: center;
     font-size: 35px;
     margin-bottom: 15px;
 }
 
-.promos-container {
+.carousel-container {
     display: flex;
     justify-content: center;
     gap: 0px;
@@ -43,7 +43,7 @@
 }
 
 /* TARJETA PROMOCIONAL */
-.promo-card {
+.featured-course-card {
     background-color: var(--surface-card);
     color: var(--text-primary);
     padding: 35px;
@@ -63,7 +63,7 @@
 }
 
 /* CONTENIDO DE CURSO */
-.course-content {
+.course-card-content {
     display: flex;
     gap: 30px;
     align-items: stretch;
@@ -71,7 +71,7 @@
 }
 
 /* IMAGEN DE CURSO */
-.course-image {
+.course-image-container {
     flex: 0 0 220px;
     width: 100%;
     height: auto;
@@ -79,7 +79,7 @@
     overflow: hidden;
 }
 
-.course-image img {
+.course-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -87,13 +87,13 @@
 }
 
 /* INFORMACIÓN DE CURSO */
-.course-info {
+.course-info-container {
     flex: 1;
     display: flex;
     flex-direction: column;
 }
 
-.promo-card h3 {
+.featured-course-card h3 {
     font-size: 22px;
     margin-top: 0;
     margin-bottom: 15px;
@@ -101,7 +101,7 @@
     color: var(--color-primary);
 }
 
-.promo-card p {
+.featured-course-card p {
     color: var(--text-secondary);
     font-size: 16px;
     line-height: 1.5;
@@ -112,7 +112,7 @@
     overflow: hidden;
 }
 
-.promo-card .price {
+.featured-course-card .course-price {
     display: block;
     font-weight: 700;
     color: var(--color-primary);
@@ -120,14 +120,14 @@
 }
 
 /* META INFORMACIÓN DEL CURSO */
-.course-meta {
+.course-meta-info {
     margin-top: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.promo-card .duration {
+.featured-course-card .course-duration {
     display: inline-block;
     background-color: var(--color-secondary-light);
     color: var(--text-on-dark);
@@ -136,7 +136,7 @@
     font-size: 14px;
 }
 
-.promo-card .availability {
+.featured-course-card .course-availability {
     display: inline-block;
     padding: 8px 18px;
     border-radius: 20px;
@@ -145,12 +145,12 @@
     margin-left: 15px;
 }
 
-.promo-card .available {
+.featured-course-card .available {
     background-color: var(--color-success);
     color: var(--text-on-dark);
 }
 
-.promo-card .unavailable {
+.featured-course-card .unavailable {
     background-color: var(--color-danger);
     color: var(--text-on-dark);
 }

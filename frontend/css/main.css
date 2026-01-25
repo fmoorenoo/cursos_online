@@ -10,7 +10,7 @@
 @import url('carousel.css');
 
 /* Contenido principal */
-@import url('content.css');
+@import url('main_section.css');
 
 /* Estilos de login y registro */
 @import url('login.css');

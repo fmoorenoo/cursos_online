@@ -1,5 +1,5 @@
 /* ===== MODAL PARA LOGIN/REGISTRO ===== */
-.modal-overlay {
+.auth-modal-overlay {
     position: fixed;
     inset: 0;
     background-color: rgba(0, 0, 0, 0.70);
@@ -9,7 +9,8 @@
     z-index: 3000;
 }
 
-.modal {
+.auth-modal {
+    position: relative;
     background: var(--surface-card);
     opacity: 0.9;
     padding: 35px;
@@ -21,24 +22,24 @@
     text-align: center;
 }
 
-.modal h2 {
+.auth-modal h2 {
     margin-bottom: 25px;
     color: var(--color-primary);
 }
 
-.modal form {
+.auth-form {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-.modal input {
+.auth-modal input {
     padding: 10px 12px;
     border-radius: 8px;
     border: 2px solid var(--surface-dark);
 }
 
-.modal form button {
+.auth-submit-btn {
     margin-top: 10px;
     padding: 12px;
     border-radius: 10px;
@@ -50,51 +51,47 @@
     transition: all 0.2s ease;
 }
 
-.modal form button:not(:disabled):hover {
+.auth-form button:not(:disabled):hover {
     filter: brightness(1.2);
     transform: scale(1.03);
 }
 
-.switch {
+.auth-mode-switch {
     margin-top: 20px;
     font-size: 14px;
 }
 
-.switch a {
+.auth-mode-switch a {
     color: var(--color-primary);
     cursor: pointer;
     font-weight: 600;
 }
 
-.modal input.is-valid {
+.auth-modal input.is-valid {
   border: solid 2px var(--color-success);
 }
 
-.modal input.is-invalid {
+.auth-modal input.is-invalid {
   border: solid 2px var(--color-danger);
 }
 
-.modal button:disabled {
+.auth-modal button:disabled {
   background-color: var(--text-on-light);
   cursor: not-allowed;
 }
 
-.modal input.is-valid:focus {
+.auth-modal input.is-valid:focus {
     border: 2px solid var(--color-success);
     outline: none;
 }
 
-.modal input.is-invalid:focus {
+.auth-modal input.is-invalid:focus {
     border: 2px solid var(--color-danger);
     outline: none;
 }
 
-.modal input:focus {
+.auth-modal input:focus {
     outline: none;
-}
-
-.modal {
-    position: relative;
 }
 
 .modal-header {
@@ -103,14 +100,12 @@
     text-align: center;
 }
 
-/* Título centrado */
 .modal-title {
     margin: 0;
     color: var(--color-primary);
 }
 
-/* Botón X pegado a la derecha */
-.modal-close {
+.modal-close-btn {
     position: absolute;
     top: 0;
     right: 0;
@@ -123,7 +118,7 @@
     transition: all 0.1s ease;
 }
 
-.modal-close:hover {
+.modal-close-btn:hover {
     transform: scale(1.07);
     color: var(--color-secondary);
 

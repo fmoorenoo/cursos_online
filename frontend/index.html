@@ -60,26 +60,26 @@
         <!-- VISTA PRINCIPAL -->
         <div v-if="currentView === 'home'">
             <!-- CARRUSEL DE CURSOS DESTACADOS -->
-            <section class="promos">
-                <h2>{{ t.featuredCourses }}</h2>
-                <div class="promos-container">
+            <section class="featured-courses-section">
+                <h2 class="section-title">{{ t.featuredCourses }}</h2>
+                <div class="carousel-container">
                     <div class="carousel-track" :style="trackStyle">
                         <div v-for="(curso, index) in cursos" :key="curso.id" class="carousel-slide">
-                            <div class="promo-card" @click="selectCourse(curso)">
-                                <div class="course-content">
-                                    <div class="course-image">
-                                        <img :src="curso.imagen" :alt="curso.titulo">
+                            <div class="featured-course-card" @click="selectCourse(curso)">
+                                <div class="course-card-content">
+                                    <div class="course-image-container">
+                                        <img :src="curso.imagen" :alt="curso.titulo" class="course-image">
                                     </div>
-                                    <div class="course-info">
-                                        <h3>{{ curso.titulo }}</h3>
-                                        <p>{{ curso.descripcion }}</p>
-                                        <span class="price">{{ curso.precio }}</span>
-                                        <div class="course-meta">
-                                            <span class="duration">
+                                    <div class="course-info-container">
+                                        <h3 class="course-title">{{ curso.titulo }}</h3>
+                                        <p class="course-description">{{ curso.descripcion }}</p>
+                                        <span class="course-price">{{ curso.precio }}</span>
+                                        <div class="course-meta-info">
+                                            <span class="course-duration">
                                                 {{ curso.duracion }} ({{ Math.round(parseInt(curso.duracion) / 60) }} {{
                                                 t.hours }})
                                             </span>
-                                            <div class="availability"
+                                            <div class="course-availability"
                                                 :class="{ 'available': curso.disponible, 'unavailable': !curso.disponible }">
                                                 {{ curso.disponible ? t.available : t.unavailable }}
                                             </div>
@@ -100,17 +100,17 @@
                 </div>
             </section>
 
-            <!-- TODOS LOS CURSOS -->
-            <main class="content">
-                <div class="main-section">
-                    <h1>{{ t.catalogTitle }}</h1>
+            <!-- CATÁLOGO DE TODOS LOS CURSOS -->
+            <main class="main-content">
+                <div class="content-section">
+                    <h1 class="page-title">{{ t.catalogTitle }}</h1>
                     <div class="courses-grid">
                         <div v-for="curso in cursos" :key="curso.id" class="course-card">
                             <img :src="curso.imagen" :alt="curso.titulo" class="course-thumbnail">
-                            <div class="course-details">
-                                <h3>{{ curso.titulo }}</h3>
-                                <p>{{ curso.descripcion }}</p>
-                                <div class="course-footer">
+                            <div class="course-card-content">
+                                <h3 class="course-title">{{ curso.titulo }}</h3>
+                                <p class="course-description">{{ curso.descripcion }}</p>
+                                <div class="course-card-footer">
                                     <span class="course-price">{{ curso.precio }}</span>
                                     <span class="course-duration">{{ Math.round(parseInt(curso.duracion) / 60) }}h</span>
                                 </div>
@@ -121,28 +121,28 @@
             </main>
         </div>
 
-        <!-- CARRITO -->
-        <section v-else-if="currentView === 'cart'" class="cart-section content">
-            <div class="main-section">
-                <h1>{{ t.nav.cart }}</h1>
+        <!-- VISTA DEL CARRITO DE COMPRAS -->
+        <section v-else-if="currentView === 'cart'" class="cart-view main-content">
+            <div class="content-section">
+                <h1 class="page-title">{{ t.nav.cart }}</h1>
                 <p>Aquí irá el contenido del carrito.</p>
 
-                <button class="nav-link" @click="goTo('home')">← Volver</button>
+                <button class="nav-link back-btn" @click="goTo('home')">← Volver</button>
             </div>
         </section>
 
         <!-- MODAL LOGIN / REGISTRO -->
-        <div v-if="showAuthModal" class="modal-overlay" @mousedown.self="closeAuth">
-            <div class="modal" @mousedown.stop>
+        <div v-if="showAuthModal" class="auth-modal-overlay" @mousedown.self="closeAuth">
+            <div class="auth-modal" @mousedown.stop>
 
                 <div class="modal-header">
                     <h2 class="modal-title">{{ authMode === 'login' ? t.login.title : t.register.title }}</h2>
-                    <button class="modal-close" @click="closeAuth" aria-label="Cerrar">&times;</button>
+                    <button class="modal-close-btn" @click="closeAuth" aria-label="Cerrar">&times;</button>
                 </div>
 
-                <form @submit.prevent="submitAuth">
+                <form @submit.prevent="submitAuth" class="auth-form">
 
-                    <!-- ===== CAMPOS SOLO REGISTRO ===== -->
+                    <!-- CAMPOS SOLO PARA REGISTRO -->
                     <input v-if="authMode === 'register'" type="text" :placeholder="t.register.dni" v-model="auth.dni"
                         :class="inputClass('dni')" required title="DNI válido (8 números y una letra)">
 
@@ -155,19 +155,19 @@
                     <input v-if="authMode === 'register'" type="text" :placeholder="t.register.telefono"
                         v-model="auth.telefono" :class="inputClass('telefono')" required title="Teléfono español">
 
-                    <!-- ===== CONTRASEÑA ===== -->
+                    <!-- CAMPOS DE CONTRASEÑA -->
                     <input type="password" :placeholder="t.login.password" v-model="auth.password"
                         :class="inputClass('password')" required>
 
                     <input v-if="authMode === 'register'" type="password" :placeholder="t.register.password2"
                         v-model="auth.password2" :class="inputClass('password2')" required>
 
-                    <button type="submit" :disabled="authMode === 'register' && !isRegisterFormValid">
+                    <button type="submit" class="auth-submit-btn" :disabled="authMode === 'register' && !isRegisterFormValid">
                         {{ authMode === 'login' ? t.login.loginButton : t.register.registerButton }}
                     </button>
                 </form>
 
-                <p class="switch">
+                <p class="auth-mode-switch">
                     <span v-if="authMode === 'login'">
                         {{ t.login.question }}
                         <a @click="authMode = 'register'">{{ t.register.registerButton }}</a>
@@ -181,9 +181,8 @@
             </div>
         </div>
 
-
         <!-- FOOTER -->
-        <footer class="footer">
+        <footer class="main-footer">
             <p>{{ t.footer.rights }}</p>
             <p>{{ t.footer.address }}</p>
             <p>{{ t.footer.contact }}</p>
