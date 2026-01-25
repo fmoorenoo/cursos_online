@@ -15,6 +15,9 @@
 /* Estilos de login y registro */
 @import url('login.css');
 
+/* Estilos del carrito de compras */
+@import url('cart.css');
+
 /* Footer */
 @import url('footer.css');
 
