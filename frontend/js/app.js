@@ -26,7 +26,8 @@ createApp({
                 telefono: '',
                 password: '',
                 password2: ''
-            }
+            },
+            currentView: 'home'
         };
     },
     computed: {
@@ -333,6 +334,17 @@ createApp({
 
         validatePassword2(pass1, pass2) {
             return this.validatePassword(pass2) && (pass1 === pass2);
+        },
+
+        goTo(view) {
+            this.currentView = view;
+
+            // Parar el carrusel
+            if (view === 'cart') {
+                clearInterval(this.slideInterval);
+            } else {
+                this.startAutoSlide();
+            }
         },
     },
 

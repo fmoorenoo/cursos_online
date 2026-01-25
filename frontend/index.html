@@ -16,10 +16,10 @@
         <header class="header">
             <div class="header-logo">{{ t.siteName }}</div>
             <nav class="header-nav">
-                <a class="nav-link" href="#">{{ t.nav.home }}</a>
+                <a class="nav-link" href="#" @click.prevent="goTo('home')">{{ t.nav.home }}</a>
                 <a class="nav-link" href="#">{{ t.nav.courses }}</a>
                 <a class="nav-link" href="#">{{ t.nav.about }}</a>
-                <a class="nav-link" href="#">{{ t.nav.cart }}</a>
+                <a class="nav-link" href="#" @click.prevent="goTo('cart')">{{ t.nav.cart }}</a>
 
                 <!-- SELECTOR DE PALETA DE COLORES -->
                 <div class="palette-selector-container">
@@ -57,29 +57,32 @@
             </nav>
         </header>
 
-        <!-- CARRUSEL DE CURSOS DESTACADOS -->
-        <section class="promos">
-            <h2>{{ t.featuredCourses }}</h2>
-            <div class="promos-container">
-                <div class="carousel-track" :style="trackStyle">
-                    <div v-for="(curso, index) in cursos" :key="curso.id" class="carousel-slide">
-                        <div class="promo-card" @click="selectCourse(curso)">
-                            <div class="course-content">
-                                <div class="course-image">
-                                    <img :src="curso.imagen" :alt="curso.titulo">
-                                </div>
-                                <div class="course-info">
-                                    <h3>{{ curso.titulo }}</h3>
-                                    <p>{{ curso.descripcion }}</p>
-                                    <span class="price">{{ curso.precio }}</span>
-                                    <div class="course-meta">
-                                        <span class="duration">
-                                            {{ curso.duracion }} ({{ Math.round(parseInt(curso.duracion) / 60) }} {{
-                                            t.hours }})
-                                        </span>
-                                        <div class="availability"
-                                            :class="{ 'available': curso.disponible, 'unavailable': !curso.disponible }">
-                                            {{ curso.disponible ? t.available : t.unavailable }}
+        <!-- VISTA PRINCIPAL -->
+        <div v-if="currentView === 'home'">
+            <!-- CARRUSEL DE CURSOS DESTACADOS -->
+            <section class="promos">
+                <h2>{{ t.featuredCourses }}</h2>
+                <div class="promos-container">
+                    <div class="carousel-track" :style="trackStyle">
+                        <div v-for="(curso, index) in cursos" :key="curso.id" class="carousel-slide">
+                            <div class="promo-card" @click="selectCourse(curso)">
+                                <div class="course-content">
+                                    <div class="course-image">
+                                        <img :src="curso.imagen" :alt="curso.titulo">
+                                    </div>
+                                    <div class="course-info">
+                                        <h3>{{ curso.titulo }}</h3>
+                                        <p>{{ curso.descripcion }}</p>
+                                        <span class="price">{{ curso.precio }}</span>
+                                        <div class="course-meta">
+                                            <span class="duration">
+                                                {{ curso.duracion }} ({{ Math.round(parseInt(curso.duracion) / 60) }} {{
+                                                t.hours }})
+                                            </span>
+                                            <div class="availability"
+                                                :class="{ 'available': curso.disponible, 'unavailable': !curso.disponible }">
+                                                {{ curso.disponible ? t.available : t.unavailable }}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -87,36 +90,46 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="carousel-controls">
-                <button class="carousel-btn prev-btn" @click="prevSlide">&#10094;</button>
-                <div class="carousel-dots">
-                    <div v-for="(curso, index) in cursos" :key="'dot-' + curso.id" class="carousel-dot"
-                        :class="{ active: currentSlide === index }" @click="goToSlide(index)"></div>
+                <div class="carousel-controls">
+                    <button class="carousel-btn prev-btn" @click="prevSlide">&#10094;</button>
+                    <div class="carousel-dots">
+                        <div v-for="(curso, index) in cursos" :key="'dot-' + curso.id" class="carousel-dot"
+                            :class="{ active: currentSlide === index }" @click="goToSlide(index)"></div>
+                    </div>
+                    <button class="carousel-btn next-btn" @click="nextSlide">&#10095;</button>
                 </div>
-                <button class="carousel-btn next-btn" @click="nextSlide">&#10095;</button>
-            </div>
-        </section>
+            </section>
 
-        <!-- CONTENIDO CENTRAL -->
-        <main class="content">
-            <div class="main-section">
-                <h1>{{ t.catalogTitle }}</h1>
-                <div class="courses-grid">
-                    <div v-for="curso in cursos" :key="curso.id" class="course-card">
-                        <img :src="curso.imagen" :alt="curso.titulo" class="course-thumbnail">
-                        <div class="course-details">
-                            <h3>{{ curso.titulo }}</h3>
-                            <p>{{ curso.descripcion }}</p>
-                            <div class="course-footer">
-                                <span class="course-price">{{ curso.precio }}</span>
-                                <span class="course-duration">{{ Math.round(parseInt(curso.duracion) / 60) }}h</span>
+            <!-- TODOS LOS CURSOS -->
+            <main class="content">
+                <div class="main-section">
+                    <h1>{{ t.catalogTitle }}</h1>
+                    <div class="courses-grid">
+                        <div v-for="curso in cursos" :key="curso.id" class="course-card">
+                            <img :src="curso.imagen" :alt="curso.titulo" class="course-thumbnail">
+                            <div class="course-details">
+                                <h3>{{ curso.titulo }}</h3>
+                                <p>{{ curso.descripcion }}</p>
+                                <div class="course-footer">
+                                    <span class="course-price">{{ curso.precio }}</span>
+                                    <span class="course-duration">{{ Math.round(parseInt(curso.duracion) / 60) }}h</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </main>
+        </div>
+
+        <!-- CARRITO -->
+        <section v-else-if="currentView === 'cart'" class="cart-section content">
+            <div class="main-section">
+                <h1>{{ t.nav.cart }}</h1>
+                <p>Aquí irá el contenido del carrito.</p>
+
+                <button class="nav-link" @click="goTo('home')">← Volver</button>
             </div>
-        </main>
+        </section>
 
         <!-- MODAL LOGIN / REGISTRO -->
         <div v-if="showAuthModal" class="modal-overlay" @mousedown.self="closeAuth">
