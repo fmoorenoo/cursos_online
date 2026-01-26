@@ -107,12 +107,12 @@
                     </div>
                 </div>
                 <div class="carousel-controls">
-                    <button class="carousel-btn prev-btn" @click="prevSlide">&#10094;</button>
+                    <button class="carousel-btn prev-btn" @click="prevSlide"><i class="fas fa-chevron-left"></i></button>
                     <div class="carousel-dots">
                         <div v-for="(curso, index) in cursos" :key="'dot-' + curso.id" class="carousel-dot"
                             :class="{ active: currentSlide === index }" @click="goToSlide(index)"></div>
                     </div>
-                    <button class="carousel-btn next-btn" @click="nextSlide">&#10095;</button>
+                    <button class="carousel-btn next-btn" @click="nextSlide"><i class="fas fa-chevron-right"></i></button>
                 </div>
             </section>
 
