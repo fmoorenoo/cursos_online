@@ -89,12 +89,12 @@ createApp({
         startAutoSlide() {
             if (this.currentView !== 'home') return;
             if (!this.cursos.length) return;
-            if (this.slideInterval) return; // evita duplicados
+            if (this.slideInterval) return;
 
             this.slideInterval = setInterval(() => {
                 if (!this.cursos.length) return;
                 this.currentSlide = (this.currentSlide + 1) % this.cursos.length;
-            }, 3000);
+            }, 3500);
         },
 
         stopAutoSlide() {
@@ -132,7 +132,7 @@ createApp({
             });
 
             // Guardar en localStorage
-            localStorage.setItem('selectedPalette', this.selectedPalette);
+            // localStorage.setItem('selectedPalette', this.selectedPalette);
             this.showPaletteSelector = false;
         },
 
@@ -398,6 +398,25 @@ createApp({
         toggleUserMenu() {
             this.showUserMenu = !this.showUserMenu;
         },
+
+        getSlideClass(index) {
+            const totalSlides = this.cursos.length;
+
+            if (totalSlides <= 1) return 'active-slide';
+
+            const prevIndex = (this.currentSlide - 1 + totalSlides) % totalSlides;
+            const nextIndex = (this.currentSlide + 1) % totalSlides;
+
+            if (index === this.currentSlide) {
+                return 'active-slide';
+            } else if (index === prevIndex) {
+                return 'prev-slide';
+            } else if (index === nextIndex) {
+                return 'next-slide';
+            } else {
+                return 'hidden-slide';
+            }
+        }
     },
 
     watch: {

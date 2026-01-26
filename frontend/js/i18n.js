@@ -42,7 +42,8 @@ window.I18N = {
             frescaTurquesa: "Fresca Turquesa",
             vibranteAmarillo: "Vibrante Amarillo",
             energeticoRojo: "Energético Rojo",
-            profesionalIndigo: "Profesional Índigo"
+            profesionalIndigo: "Profesional Índigo",
+            carbonModerno: "Carbón Moderno"
         },
 
         // Login / Register
@@ -112,7 +113,8 @@ window.I18N = {
             frescaTurquesa: "Fresh Turquoise",
             vibranteAmarillo: "Vibrant Yellow",
             energeticoRojo: "Energetic Red",
-            profesionalIndigo: "Professional Indigo"
+            profesionalIndigo: "Professional Indigo",
+            carbonModerno: "Modern Carbon"
         },
 
         // Login / Register

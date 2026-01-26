@@ -7,7 +7,7 @@ window.PALETTES = {
         nameKey: 'palette.minimalistaAzul',
         colors: {
             /* Marca */
-            colorPrimary: '#3e67be',
+            colorPrimary: '#2e5099',
             colorSecondary: '#1e293b',
             colorSecondaryLight: '#334155',
 
@@ -37,26 +37,26 @@ window.PALETTES = {
         nameKey: 'palette.purpuraOscura',
         colors: {
             /* Marca */
-            colorPrimary: '#8b5cf6',
-            colorSecondary: '#0f172a',
-            colorSecondaryLight: '#1e293b',
+            colorPrimary: '#8b7cf6',
+            colorSecondary: '#1e1b4b',
+            colorSecondaryLight: '#312e81',
 
             /* Superficies */
-            surfacePage: '#0f172a',
-            surfaceSection: '#020617',
-            surfaceCard: '#0a1233',
-            surfaceDark: '#060b25',
-            surfaceOverlay: '#1e293b',
+            surfacePage: '#0b0a1a',
+            surfaceSection: '#11112b',
+            surfaceCard: '#181642',
+            surfaceDark: '#070615',
+            surfaceOverlay: '#2a2765',
 
             /* Texto */
-            textPrimary: '#e2e8f0',
-            textSecondary: '#94a3b8',
-            textOnLight: '#020617',
-            textOnDark: '#f8fafc',
+            textPrimary: '#e5e7eb',
+            textSecondary: '#a5b4fc',
+            textOnLight: '#0b0a1a',
+            textOnDark: '#ffffff',
 
             /* Estados */
-            colorSuccess: '#22c55e',
-            colorDanger: '#ef4444'
+            colorSuccess: '#4ade80',
+            colorDanger: '#f87171'
         }
     },
 
@@ -67,9 +67,9 @@ window.PALETTES = {
         nameKey: 'palette.tecnologiaVerde',
         colors: {
             /* Marca */
-            colorPrimary: '#10b981',
-            colorSecondary: '#064e3b',
-            colorSecondaryLight: '#047857',
+            colorPrimary: '#059669',
+            colorSecondary: '#047857',
+            colorSecondaryLight: '#10b981',
 
             /* Superficies */
             surfacePage: '#f0fdf4',
@@ -80,13 +80,13 @@ window.PALETTES = {
 
             /* Texto */
             textPrimary: '#052e16',
-            textSecondary: '#4d7c0f',
+            textSecondary: '#166534',
             textOnLight: '#052e16',
             textOnDark: '#f0fdf4',
 
             /* Estados */
-            colorSuccess: '#239640',
-            colorDanger: '#ef4444'
+            colorSuccess: '#059669',
+            colorDanger: '#dc2626'
         }
     },
 
@@ -97,26 +97,26 @@ window.PALETTES = {
         nameKey: 'palette.modernaNaranja',
         colors: {
             /* Marca */
-            colorPrimary: '#f97316',
-            colorSecondary: '#7c2d12',
-            colorSecondaryLight: '#9a3412',
+            colorPrimary: '#d97706',
+            colorSecondary: '#b45309',
+            colorSecondaryLight: '#f59e0b',
 
             /* Superficies */
-            surfacePage: '#fff7ed',
+            surfacePage: '#fffbeb',
             surfaceSection: '#ffffff',
             surfaceCard: '#ffffff',
-            surfaceDark: '#7c2d12',
-            surfaceOverlay: '#ffedd5',
+            surfaceDark: '#78350f',
+            surfaceOverlay: '#fef3c7',
 
             /* Texto */
-            textPrimary: '#431407',
+            textPrimary: '#451a03',
             textSecondary: '#92400e',
-            textOnLight: '#431407',
-            textOnDark: '#fff7ed',
+            textOnLight: '#451a03',
+            textOnDark: '#fffbeb',
 
             /* Estados */
-            colorSuccess: '#239640',
-            colorDanger: '#ef4444'
+            colorSuccess: '#059669',
+            colorDanger: '#dc2626'
         }
     },
 
@@ -127,86 +127,56 @@ window.PALETTES = {
         nameKey: 'palette.frescaTurquesa',
         colors: {
             /* Marca */
-            colorPrimary: '#06b6d4',
-            colorSecondary: '#0e7490',
-            colorSecondaryLight: '#0891b2',
+            colorPrimary: '#0ea5e9',
+            colorSecondary: '#0284c7',
+            colorSecondaryLight: '#38bdf8',
 
             /* Superficies */
             surfacePage: '#f0f9ff',
             surfaceSection: '#ffffff',
             surfaceCard: '#ffffff',
-            surfaceDark: '#0e7490',
-            surfaceOverlay: '#cffafe',
+            surfaceDark: '#0c4a6e',
+            surfaceOverlay: '#e0f2fe',
 
             /* Texto */
-            textPrimary: '#164e63',
-            textSecondary: '#0e7490',
-            textOnLight: '#164e63',
+            textPrimary: '#082f49',
+            textSecondary: '#0c4a6e',
+            textOnLight: '#082f49',
             textOnDark: '#f0f9ff',
 
             /* Estados */
-            colorSuccess: '#239640',
-            colorDanger: '#ef4444'
+            colorSuccess: '#059669',
+            colorDanger: '#dc2626'
         }
     },
 
     /* =====================================================
-       VIBRANTE AMARILLO (CLARA)
-       ===================================================== */
-    'vibrante-amarillo': {
-        nameKey: 'palette.vibranteAmarillo',
-        colors: {
-            /* Marca */
-            colorPrimary: '#eab308',
-            colorSecondary: '#713f12',
-            colorSecondaryLight: '#854d0e',
-
-            /* Superficies */
-            surfacePage: '#fefce8',
-            surfaceSection: '#ffffff',
-            surfaceCard: '#ffffff',
-            surfaceDark: '#713f12',
-            surfaceOverlay: '#fef3c7',
-
-            /* Texto */
-            textPrimary: '#422006',
-            textSecondary: '#a16207',
-            textOnLight: '#422006',
-            textOnDark: '#fefce8',
-
-            /* Estados */
-            colorSuccess: '#239640',
-            colorDanger: '#ef4444'
-        }
-    },
-
-    /* =====================================================
-       ENERGÉTICO ROJO (CLARA)
+       ENERGÉTICO ROJO (CLARA) – MEJORADA
        ===================================================== */
     'energetico-rojo': {
         nameKey: 'palette.energeticoRojo',
         colors: {
             /* Marca */
-            colorPrimary: '#ef4444',
-            colorSecondary: '#7f1d1d',
-            colorSecondaryLight: '#991b1b',
+            colorPrimary: '#af2d2d',
+            colorSecondary: '#991b1b',
+            colorSecondaryLight: '#f87171',
 
             /* Superficies */
-            surfacePage: '#fef2f2',
-            surfaceSection: '#ffffff',
-            surfaceCard: '#ffffff',
+            surfacePage: '#292828',
+            surfaceSection: '#792222',
+            surfaceCard: '#fffafa',
             surfaceDark: '#7f1d1d',
             surfaceOverlay: '#fee2e2',
 
             /* Texto */
-            textPrimary: '#450a0a',
-            textSecondary: '#b91c1c',
-            textOnLight: '#450a0a',
-            textOnDark: '#fef2f2',
+            textPrimary: '#181818', 
+            textSecondary: '#c7c7c7',
+            textOnLight: '#b4b4b4',
+            textOnDark: '#fffafa',
 
             /* Estados */
-            colorSuccess: '#239640',
-            colorDanger: '#ef4444'
+            colorSuccess: '#16a34a',
+            colorDanger: '#dc2626'
         }
     },
 
@@ -217,9 +187,9 @@ window.PALETTES = {
         nameKey: 'palette.profesionalIndigo',
         colors: {
             /* Marca */
-            colorPrimary: '#6366f1',
-            colorSecondary: '#3730a3',
-            colorSecondaryLight: '#4f46e5',
+            colorPrimary: '#4f46e5',
+            colorSecondary: '#4338ca',
+            colorSecondaryLight: '#6366f1',
 
             /* Superficies */
             surfacePage: '#eef2ff',
@@ -229,14 +199,44 @@ window.PALETTES = {
             surfaceOverlay: '#e0e7ff',
 
             /* Texto */
-            textPrimary: '#312e81',
+            textPrimary: '#1e1b4b',
             textSecondary: '#4f46e5',
-            textOnLight: '#312e81',
+            textOnLight: '#1e1b4b',
             textOnDark: '#eef2ff',
 
             /* Estados */
-            colorSuccess: '#239640',
-            colorDanger: '#ef4444'
+            colorSuccess: '#059669',
+            colorDanger: '#dc2626'
         }
-    }
+    },
+
+    /* =====================================================
+       CARBÓN MODERNO (OSCURA) - NUEVA PALETA
+       ===================================================== */
+    'carbon-moderno': {
+        nameKey: 'palette.carbonModerno',
+        colors: {
+            /* Marca */
+            colorPrimary: '#394250',
+            colorSecondary: '#475569',
+            colorSecondaryLight: '#94a3b8',
+
+            /* Superficies */
+            surfacePage: '#2e3035',
+            surfaceSection: '#343a42',
+            surfaceCard: '#191c20',
+            surfaceDark: '#1b1c22',
+            surfaceOverlay: '#475569',
+
+            /* Texto */
+            textPrimary: '#f1f5f9',
+            textSecondary: '#cbd5e1',
+            textOnLight: '#0f172a',
+            textOnDark: '#f8fafc',
+
+            /* Estados */
+            colorSuccess: '#22c55e',
+            colorDanger: '#f87171'
+        }
+    },
 };

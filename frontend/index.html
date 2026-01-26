@@ -58,7 +58,8 @@
 
                 <!-- LOGIN / USUARIO -->
                 <div class="palette-selector-container" v-if="isLoggedIn">
-                    <button class="nav-link palette-toggle-btn user-name" @click="toggleUserMenu" :title="sessionUser.nombre">
+                    <button class="nav-link palette-toggle-btn user-name" @click="toggleUserMenu"
+                        :title="sessionUser.nombre">
                         {{ sessionUser.nombre }}
                     </button>
 
@@ -80,7 +81,8 @@
                 <h2 class="section-title">{{ t.featuredCourses }}</h2>
                 <div class="carousel-container" @mouseenter="stopAutoSlide" @mouseleave="startAutoSlide">
                     <div class="carousel-track" :style="trackStyle">
-                        <div v-for="(curso, index) in cursos" :key="curso.id" class="carousel-slide">
+                        <div v-for="(curso, index) in cursos" :key="curso.id" class="carousel-slide"
+                            :class="getSlideClass(index)">
                             <div class="featured-course-card" @click="selectCourse(curso)">
                                 <div class="course-card-content">
                                     <div class="course-image-container">
@@ -107,12 +109,14 @@
                     </div>
                 </div>
                 <div class="carousel-controls">
-                    <button class="carousel-btn prev-btn" @click="prevSlide"><i class="fas fa-chevron-left"></i></button>
+                    <button class="carousel-btn prev-btn" @click="prevSlide"><i
+                            class="fas fa-chevron-left"></i></button>
                     <div class="carousel-dots">
                         <div v-for="(curso, index) in cursos" :key="'dot-' + curso.id" class="carousel-dot"
                             :class="{ active: currentSlide === index }" @click="goToSlide(index)"></div>
                     </div>
-                    <button class="carousel-btn next-btn" @click="nextSlide"><i class="fas fa-chevron-right"></i></button>
+                    <button class="carousel-btn next-btn" @click="nextSlide"><i
+                            class="fas fa-chevron-right"></i></button>
                 </div>
             </section>
 
@@ -222,7 +226,7 @@
                         {{ selectedLang === 'es' ? t.currentLangEs : t.currentLangEn }}
                     </span>
 
-                    <button class="back-to-top-btn" @click="scrollTo('app')">
+                    <button v-if="currentView !== 'cart'" class="back-to-top-btn" @click="scrollTo('app')">
                         <i class="fa-solid fa-arrow-up"></i> {{ t.footer.backToTop }}
                     </button>
                 </div>

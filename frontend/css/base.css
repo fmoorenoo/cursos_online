@@ -46,6 +46,10 @@ body {
     overflow: hidden;
 }
 
+img {
+    user-select: none;
+}
+
 
 /* ======================================================
    ANIMACIONES (VUE)

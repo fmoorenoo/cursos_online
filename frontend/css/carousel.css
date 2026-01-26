@@ -1,12 +1,13 @@
 /* ======================================================
-   CARRUSEL DE CURSOS
+   CARRUSEL PROFESIONAL DE CURSOS (VERSIÓN CORREGIDA)
    ====================================================== */
 .featured-courses-section {
     background: var(--color-primary);
     color: var(--text-on-dark);
-    padding: 20px;
+    padding: 15px 20px 20px 20px;
     position: relative;
     overflow: hidden;
+    isolation: isolate;
 }
 
 .featured-courses-section h2 {
@@ -16,55 +17,83 @@
 }
 
 .carousel-container {
-    display: flex;
-    justify-content: center;
-    gap: 0px;
     position: relative;
-    z-index: 1;
-    max-width: 1000px;
+    max-width: min(1100px, 90vw);
     margin: 0 auto;
-    overflow: hidden;
-    padding: 0 80px;
+    padding: 0 100px;
+    z-index: 1;
 }
 
 .carousel-track {
     display: flex;
-    transition: transform 0.5s ease-in-out;
-    width: 100%;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+    backface-visibility: hidden;
 }
 
 .carousel-slide {
     flex: 0 0 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 10px;
+    padding: 0px;
     box-sizing: border-box;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* TARJETA PROMOCIONAL */
+.carousel-slide.prev-slide {
+    opacity: 0.6;
+    transform: translateX(-5%) scale(0.80);
+    filter: blur(8px);
+    z-index: 1;
+}
+
+.carousel-slide.next-slide {
+    opacity: 0.6;
+    transform: translateX(5%) scale(0.80);
+    filter: blur(8px);
+    z-index: 1;
+}
+
+.carousel-slide.active-slide {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    filter: blur(0);
+    z-index: 2;
+}
+
+.carousel-slide.hidden-slide {
+    opacity: 0.4;
+    transform: scale(0.80);
+    filter: blur(4px);
+    z-index: 0;
+}
+
+/* TARJETA PROMOCIONAL MEJORADA */
 .featured-course-card {
-    background-color: var(--surface-card);
+    background: var(--surface-card);
     color: var(--text-primary);
     padding: 35px;
-    width: 100%;
-    max-width: 800px;
     border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    border: 1px solid var(--text-secondary);
-    min-height: 340px;
+    box-shadow: 
+        0 30px 80px rgba(0, 0, 0, 0.5),
+        0 10px 30px rgba(0, 0, 0, 0.5);
+    
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    min-height: 360px;
     display: flex;
     flex-direction: column;
-    transition: all 0.3s ease;
-}
-
-.featured-course-card:hover {
-    background-color: var(--surface-overlay);
-    transform: scale(0.99);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
     cursor: pointer;
 }
 
-/* CONTENIDO DE CURSO */
+/* Solo la tarjeta activa tiene hover completo */
+.active-slide .featured-course-card:hover {
+    box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.15),
+        0 1px 3px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
 .course-card-content {
     display: flex;
     gap: 30px;
@@ -72,79 +101,98 @@
     flex: 1;
 }
 
-/* IMAGEN DE CURSO */
 .course-image-container {
-    flex: 0 0 220px;
-    width: 100%;
-    height: auto;
+    flex: 0 0 250px;
     border-radius: 8px;
     overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transform: translateZ(0);
+}
+
+.course-image-container::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, transparent, rgba(0, 0, 0, 0.1));
+    pointer-events: none;
 }
 
 .course-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 8px;
 }
 
-/* INFORMACIÓN DE CURSO */
 .course-info-container {
     flex: 1;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 
 .featured-course-card h3 {
-    font-size: 22px;
-    margin-top: 0;
-    margin-bottom: 15px;
-    font-weight: 600;
+    font-size: clamp(20px, 2.5vw, 26px);
+    margin: 0 0 15px 0;
+    font-weight: 700;
     color: var(--color-primary);
+    line-height: 1.3;
+    letter-spacing: -0.3px;
 }
 
 .featured-course-card p {
     color: var(--text-secondary);
     font-size: 16px;
-    line-height: 1.5;
+    line-height: 1.6;
+    margin-bottom: 20px;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
 
 .featured-course-card .course-price {
-    display: block;
-    font-weight: 700;
+    display: inline-block;
+    font-weight: 800;
     color: var(--color-primary);
-    font-size: 28px;
+    font-size: clamp(24px, 3vw, 32px);
+    margin-bottom: 15px;
 }
 
-/* META INFORMACIÓN DEL CURSO */
+/* META INFORMACIÓN DEL CURSO MEJORADA */
 .course-meta-info {
-    margin-top: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .featured-course-card .course-duration {
-    display: inline-block;
-    background-color: var(--color-secondary-light);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--color-secondary);
     color: var(--text-on-dark);
-    padding: 8px 18px;
+    padding: 10px 20px;
     border-radius: 8px;
     font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .featured-course-card .course-availability {
-    display: inline-block;
-    padding: 8px 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
     border-radius: 8px;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
-    margin-left: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
 
 .featured-course-card .available {
@@ -152,48 +200,60 @@
     color: var(--text-on-dark);
 }
 
+.featured-course-card .available::before {
+    content: '✓';
+    font-weight: bold;
+}
+
 .featured-course-card .unavailable {
     background-color: var(--color-danger);
     color: var(--text-on-dark);
 }
 
-/* CONTROLES DEL CARRUSEL */
+.featured-course-card .unavailable::before {
+    content: 'X';
+    font-weight: bold;
+}
+
 .carousel-controls {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 30px;
-    margin-top: 30px;
+    margin-top: 20px;
     position: relative;
     z-index: 2;
 }
 
 .carousel-btn {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     color: var(--text-on-dark);
-    border: 1px solid transparent;
+    border: 1px solid rgba(255, 255, 255, 0.3);
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    font-size: 17px;
+    font-size: 18px;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 
 .carousel-btn:hover {
     background-color: var(--text-on-dark);
     color: var(--color-primary);
     transform: scale(1.1);
+    transition: all 0.2s ease;
 }
 
-/* PUNTOS DE NAVEGACIÓN DEL CARRUSEL */
+/* PUNTOS DE NAVEGACIÓN DEL CARRUSEL (manteniendo el diseño existente) */
 .carousel-dots {
     display: flex;
     gap: 12px;
-    margin: 0 10px;
+    margin: 10px;
 }
 
 .carousel-dot {
@@ -212,4 +272,58 @@
 
 .carousel-dot:hover {
     background-color: var(--text-on-dark);
+    transform: scale(1.1);
+}
+
+/* Animación de entrada para las tarjetas */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.active-slide .featured-course-card {
+    animation: slideInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+    .featured-courses-section {
+        padding: 30px 15px;
+    }
+    
+    .carousel-container {
+        padding: 0 20px;
+    }
+    
+    .course-card-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .course-image-container {
+        flex: 0 0 180px;
+    }
+    
+    .featured-course-card {
+        padding: 25px;
+        min-height: auto;
+    }
+    
+    .carousel-btn {
+        width: 45px;
+        height: 45px;
+    }
+    
+    /* Ajustes para móvil - menos efecto de desenfoque */
+    .carousel-slide.prev-slide,
+    .carousel-slide.next-slide,
+    .carousel-slide.hidden-slide {
+        filter: blur(0.5px);
+    }
 }
