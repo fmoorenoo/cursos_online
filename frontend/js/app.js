@@ -30,7 +30,8 @@ createApp({
             currentView: 'home',
             isLoggedIn: false,
             sessionUser: null,
-            showUserMenu: false
+            showUserMenu: false,
+            cartItems: []
         };
     },
     computed: {
@@ -65,8 +66,23 @@ createApp({
                 && this.validateTelefono(this.auth.telefono)
                 && this.validatePassword(this.auth.password)
                 && this.validatePassword2(this.auth.password, this.auth.password2);
-        }
+        },
 
+        cartTotal() {
+            if (!this.cartItems || !Array.isArray(this.cartItems)) return 0;
+            const total = this.cartItems.reduce((total, item) => {
+                if (!item || !item.precio) return total;
+                const priceStr = String(item.precio).replace('€', '').trim();
+                const price = parseFloat(priceStr);
+                return total + (isNaN(price) ? 0 : price);
+            }, 0);
+            return total.toFixed(2);
+        },
+
+        allItemsAvailable() {
+            if (!this.cartItems || !Array.isArray(this.cartItems)) return false;
+            return this.cartItems.every(item => item && item.disponible);
+        }
     },
 
     methods: {
@@ -416,7 +432,64 @@ createApp({
             } else {
                 return 'hidden-slide';
             }
-        }
+        },
+
+        loadCartItems() {
+            const savedCart = localStorage.getItem('cart');
+            if (savedCart) {
+                try {
+                    this.cartItems = JSON.parse(savedCart);
+                } catch (e) {
+                    console.error('Error cargando carrito:', e);
+                    this.cartItems = [];
+                }
+            }
+        },
+
+        saveCartItems() {
+            localStorage.setItem('cart', JSON.stringify(this.cartItems));
+        },
+
+        removeFromCart(index) {
+            this.cartItems.splice(index, 1);
+            this.saveCartItems();
+        },
+
+        checkout() {
+            if (!this.isLoggedIn) {
+                alert(this.t.cart.loginRequired);
+                return;
+            }
+
+            if (!this.allItemsAvailable) {
+                alert('Algunos cursos no están disponibles. Por favor, elimínalos del carrito para continuar.');
+                return;
+            }
+
+            alert(`Pago procesado por ${this.cartTotal}€. ¡Gracias por tu compra!`);
+
+            this.cartItems = [];
+            this.saveCartItems();
+        },
+
+        addToCart(curso) {
+            const alreadyInCart = this.cartItems.some(item => item.id === curso.id);
+
+            if (alreadyInCart) {
+                alert('Este curso ya está en tu carrito');
+                return;
+            }
+
+            this.cartItems.push({
+                ...curso,
+                duracion: curso.duracion || '60 min',
+                disponible: curso.disponible !== undefined ? curso.disponible : true
+            });
+
+            this.saveCartItems();
+
+            alert(`"${curso.titulo}" añadido al carrito`);
+        },
     },
 
     watch: {
@@ -441,6 +514,8 @@ createApp({
 
     mounted: async function () {
         await this.cargarCursos();
+
+        this.loadCartItems();
 
         const savedLang = localStorage.getItem('selectedLang');
         if (savedLang) this.selectedLang = savedLang;

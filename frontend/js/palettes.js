@@ -31,38 +31,8 @@ window.PALETTES = {
     },
 
     /* =====================================================
-       PÚRPURA OSCURA (OSCURA)
-       ===================================================== */
-    'purpura-oscura': {
-        nameKey: 'palette.purpuraOscura',
-        colors: {
-            /* Marca */
-            colorPrimary: '#8b7cf6',
-            colorSecondary: '#1e1b4b',
-            colorSecondaryLight: '#312e81',
-
-            /* Superficies */
-            surfacePage: '#0b0a1a',
-            surfaceSection: '#11112b',
-            surfaceCard: '#181642',
-            surfaceDark: '#070615',
-            surfaceOverlay: '#2a2765',
-
-            /* Texto */
-            textPrimary: '#e5e7eb',
-            textSecondary: '#a5b4fc',
-            textOnLight: '#0b0a1a',
-            textOnDark: '#ffffff',
-
-            /* Estados */
-            colorSuccess: '#4ade80',
-            colorDanger: '#f87171'
-        }
-    },
-
-    /* =====================================================
-       TECNOLOGÍA VERDE (CLARA)
-       ===================================================== */
+        TECNOLOGÍA VERDE (CLARA)
+    ===================================================== */
     'tecnologia-verde': {
         nameKey: 'palette.tecnologiaVerde',
         colors: {
@@ -87,6 +57,36 @@ window.PALETTES = {
             /* Estados */
             colorSuccess: '#059669',
             colorDanger: '#dc2626'
+        }
+    },
+
+    /* =====================================================
+        PÚRPURA OSCURA (OSCURA)
+    ===================================================== */
+    'purpura-oscura': {
+        nameKey: 'palette.purpuraOscura',
+        colors: {
+            /* Marca */
+            colorPrimary: '#8b7cf6',
+            colorSecondary: '#1e1b4b',
+            colorSecondaryLight: '#312e81',
+
+            /* Superficies */
+            surfacePage: '#0b0a1a',
+            surfaceSection: '#11112b',
+            surfaceCard: '#181642',
+            surfaceDark: '#070615',
+            surfaceOverlay: '#2a2765',
+
+            /* Texto */
+            textPrimary: '#e5e7eb',
+            textSecondary: '#a5b4fc',
+            textOnLight: '#0b0a1a',
+            textOnDark: '#ffffff',
+
+            /* Estados */
+            colorSuccess: '#4ade80',
+            colorDanger: '#f87171'
         }
     },
 
@@ -169,7 +169,7 @@ window.PALETTES = {
             surfaceOverlay: '#fee2e2',
 
             /* Texto */
-            textPrimary: '#181818', 
+            textPrimary: '#181818',
             textSecondary: '#c7c7c7',
             textOnLight: '#b4b4b4',
             textOnDark: '#fffafa',
@@ -224,7 +224,7 @@ window.PALETTES = {
             /* Superficies */
             surfacePage: '#2e3035',
             surfaceSection: '#343a42',
-            surfaceCard: '#191c20',
+            surfaceCard: '#000000',
             surfaceDark: '#1b1c22',
             surfaceOverlay: '#475569',
 

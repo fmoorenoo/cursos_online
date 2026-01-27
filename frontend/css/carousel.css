@@ -1,5 +1,5 @@
 /* ======================================================
-   CARRUSEL PROFESIONAL DE CURSOS (VERSIÓN CORREGIDA)
+   CARRUSEL PROFESIONAL DE CURSOS
    ====================================================== */
 .featured-courses-section {
     background: var(--color-primary);
@@ -8,6 +8,15 @@
     position: relative;
     overflow: hidden;
     isolation: isolate;
+}
+
+.featured-courses-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(to top, var(--color-primary) 0%, transparent 40%);
+    z-index: 10;
+    pointer-events: none;
 }
 
 .featured-courses-section h2 {
@@ -222,7 +231,7 @@
     gap: 30px;
     margin-top: 20px;
     position: relative;
-    z-index: 2;
+    z-index: 11;
 }
 
 .carousel-btn {

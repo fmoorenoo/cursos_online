@@ -84,23 +84,22 @@
                         <div v-for="(curso, index) in cursos" :key="curso.id" class="carousel-slide"
                             :class="getSlideClass(index)">
                             <div class="featured-course-card" @click="selectCourse(curso)">
-                                    <div class="course-card-content">
-                                        <div class="course-image-container">
-                                            <img :src="curso.imagen" :alt="curso.titulo" class="course-image">
-                                        </div>
-                                        <div class="course-info-container">
-                                            <h3 class="course-title">{{ curso.titulo }}</h3>
-                                            <p class="course-description">{{ curso.descripcion }}</p>
-                                            <span class="course-price">{{ curso.precio }}</span>
-                                            <div class="course-meta-info">
-                                                <span class="course-duration">
-                                                    {{ curso.duracion }} ({{ Math.round(parseInt(curso.duracion) / 60) }} {{
-                                                    t.hours }})
-                                                </span>
-                                                <div class="course-availability"
-                                                    :class="{ 'available': curso.disponible, 'unavailable': !curso.disponible }">
-                                                    {{ curso.disponible ? t.available : t.unavailable }}
-                                                </div>
+                                <div class="course-card-content">
+                                    <div class="course-image-container">
+                                        <img :src="curso.imagen" :alt="curso.titulo" class="course-image">
+                                    </div>
+                                    <div class="course-info-container">
+                                        <h3 class="course-title">{{ curso.titulo }}</h3>
+                                        <p class="course-description">{{ curso.descripcion }}</p>
+                                        <span class="course-price">{{ curso.precio }}</span>
+                                        <div class="course-meta-info">
+                                            <span class="course-duration">
+                                                {{ curso.duracion }} ({{ Math.round(parseInt(curso.duracion) / 60) }} {{
+                                                t.hours }})
+                                            </span>
+                                            <div class="course-availability"
+                                                :class="{ 'available': curso.disponible, 'unavailable': !curso.disponible }">
+                                                {{ curso.disponible ? t.available : t.unavailable }}
                                             </div>
                                         </div>
                                     </div>
@@ -108,6 +107,7 @@
                             </div>
                         </div>
                     </div>
+                </div>
                 <div class="carousel-controls">
                     <button class="carousel-btn prev-btn" @click="prevSlide"><i
                             class="fas fa-chevron-left"></i></button>
@@ -130,10 +130,17 @@
                             <div class="course-card-content">
                                 <h3 class="course-title">{{ curso.titulo }}</h3>
                                 <p class="course-description">{{ curso.descripcion }}</p>
-                                <div class="course-card-footer">
+                                <div class="courses-grid .course-card-footer">
                                     <span class="course-price">{{ curso.precio }}</span>
-                                    <span class="course-duration">{{ Math.round(parseInt(curso.duracion) / 60)
-                                        }}h</span>
+                                    <div style="display: flex; gap: 10px; align-items: center;">
+                                        <span class="course-duration">{{ Math.round(parseInt(curso.duracion) / 60)
+                                            }}h</span>
+                                        <button class="add-to-cart-btn" @click.stop="addToCart(curso)"
+                                            :disabled="!curso.disponible"
+                                            :title="curso.disponible ? 'Añadir al carrito' : 'Curso no disponible'">
+                                            <i class="fas fa-cart-plus"></i>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -146,8 +153,66 @@
         <section v-else-if="currentView === 'cart'" class="cart-view main-content">
             <div class="content-section">
                 <h1 class="page-title">{{ t.nav.cart }}</h1>
-                <p>Aquí irá el contenido del carrito.</p>
 
+                <!-- Mensaje cuando el carrito está vacío -->
+                <div v-if="cartItems.length === 0" class="empty-cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h3>{{ t.cart.empty }}</h3>
+                    <p>{{ t.cart.emptyMessage }}</p>
+                    <button class="btn-primary" @click="scrollTo('catalog')">{{ t.cart.browseCourses }}</button>
+                </div>
+
+                <!-- Contenido cuando hay items en el carrito -->
+                <div v-else class="cart-container">
+                    <!-- Lista de cursos en el carrito -->
+                    <div class="cart-items">
+                        <div v-for="(item, index) in cartItems" :key="item.id" class="cart-item">
+                            <div class="cart-item-image">
+                                <img :src="item.imagen" :alt="item.titulo">
+                            </div>
+                            <div class="cart-item-info">
+                                <h3 class="cart-item-title">{{ item.titulo }}</h3>
+                                <p class="cart-item-description">{{ item.descripcion }}</p>
+                                <div class="cart-item-meta">
+                                    <span class="cart-item-duration">{{ Math.round(parseInt(item.duracion) / 60)
+                                        }}h</span>
+                                    <span v-if="item.disponible" class="cart-item-available">{{ t.available }}</span>
+                                    <span v-else class="cart-item-unavailable">{{ t.unavailable }}</span>
+                                </div>
+                            </div>
+                            <div class="cart-item-actions">
+                                <span class="cart-item-price">{{ item.precio }}</span>
+                                <button class="btn-remove" @click="removeFromCart(index)" :title="t.cart.remove">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Resumen del pedido -->
+                    <div class="cart-summary">
+                        <h3 class="summary-title">{{ t.cart.orderSummary }}</h3>
+
+                        <div class="summary-row total">
+                            <span>{{ t.cart.total }}</span>
+                            <span>{{ cartTotal }}€</span>
+                        </div>
+
+                        <div class="cart-warning" v-if="!isLoggedIn">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <p>{{ t.cart.loginRequired }}</p>
+                        </div>
+
+                        <button class="btn-checkout" @click="checkout" :disabled="!isLoggedIn || !allItemsAvailable"
+                            :class="{ 'disabled': !isLoggedIn || !allItemsAvailable }">
+                            {{ t.cart.checkout }}
+                        </button>
+
+                        <button class="btn-continue-shopping" @click="scrollTo('catalog')">
+                            {{ t.cart.continueShopping }}
+                        </button>
+                    </div>
+                </div>
             </div>
         </section>
 

@@ -119,3 +119,28 @@
     font-size: 12px;
     font-weight: 500;
 }
+
+.add-to-cart-btn {
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.add-to-cart-btn:hover:not(:disabled) {
+    background-color: var(--color-secondary);
+}
+
+.add-to-cart-btn:disabled {
+    background-color: var(--surface-overlay);
+    color: var(--text-secondary);
+    cursor: not-allowed;
+    opacity: 0.6;
+}

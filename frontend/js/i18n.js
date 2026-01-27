@@ -67,6 +67,19 @@ window.I18N = {
             registerButton: "Registrarse",
             question: "¿Ya tienes cuenta?",
             loginLink: "Inicia sesión aquí"
+        },
+
+        // Cart
+        cart: {
+            empty: "Tu carrito está vacío",
+            emptyMessage: "Añade algunos cursos para comenzar tu aprendizaje",
+            browseCourses: "Ver Cursos",
+            orderSummary: "Resumen del Pedido",
+            total: "Total",
+            remove: "Eliminar",
+            loginRequired: "Debes iniciar sesión para proceder al pago",
+            checkout: "Proceder al Pago",
+            continueShopping: "Seguir Comprando"
         }
     },
 
@@ -138,6 +151,19 @@ window.I18N = {
             registerButton: "Register",
             question: "Already have an account?",
             loginLink: "Login here"
+        },
+
+        // Cart
+        cart: {
+            empty: "Your cart is empty",
+            emptyMessage: "Add some courses to start your learning journey",
+            browseCourses: "Browse Courses",
+            orderSummary: "Order Summary",
+            total: "Total",
+            remove: "Remove",
+            loginRequired: "You must be logged in to proceed with payment",
+            checkout: "Proceed to Checkout",
+            continueShopping: "Continue Shopping"
         }
     }
 };
