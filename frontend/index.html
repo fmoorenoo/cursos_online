@@ -84,22 +84,23 @@
                         <div v-for="(curso, index) in cursos" :key="curso.id" class="carousel-slide"
                             :class="getSlideClass(index)">
                             <div class="featured-course-card" @click="selectCourse(curso)">
-                                <div class="course-card-content">
-                                    <div class="course-image-container">
-                                        <img :src="curso.imagen" :alt="curso.titulo" class="course-image">
-                                    </div>
-                                    <div class="course-info-container">
-                                        <h3 class="course-title">{{ curso.titulo }}</h3>
-                                        <p class="course-description">{{ curso.descripcion }}</p>
-                                        <span class="course-price">{{ curso.precio }}</span>
-                                        <div class="course-meta-info">
-                                            <span class="course-duration">
-                                                {{ curso.duracion }} ({{ Math.round(parseInt(curso.duracion) / 60) }} {{
-                                                t.hours }})
-                                            </span>
-                                            <div class="course-availability"
-                                                :class="{ 'available': curso.disponible, 'unavailable': !curso.disponible }">
-                                                {{ curso.disponible ? t.available : t.unavailable }}
+                                    <div class="course-card-content">
+                                        <div class="course-image-container">
+                                            <img :src="curso.imagen" :alt="curso.titulo" class="course-image">
+                                        </div>
+                                        <div class="course-info-container">
+                                            <h3 class="course-title">{{ curso.titulo }}</h3>
+                                            <p class="course-description">{{ curso.descripcion }}</p>
+                                            <span class="course-price">{{ curso.precio }}</span>
+                                            <div class="course-meta-info">
+                                                <span class="course-duration">
+                                                    {{ curso.duracion }} ({{ Math.round(parseInt(curso.duracion) / 60) }} {{
+                                                    t.hours }})
+                                                </span>
+                                                <div class="course-availability"
+                                                    :class="{ 'available': curso.disponible, 'unavailable': !curso.disponible }">
+                                                    {{ curso.disponible ? t.available : t.unavailable }}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -107,7 +108,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
                 <div class="carousel-controls">
                     <button class="carousel-btn prev-btn" @click="prevSlide"><i
                             class="fas fa-chevron-left"></i></button>

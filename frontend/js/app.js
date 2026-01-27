@@ -132,7 +132,7 @@ createApp({
             });
 
             // Guardar en localStorage
-            // localStorage.setItem('selectedPalette', this.selectedPalette);
+            localStorage.setItem('selectedPalette', this.selectedPalette);
             this.showPaletteSelector = false;
         },
 
