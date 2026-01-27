@@ -384,6 +384,15 @@ createApp({
 
         goTo(view) {
             this.currentView = view;
+
+            if (view === 'cart') {
+                this.$nextTick(() => {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
         },
 
         scrollTo(id) {
