@@ -95,6 +95,7 @@
 #en.active {
     box-shadow: -5px 0 5px rgba(0, 0, 0, 0.6);
 }
+
 .lang-option.active {
     opacity: 1;
     filter: brightness(1);
@@ -259,3 +260,41 @@
     text-overflow: ellipsis;
 }
 
+/* ======================================================
+   MENÚ HAMBURGUESA
+   ====================================================== */
+.hamburger-btn {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 2001;
+}
+
+.hamburger-btn span {
+    width: 26px;
+    height: 3px;
+    background-color: var(--text-on-dark);
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.2s ease;
+    transform-origin: center;
+}
+
+.hamburger-btn.open span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.hamburger-btn.open span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.hamburger-btn.open span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+.login-mobile {
+    display: none;
+}

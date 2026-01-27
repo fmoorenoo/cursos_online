@@ -19,7 +19,13 @@
         <!-- MENÚ SUPERIOR -->
         <header class="header">
             <div class="header-logo">{{ t.siteName }}</div>
-            <nav class="header-nav">
+            <button class="hamburger-btn" :class="{ open: isMobileMenuOpen }" @click="isMobileMenuOpen = !isMobileMenuOpen">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="header-nav" :class="{ open: isMobileMenuOpen }">
                 <a class="nav-link" href="#" @click.prevent="scrollTo('app')">{{ t.nav.home }}</a>
                 <a class="nav-link" href="#" @click.prevent="scrollTo('catalog')">{{ t.nav.courses }}</a>
                 <a class="nav-link" href="#">{{ t.nav.about }}</a>
@@ -70,7 +76,10 @@
                     </div>
                 </div>
 
-                <a v-else class="nav-link" href="#" @click.prevent="openLogin">{{ t.nav.login }}</a>
+                <a v-else class="nav-link login-link" href="#" @click.prevent="openLogin">
+                    <span class="login-desktop">{{ t.nav.login }}</span>
+                    <span class="login-mobile">Login</span>
+                </a>
             </nav>
         </header>
 

@@ -31,7 +31,8 @@ createApp({
             isLoggedIn: false,
             sessionUser: null,
             showUserMenu: false,
-            cartItems: []
+            cartItems: [],
+            isMobileMenuOpen: false
         };
     },
     computed: {
@@ -510,10 +511,8 @@ createApp({
             } else {
                 this.stopAutoSlide();
             }
-        },
-
-        currentView() {
             this.showUserMenu = false;
+            this.isMobileMenuOpen = false;
         },
 
         selectedLang(newLang) {

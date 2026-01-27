@@ -1,4 +1,58 @@
 /* RESPONSIVE */
+
+/* RESPONSIVE HEADER (MENÚ HAMBURGUESA) */
+@media (max-width: 1050px) {
+
+    .hamburger-btn {
+        display: flex;
+    }
+
+    .header-nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 180px;
+        height: 100vh;
+        background: var(--surface-dark);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 90px 25px;
+        gap: 18px;
+        transition: right 0.35s ease;
+        align-items: center;
+        box-shadow: -8px 0 25px rgba(0, 0, 0, 0.35);
+    }
+
+    .header-nav.open {
+        right: 0;
+    }
+
+    .header-nav .nav-link,
+    .header-nav .palette-toggle-btn {
+        width: 110px;
+        height: 38px;
+        padding: 8px 12px;
+        font-size: 14px;
+        text-align: left;
+        border-radius: 8px;
+        text-align: center;
+
+    }
+
+    #lang {
+        margin-top: 20px;
+    }
+
+    .login-desktop {
+        display: none;
+    }
+
+    .login-mobile {
+        display: inline;
+    }
+}
+
+/* RESPONSIVE CARRUSEL */
 @media (max-width: 768px) {
     .course-card-content {
         flex-direction: column;
@@ -27,23 +81,13 @@
         padding: 0 20px;
     }
     
-    .header-nav {
-        gap: 10px;
-    }
-    
-    .header {
-        padding: 15px 20px;
-        flex-direction: column;
-        gap: 15px;
-    }
-    
     .main-content {
         grid-template-columns: 1fr;
         padding: 30px 20px;
     }
 }
 
-/* Responsive para el selector de paletas */
+/* RESPONSIVE PALETTE SELECTOR */
 @media (max-width: 768px) {
     .palette-selector {
         width: 280px;
