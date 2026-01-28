@@ -217,7 +217,7 @@
                     </div>
 
                     <div class="courses-grid" v-if="!selectedCourse">
-                        <div v-for="curso in cursos" :key="curso.id" class="course-card">
+                        <div v-for="curso in cursos" :key="curso.id" class="course-card" @click="selectCourse(curso)">
                             <img :src="curso.imagen" :alt="curso.titulo" class="course-thumbnail">
                             <div class="course-card-content">
                                 <h3 class="course-title">{{ curso.titulo }}</h3>

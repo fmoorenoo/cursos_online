@@ -52,7 +52,7 @@ img {
 
 .message {
     position: fixed;
-    top: 20px;
+    top: 35px;
     left: 50%;
     transform: translateX(-50%);
     padding: 12px 20px;
@@ -61,7 +61,7 @@ img {
     font-weight: bold;
     z-index: 9999;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    opacity: 0.85;
+    opacity: 0.90;
     display: flex;
     align-items: center;
     gap: 10px; /* espacio entre icono y texto */
@@ -83,18 +83,10 @@ img {
 }
 
 /* Colores por tipo */
-.message.info { background-color: #3498db; }
-.message.success { background-color: #48cc2e; }
-.message.warning { background-color: #e4c23b; color: #000; }
+.message.info { background-color: #2e95da; }
+.message.success { background-color: #318121; }
+.message.warning { background-color: #af983c; color: #181818; }
 .message.error { background-color: #e74c3c; }
-
-
-.fade-enter-active, .fade-leave-active {
-  transition: opacity 0.5s;
-}
-.fade-enter-from, .fade-leave-to {
-  opacity: 0;
-}
 
 
 /* ======================================================

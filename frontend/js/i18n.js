@@ -101,6 +101,19 @@ window.I18N = {
             downloadableResources: "Recursos descargables",
             quizzesAndExercises: "Cuestionarios y ejercicios",
             certificateCompletion: "Certificado de finalización"
+        },
+
+        // Messages
+        messages: {
+            loginSuccess: "¡Login correcto!",
+            loginError: "Credenciales incorrectas",
+            genericError: "Ocurrió un error, intenta de nuevo",
+            registerSuccess: "Registro realizado con éxito. Ya puedes iniciar sesión.",
+            cartAdded: "«{course}» añadido al carrito",
+            cartAlready: "Este curso ya está en tu carrito",
+            cartUnavailable: "Algunos cursos seleccionados no están disponibles",
+            logout: "Sesión cerrada correctamente",
+            paymentSuccess: "Pago procesado por {total}€. ¡Gracias por tu compra!"
         }
     },
 
@@ -187,6 +200,7 @@ window.I18N = {
             continueShopping: "Continue Shopping"
         },
 
+        // Course
         course: {
             catalogTitle: "Course Catalog",
             selectedCourse: "Selected Course",
@@ -205,6 +219,19 @@ window.I18N = {
             downloadableResources: "Downloadable Resources",
             quizzesAndExercises: "Quizzes and Exercises",
             certificateCompletion: "Certificate of Completion"
+        },
+
+        // Messages
+        messages: {
+            loginSuccess: "Login successful!",
+            loginError: "Incorrect credentials",
+            genericError: "An error occurred, please try again",
+            registerSuccess: "Registration successful. You can now log in.",
+            cartAdded: "“{course}” added to cart",
+            cartAlready: "This course is already in your cart",
+            cartUnavailable: "Some selected courses are unavailable",
+            logout: "Session closed successfully",
+            paymentSuccess: "Payment processed for €{total}. Thank you for your purchase!"
         }
     }
 };

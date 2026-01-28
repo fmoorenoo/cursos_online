@@ -277,15 +277,15 @@ createApp({
                     const data = await res.json();
 
                     if (data.success) {
-                        this.showMessage('success', 'Registro realizado con éxito. Ya puedes iniciar sesión.', 3000);
+                        this.showMessage('success', this.t.messages.registerSuccess, 3000);
                         this.authMode = 'login';
                         this.resetAuthForm();
                     } else {
-                        this.showMessage('error', 'Ocurrió un error, intenta de nuevo', 2000);
+                        this.showMessage('error', this.t.messages.genericError, 2000);
                     }
 
                 } catch (error) {
-                    this.showMessage('error', 'Ocurrió un error, intenta de nuevo', 2000);
+                    this.showMessage('error', this.t.messages.genericError, 2000);
                 }
 
                 return;
@@ -305,7 +305,7 @@ createApp({
                 const data = await res.json();
 
                 if (data.success) {
-                    this.showMessage('success', '¡Login correcto!', 3000);
+                    this.showMessage('success', this.t.messages.loginSuccess, 3000);
 
                     this.sessionUser = data.user;
                     this.isLoggedIn = true;
@@ -314,12 +314,12 @@ createApp({
 
                     this.closeAuth();
                 } else {
-                    this.showMessage('error', 'Credenciales incorrectas', 4000);
+                    this.showMessage('error', this.t.messages.loginError, 4000);
                 }
 
 
             } catch (error) {
-                this.showMessage('error', 'Ocurrió un error, intenta de nuevo', 2000);
+                this.showMessage('error', this.t.messages.genericError, 2000);
             }
         },
 
@@ -328,7 +328,7 @@ createApp({
             this.sessionUser = null;
             this.isLoggedIn = false;
             this.showUserMenu = false;
-            this.showMessage('info', 'Sesión cerrada correctamente', 300);
+            this.showMessage('info', this.t.messages.logout, 300);
         },
 
         inputClass(field) {
@@ -488,12 +488,12 @@ createApp({
             }
 
             if (!this.allItemsAvailable) {
-                this.showMessage('error', 'Algunos cursos seleccionados no están disponibles', 3000);
+                this.showMessage('error', this.t.messages.cartUnavailable, 3000);
 
                 return;
             }
 
-            this.showMessage('success', `Pago procesado por ${this.cartTotal}€. ¡Gracias por tu compra!`, 3000);
+            this.showMessage('success', this.t.messages.paymentSuccess.replace('{total}', this.cartTotal), 3000);
 
             this.cartItems = [];
             this.saveCartItems();
@@ -503,7 +503,7 @@ createApp({
             const alreadyInCart = this.cartItems.some(item => item.id === curso.id);
 
             if (alreadyInCart) {
-                this.showMessage('info', 'Este curso ya está en tu carrito', 2500);
+                this.showMessage('info', this.t.messages.cartAlready, 2500);
                 return;
             }
 
@@ -515,7 +515,7 @@ createApp({
 
             this.saveCartItems();
 
-            this.showMessage('success', `"${curso.titulo}" añadido al carrito`, 2500);
+            this.showMessage('success', this.t.messages.cartAdded.replace('{course}', curso.titulo), 2500);
         },
 
         showMessage(type, text, duration = 3000) {
