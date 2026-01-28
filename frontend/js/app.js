@@ -32,7 +32,13 @@ createApp({
             sessionUser: null,
             showUserMenu: false,
             cartItems: [],
-            isMobileMenuOpen: false
+            isMobileMenuOpen: false,
+            message: {
+                show: false,
+                type: 'info',
+                text: '',
+                timeoutId: null
+            },
         };
     },
     computed: {
@@ -262,15 +268,15 @@ createApp({
                     const data = await res.json();
 
                     if (data.success) {
-                        alert('Registro correcto. Ya puedes iniciar sesión.');
+                        this.showMessage('success', 'Registro realizado con éxito. Ya puedes iniciar sesión.', 3000);
                         this.authMode = 'login';
                         this.resetAuthForm();
                     } else {
-                        alert(data.message || 'Error en el registro');
+                        this.showMessage('error', 'Ocurrió un error, intenta de nuevo', 2000);
                     }
 
                 } catch (error) {
-                    alert('Error de conexión con el servidor');
+                    this.showMessage('error', 'Ocurrió un error, intenta de nuevo', 2000);
                 }
 
                 return;
@@ -290,7 +296,7 @@ createApp({
                 const data = await res.json();
 
                 if (data.success) {
-                    console.log('Login correcto', data.user);
+                    this.showMessage('success', '¡Login correcto!', 3000);
 
                     this.sessionUser = data.user;
                     this.isLoggedIn = true;
@@ -299,12 +305,12 @@ createApp({
 
                     this.closeAuth();
                 } else {
-                    alert(data.message || 'Credenciales incorrectas');
+                    this.showMessage('error', 'Credenciales incorrectas', 4000);
                 }
 
 
             } catch (error) {
-                alert('Error de conexión con el servidor');
+                this.showMessage('error', 'Ocurrió un error, intenta de nuevo', 2000);
             }
         },
 
@@ -313,6 +319,7 @@ createApp({
             this.sessionUser = null;
             this.isLoggedIn = false;
             this.showUserMenu = false;
+            this.showMessage('info', 'Sesión cerrada correctamente', 300);
         },
 
         inputClass(field) {
@@ -472,11 +479,12 @@ createApp({
             }
 
             if (!this.allItemsAvailable) {
-                alert('Algunos cursos no están disponibles. Por favor, elimínalos del carrito para continuar.');
+                this.showMessage('error', 'Algunos cursos seleccionados no están disponibles', 3000);
+
                 return;
             }
 
-            alert(`Pago procesado por ${this.cartTotal}€. ¡Gracias por tu compra!`);
+            this.showMessage('success', `Pago procesado por ${this.cartTotal}€. ¡Gracias por tu compra!`, 3000);
 
             this.cartItems = [];
             this.saveCartItems();
@@ -486,7 +494,7 @@ createApp({
             const alreadyInCart = this.cartItems.some(item => item.id === curso.id);
 
             if (alreadyInCart) {
-                alert('Este curso ya está en tu carrito');
+                this.showMessage('warning', 'Este curso ya está en tu carrito', 2500);
                 return;
             }
 
@@ -498,8 +506,33 @@ createApp({
 
             this.saveCartItems();
 
-            alert(`"${curso.titulo}" añadido al carrito`);
+            this.showMessage('info', `"${curso.titulo}" añadido al carrito`, 2500);
         },
+
+        showMessage(type, text, duration = 3000) {
+            if (this.message.timeoutId) {
+                clearTimeout(this.message.timeoutId);
+            }
+
+            this.message.type = type;
+            this.message.text = text;
+            this.message.show = true;
+
+            this.message.timeoutId = setTimeout(() => {
+                this.message.show = false;
+                this.message.timeoutId = null;
+            }, duration);
+        },
+
+        getMessageIconClass(type) {
+            switch (type) {
+                case 'success': return 'fas fa-check-circle';
+                case 'info': return 'fas fa-info-circle';
+                case 'warning': return 'fas fa-exclamation-triangle';
+                case 'error': return 'fas fa-times-circle';
+                default: return '';
+            }
+        }
     },
 
     watch: {

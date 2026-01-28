@@ -90,9 +90,7 @@
 /* RESPONSIVE PALETTE SELECTOR */
 @media (max-width: 768px) {
     .palette-selector {
-        width: 280px;
-        right: -50%;
-        transform: translateX(50%);
+        width: 220px;
     }
     
     .palette-grid {

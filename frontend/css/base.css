@@ -50,6 +50,52 @@ img {
     user-select: none;
 }
 
+.message {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px 20px;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: bold;
+    z-index: 9999;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    opacity: 0.85;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* espacio entre icono y texto */
+    font-size: 16px;
+}
+
+.message i {
+    font-size: 20px;
+}
+
+.message.warning { color: #000; }
+
+.message-icon {
+    font-size: 18px;
+}
+
+.message-text {
+    font-size: 16px;
+}
+
+/* Colores por tipo */
+.message.info { background-color: #3498db; }
+.message.success { background-color: #48cc2e; }
+.message.warning { background-color: #e4c23b; color: #000; }
+.message.error { background-color: #e74c3c; }
+
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+
 
 /* ======================================================
    ANIMACIONES (VUE)

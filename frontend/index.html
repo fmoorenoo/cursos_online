@@ -19,7 +19,8 @@
         <!-- MENÚ SUPERIOR -->
         <header class="header">
             <div class="header-logo">{{ t.siteName }}</div>
-            <button class="hamburger-btn" :class="{ open: isMobileMenuOpen }" @click="isMobileMenuOpen = !isMobileMenuOpen">
+            <button class="hamburger-btn" :class="{ open: isMobileMenuOpen }"
+                @click="isMobileMenuOpen = !isMobileMenuOpen">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -275,6 +276,14 @@
 
             </div>
         </div>
+
+        <!-- MENSAJES DE INFORMACIÓN -->
+        <transition name="slide-down">
+            <div v-if="message.show" :class="['message', message.type]">
+                <i :class="getMessageIconClass(message.type)"></i>
+                <span class="message-text">{{ message.text }}</span>
+            </div>
+        </transition>
 
         <!-- FOOTER -->
         <footer class="main-footer">
