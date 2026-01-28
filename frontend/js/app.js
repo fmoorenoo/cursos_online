@@ -218,7 +218,10 @@ createApp({
                     precio: `${curso.precio}€`,
                     duracion: `${curso.duracion} min`,
                     disponible: curso.disponible == 1,
-                    imagen: curso.imagen_url
+                    imagen: curso.imagen_url,
+                    nivel: Number(curso.nivel),
+                    certificado: curso.certificado == 1,
+                    idioma: curso.idioma
                 }));
             } catch (error) {
                 console.error('Error cargando cursos:', error);
@@ -477,6 +480,8 @@ createApp({
         },
 
         removeFromCart(index) {
+            const courseTitle = this.cartItems[index].titulo;
+            this.showMessage('info', this.t.messages.removeFromCart.replace('{course}', courseTitle), 2000);
             this.cartItems.splice(index, 1);
             this.saveCartItems();
         },

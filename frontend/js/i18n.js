@@ -91,6 +91,9 @@ window.I18N = {
             unavailable: "Agotado",
             duration: "Duración",
             level: "Nivel",
+            level1: "Fácil",
+            level2: "Intermedio",
+            level3: "Difícil",
             language: "Idioma",
             certificate: "Certificado",
             yes: "Sí",
@@ -109,11 +112,12 @@ window.I18N = {
             loginError: "Credenciales incorrectas",
             genericError: "Ocurrió un error, intenta de nuevo",
             registerSuccess: "Registro realizado con éxito. Ya puedes iniciar sesión.",
-            cartAdded: "«{course}» añadido al carrito",
+            cartAdded: "”{course}”  añadido al carrito",
             cartAlready: "Este curso ya está en tu carrito",
             cartUnavailable: "Algunos cursos seleccionados no están disponibles",
             logout: "Sesión cerrada correctamente",
-            paymentSuccess: "Pago procesado por {total}€. ¡Gracias por tu compra!"
+            paymentSuccess: "Pago procesado por {total}€. ¡Gracias por tu compra!",
+            removeFromCart: "”{course}”  eliminado del carrito"
         }
     },
 
@@ -209,6 +213,9 @@ window.I18N = {
             unavailable: "Sold Out",
             duration: "Duration",
             level: "Level",
+            level1: "Easy",
+            level2: "Intermediate",
+            level3: "Advanced",
             language: "Language",
             certificate: "Certificate",
             yes: "Yes",
@@ -227,11 +234,12 @@ window.I18N = {
             loginError: "Incorrect credentials",
             genericError: "An error occurred, please try again",
             registerSuccess: "Registration successful. You can now log in.",
-            cartAdded: "“{course}” added to cart",
+            cartAdded: "“{course}”  added to cart",
             cartAlready: "This course is already in your cart",
             cartUnavailable: "Some selected courses are unavailable",
             logout: "Session closed successfully",
-            paymentSuccess: "Payment processed for €{total}. Thank you for your purchase!"
+            paymentSuccess: "Payment processed for €{total}. Thank you for your purchase!",
+            removeFromCart: "“{course}”  removed from cart"
         }
     }
 };

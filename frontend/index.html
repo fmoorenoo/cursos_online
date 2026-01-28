@@ -178,22 +178,21 @@
                                         <i class="fas fa-graduation-cap meta-icon"></i>
                                         <div class="meta-content">
                                             <span class="meta-label">{{ t.course.level }}</span>
-                                            <span class="meta-value">Intermedio</span>
+                                            <span class="meta-value">{{ t.course['level' + selectedCourse.nivel] || '—' }}</span>
                                         </div>
                                     </div>
                                     <div class="meta-item">
                                         <i class="fas fa-language meta-icon"></i>
                                         <div class="meta-content">
                                             <span class="meta-label">{{ t.course.language }}</span>
-                                            <span class="meta-value">{{ selectedLang === 'es' ? 'Español' : 'English'
-                                                }}</span>
+                                            <span class="meta-value">{{ selectedCourse.idioma }}</span>
                                         </div>
                                     </div>
                                     <div class="meta-item">
                                         <i class="fas fa-certificate meta-icon"></i>
                                         <div class="meta-content">
                                             <span class="meta-label">{{ t.course.certificate }}</span>
-                                            <span class="meta-value">{{ t.course.yes }}</span>
+                                            <span class="meta-value">{{ selectedCourse.certificado ? t.course.yes : t.course.no }}</span>
                                         </div>
                                     </div>
                                 </div>
