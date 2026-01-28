@@ -331,7 +331,7 @@ createApp({
             this.sessionUser = null;
             this.isLoggedIn = false;
             this.showUserMenu = false;
-            this.showMessage('info', this.t.messages.logout, 300);
+            this.showMessage('info', this.t.messages.logout, 3000);
         },
 
         inputClass(field) {
