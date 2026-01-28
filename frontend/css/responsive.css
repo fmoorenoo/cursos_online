@@ -52,6 +52,36 @@
     }
 }
 
+/* RESPONSIVE INFO CURSO */
+@media (max-width: 1024px) {
+    .selected-course-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .selected-course-image {
+        height: 300px;
+    }
+    
+    .selected-course-title {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 768px) {
+    .selected-course-actions {
+        flex-direction: column;
+    }
+    
+    .btn-add-to-cart-large {
+        width: 100%;
+    }
+    
+    .selected-course-meta-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* RESPONSIVE CARRUSEL */
 @media (max-width: 768px) {
     .course-card-content {

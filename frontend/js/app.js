@@ -39,6 +39,7 @@ createApp({
                 text: '',
                 timeoutId: null
             },
+            selectedCourse: null
         };
     },
     computed: {
@@ -134,8 +135,16 @@ createApp({
 
 
         selectCourse(curso) {
-            console.log('Curso seleccionado:', curso.titulo);
-            // Aquí puedes agregar lógica adicional
+            this.selectedCourse = curso;
+            this.$nextTick(() => {
+                const el = document.getElementById('catalog');
+                if (el) {
+                    el.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start',
+                    });
+                }
+            });
         },
 
         changePalette(paletteKey) {
@@ -494,7 +503,7 @@ createApp({
             const alreadyInCart = this.cartItems.some(item => item.id === curso.id);
 
             if (alreadyInCart) {
-                this.showMessage('warning', 'Este curso ya está en tu carrito', 2500);
+                this.showMessage('info', 'Este curso ya está en tu carrito', 2500);
                 return;
             }
 
@@ -506,7 +515,7 @@ createApp({
 
             this.saveCartItems();
 
-            this.showMessage('info', `"${curso.titulo}" añadido al carrito`, 2500);
+            this.showMessage('success', `"${curso.titulo}" añadido al carrito`, 2500);
         },
 
         showMessage(type, text, duration = 3000) {

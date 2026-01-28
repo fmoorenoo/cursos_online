@@ -13,7 +13,7 @@ window.I18N = {
         },
 
         // Language
-        currentLangEs: "Idioma actual: Español",
+        currentLangEs: "Español",
 
         // Promos / Carrusel
         featuredCourses: "Cursos Destacados",
@@ -80,6 +80,27 @@ window.I18N = {
             loginRequired: "Debes iniciar sesión para proceder al pago",
             checkout: "Proceder al Pago",
             continueShopping: "Seguir Comprando"
+        },
+
+        // Course
+        course: {
+            catalogTitle: "Catálogo de Cursos",
+            selectedCourse: "Curso Seleccionado",
+            backToCatalog: "Volver al Catálogo",
+            available: "Disponible",
+            unavailable: "Agotado",
+            duration: "Duración",
+            level: "Nivel",
+            language: "Idioma",
+            certificate: "Certificado",
+            yes: "Sí",
+            no: "No",
+            addToCart: "Añadir al Carrito",
+            courseFeatures: "Características del Curso",
+            lifetimeAccess: "Acceso de por vida",
+            downloadableResources: "Recursos descargables",
+            quizzesAndExercises: "Cuestionarios y ejercicios",
+            certificateCompletion: "Certificado de finalización"
         }
     },
 
@@ -97,7 +118,7 @@ window.I18N = {
         },
 
         // Language
-        currentLangEn: "Current language: English",
+        currentLangEn: "English",
 
         // Promos / Carrusel
         featuredCourses: "Featured Courses",
@@ -164,6 +185,26 @@ window.I18N = {
             loginRequired: "You must be logged in to proceed with payment",
             checkout: "Proceed to Checkout",
             continueShopping: "Continue Shopping"
+        },
+
+        course: {
+            catalogTitle: "Course Catalog",
+            selectedCourse: "Selected Course",
+            backToCatalog: "Back to Catalog",
+            available: "Available",
+            unavailable: "Sold Out",
+            duration: "Duration",
+            level: "Level",
+            language: "Language",
+            certificate: "Certificate",
+            yes: "Yes",
+            no: "No",
+            addToCart: "Add to Cart",
+            courseFeatures: "Course Features",
+            lifetimeAccess: "Lifetime Access",
+            downloadableResources: "Downloadable Resources",
+            quizzesAndExercises: "Quizzes and Exercises",
+            certificateCompletion: "Certificate of Completion"
         }
     }
 };

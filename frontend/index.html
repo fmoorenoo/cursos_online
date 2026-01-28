@@ -133,8 +133,90 @@
             <!-- CATÁLOGO DE TODOS LOS CURSOS -->
             <main class="main-content" id="catalog">
                 <div class="content-section">
-                    <h1 class="page-title">{{ t.catalogTitle }}</h1>
-                    <div class="courses-grid">
+                    <h1 class="page-title" v-if="!selectedCourse">{{ t.course.catalogTitle }}</h1>
+                    <h1 class="page-title" v-else>{{ t.course.selectedCourse }}</h1>
+
+                    <!-- CURSO SELECCIONADO -->
+                    <div v-if="selectedCourse" class="selected-course-wrapper">
+                        <div class="selected-course-header">
+                            <button class="close-selected-course-btn" @click="selectedCourse = null">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+
+                        <div class="selected-course-container">
+                            <div class="selected-course-image-container">
+                                <img :src="selectedCourse.imagen" :alt="selectedCourse.titulo"
+                                    class="selected-course-image">
+                                <div class="image-overlay">
+                                    <span class="image-badge" v-if="selectedCourse.disponible">
+                                        <i class="fas fa-check-circle"></i> {{ t.course.available }}
+                                    </span>
+                                    <span class="image-badge unavailable" v-else>
+                                        <i class="fas fa-times-circle"></i> {{ t.course.unavailable }}
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="selected-course-details">
+                                <div class="course-header">
+                                    <h2 class="selected-course-title">{{ selectedCourse.titulo }}</h2>
+                                </div>
+
+                                <p class="selected-course-description">{{ selectedCourse.descripcion }}</p>
+
+                                <div class="selected-course-meta-grid">
+                                    <div class="meta-item">
+                                        <i class="fas fa-clock meta-icon"></i>
+                                        <div class="meta-content">
+                                            <span class="meta-label">{{ t.course.duration }}</span>
+                                            <span class="meta-value">{{ Math.round(parseInt(selectedCourse.duracion) /
+                                                60) }} {{ t.hours }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="meta-item">
+                                        <i class="fas fa-graduation-cap meta-icon"></i>
+                                        <div class="meta-content">
+                                            <span class="meta-label">{{ t.course.level }}</span>
+                                            <span class="meta-value">Intermedio</span>
+                                        </div>
+                                    </div>
+                                    <div class="meta-item">
+                                        <i class="fas fa-language meta-icon"></i>
+                                        <div class="meta-content">
+                                            <span class="meta-label">{{ t.course.language }}</span>
+                                            <span class="meta-value">{{ selectedLang === 'es' ? 'Español' : 'English'
+                                                }}</span>
+                                        </div>
+                                    </div>
+                                    <div class="meta-item">
+                                        <i class="fas fa-certificate meta-icon"></i>
+                                        <div class="meta-content">
+                                            <span class="meta-label">{{ t.course.certificate }}</span>
+                                            <span class="meta-value">{{ t.course.yes }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="selected-course-actions">
+                                    <div class="price-section">
+                                        <span class="selected-course-price">{{ selectedCourse.precio }}</span>
+                                    </div>
+
+                                    <button class="btn-add-to-cart-large" @click="addToCart(selectedCourse)"
+                                        :disabled="!selectedCourse.disponible"
+                                        :class="{ 'disabled': !selectedCourse.disponible }">
+                                        <i class="fas fa-cart-plus btn-icon"></i>
+                                        <span class="btn-text">
+                                            {{ selectedCourse.disponible ? t.addToCart : t.unavailable }}
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="courses-grid" v-if="!selectedCourse">
                         <div v-for="curso in cursos" :key="curso.id" class="course-card">
                             <img :src="curso.imagen" :alt="curso.titulo" class="course-thumbnail">
                             <div class="course-card-content">
@@ -145,11 +227,6 @@
                                     <div style="display: flex; gap: 10px; align-items: center;">
                                         <span class="course-duration">{{ Math.round(parseInt(curso.duracion) / 60)
                                             }}h</span>
-                                        <button class="add-to-cart-btn" @click.stop="addToCart(curso)"
-                                            :disabled="!curso.disponible"
-                                            :title="curso.disponible ? 'Añadir al carrito' : 'Curso no disponible'">
-                                            <i class="fas fa-cart-plus"></i>
-                                        </button>
                                     </div>
                                 </div>
                             </div>
