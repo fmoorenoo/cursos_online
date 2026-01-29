@@ -101,3 +101,7 @@ img {
 .v-leave-to {
     opacity: 0;
 }
+
+html, body {
+    touch-action: manipulation;
+}
