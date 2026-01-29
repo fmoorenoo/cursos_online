@@ -61,4 +61,24 @@ window.cartMethods = {
 
         this.showMessage('success', this.t.messages.cartAdded.replace('{course}', curso.titulo), 2500);
     },
+
+    syncCartAvailability() {
+        this.cartItems = this.cartItems.map(item => {
+            const cursoActual = this.cursos.find(c => c.id === item.id);
+
+            if (!cursoActual) {
+                return {
+                    ...item,
+                    disponible: false
+                };
+            }
+
+            return {
+                ...item,
+                disponible: cursoActual.disponible
+            };
+        });
+
+        this.saveCartItems();
+    },
 };

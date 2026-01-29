@@ -110,6 +110,9 @@ createApp({
     watch: {
         // Aquí se observan cambios en datos concretos y ejecuta código como reacción a esos cambios
         currentView(newView) {
+            // Guardar vista actual en sessionStorage
+            sessionStorage.setItem('currentView', newView);
+
             if (newView === 'home') {
                 setTimeout(() => {
                     this.startAutoSlide();
@@ -129,11 +132,8 @@ createApp({
     mounted: async function () {
         // Aquí va el código que se ejecuta una sola vez cuando el componente carga
         await this.cargarCursos();
-
         this.loadCartItems();
-
-        const savedLang = localStorage.getItem('selectedLang');
-        if (savedLang) this.selectedLang = savedLang;
+        this.syncCartAvailability();
 
         const savedUser = sessionStorage.getItem('sessionUser');
         if (savedUser) {
@@ -141,6 +141,13 @@ createApp({
             this.isLoggedIn = true;
         }
 
+        const savedView = sessionStorage.getItem('currentView');
+        if (savedView) {
+            this.currentView = savedView;
+        }
+
+        const savedLang = localStorage.getItem('selectedLang');
+        if (savedLang) this.selectedLang = savedLang;
 
         const savedPalette = localStorage.getItem('selectedPalette');
         if (savedPalette && this.availablePalettes[savedPalette]) {
