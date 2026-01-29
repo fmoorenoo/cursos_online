@@ -108,8 +108,7 @@
                                         <span class="course-price">{{ curso.precio }}</span>
                                         <div class="course-meta-info">
                                             <span class="course-duration">
-                                                {{ curso.duracion }} ({{ Math.round(parseInt(curso.duracion) / 60) }} {{
-                                                t.hours }})
+                                                {{ Math.round(parseInt(curso.duracion) / 60) }} {{ t.hours }}
                                             </span>
                                             <div class="course-availability"
                                                 :class="{ 'available': curso.disponible, 'unavailable': !curso.disponible }">
@@ -389,6 +388,14 @@
                     <span class="lang-indicator">
                         <i class="fa-solid fa-globe"></i>
                         {{ selectedLang === 'es' ? t.currentLangEs : t.currentLangEn }}
+                    </span>
+
+                    <span class="footer-creator">
+                        <i class="fa-solid fa-code"></i>
+                        Web creada por Fernando M. M.
+                        <a href="https://github.com/fmoorenoo" id="link-fer" target="_blank" rel="noopener">
+                            <i class="fa-solid fa-magnifying-glass fa-flip-horizontal"></i>
+                        </a>
                     </span>
 
                     <button v-if="currentView !== 'cart'" class="back-to-top-btn" @click="scrollTo('app')">
