@@ -30,7 +30,10 @@
                 <a class="nav-link" href="#" @click.prevent="scrollTo('app')">{{ t.nav.home }}</a>
                 <a class="nav-link" href="#" @click.prevent="scrollTo('catalog')">{{ t.nav.courses }}</a>
                 <a class="nav-link" href="#">{{ t.nav.about }}</a>
-                <a class="nav-link" href="#" @click.prevent="goTo('cart')">{{ t.nav.cart }}</a>
+                <a class="nav-link cart-link" href="#" @click.prevent="goTo('cart')">
+                    {{ t.nav.cart }}
+                    <span v-if="cartItems.length > 0" class="cart-badge">{{ cartItems.length }}</span>
+                </a>
 
                 <!-- SELECTOR DE PALETA DE COLORES -->
                 <div class="palette-selector-container">
@@ -178,7 +181,8 @@
                                         <i class="fas fa-graduation-cap meta-icon"></i>
                                         <div class="meta-content">
                                             <span class="meta-label">{{ t.course.level }}</span>
-                                            <span class="meta-value">{{ t.course['level' + selectedCourse.nivel] || '—' }}</span>
+                                            <span class="meta-value">{{ t.course['level' + selectedCourse.nivel] || '—'
+                                                }}</span>
                                         </div>
                                     </div>
                                     <div class="meta-item">
@@ -192,7 +196,8 @@
                                         <i class="fas fa-certificate meta-icon"></i>
                                         <div class="meta-content">
                                             <span class="meta-label">{{ t.course.certificate }}</span>
-                                            <span class="meta-value">{{ selectedCourse.certificado ? t.course.yes : t.course.no }}</span>
+                                            <span class="meta-value">{{ selectedCourse.certificado ? t.course.yes :
+                                                t.course.no }}</span>
                                         </div>
                                     </div>
                                 </div>

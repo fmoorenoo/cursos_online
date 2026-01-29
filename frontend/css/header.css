@@ -298,3 +298,27 @@
 .login-mobile {
     display: none;
 }
+
+.cart-link {
+    position: relative;
+}
+
+.cart-badge {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+
+    background-color: var(--color-danger);
+    color: white;
+
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: 700;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
