@@ -266,16 +266,18 @@
 .hamburger-btn {
     display: none;
     flex-direction: column;
-    gap: 6px;
+    gap: var(--bar-gap);
     background: none;
     border: none;
     cursor: pointer;
     z-index: 2001;
+    --bar-height: 3px;
+    --bar-gap: 6px;
 }
 
 .hamburger-btn span {
     width: 26px;
-    height: 3px;
+    height: var(--bar-height);
     background-color: var(--text-on-dark);
     border-radius: 2px;
     transition: transform 0.25s ease, opacity 0.2s ease;
@@ -283,7 +285,7 @@
 }
 
 .hamburger-btn.open span:nth-child(1) {
-    transform: translateY(9px) rotate(45deg);
+    transform: translateY(calc(var(--bar-height) + var(--bar-gap))) rotate(45deg);
 }
 
 .hamburger-btn.open span:nth-child(2) {
@@ -292,7 +294,7 @@
 }
 
 .hamburger-btn.open span:nth-child(3) {
-    transform: translateY(-9px) rotate(-45deg);
+    transform: translateY(calc(-1 * (var(--bar-height) + var(--bar-gap)))) rotate(-45deg);
 }
 
 .login-mobile {
@@ -321,4 +323,169 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.header-nav .nav-link,
+.palette-toggle-btn,
+.hamburger-btn,
+#lang,
+#es,
+#en {
+    touch-action: manipulation;
+    pointer-events: auto;
+}
+
+/* Feedback táctil en móvil */
+@media (hover: none) and (pointer: coarse) {
+
+    .header-nav .nav-link:active,
+    .palette-toggle-btn:active,
+    .user-dropdown-item:active {
+        background-color: var(--color-secondary-light);
+        transform: scale(0.97);
+    }
+
+}
+
+/* ================================================ */
+/* RESPONSIVE */
+/* ================================================ */
+
+/* RESPONSIVE HEADER (MENÚ HAMBURGUESA) */
+@media (max-width: 1050px) {
+
+    .hamburger-btn {
+        display: flex;
+    }
+
+    .header-nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 190px;
+        height: 100vh;
+        background: var(--surface-dark);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 90px 25px;
+        gap: 18px;
+        transition: right 0.35s ease;
+        align-items: center;
+        box-shadow: -8px 0 25px rgba(0, 0, 0, 0.35);
+    }
+
+    .header-nav.open {
+        right: 0;
+    }
+
+    .header-nav .nav-link,
+    .header-nav .palette-toggle-btn {
+        width: 110px;
+        height: 38px;
+        padding: 8px 12px;
+        text-align: left;
+        border-radius: 8px;
+        text-align: center;
+
+    }
+
+    #lang {
+        margin-top: 20px;
+    }
+
+    .login-desktop {
+        display: none;
+    }
+
+    .login-mobile {
+        display: inline;
+    }
+}
+
+/* TAMAÑO FUENTE MAYOR */
+@media (max-width: 830px) {
+    .header {
+        padding: 18px 20px;
+    }
+
+    .header-logo {
+        font-size: 30px;
+    }
+
+    .hamburger-btn {
+        padding: 10px;
+
+        --bar-height: 4px;
+        --bar-gap: 7px;
+    }
+
+    .hamburger-btn span {
+        width: 32px;
+    }
+
+    .header-nav {
+        gap: 20px;
+    }
+
+    .header-nav .nav-link,
+    .header-nav .palette-toggle-btn {
+        width: 100%;
+        height: 50px;
+        padding: 12px 14px;
+        font-size: 19px;
+        border-radius: 10px;
+    }
+
+    #lang {
+        width: 120px;
+    }
+
+    #es,
+    #en {
+        padding: 8px 6px;
+    }
+
+    .cart-badge {
+        min-width: 20px;
+        height: 20px;
+        font-size: 12px;
+    }
+
+    .palette-selector {
+        top: 50%;
+        right: 100%;
+        margin-top: 0;
+        margin-right: 12px;
+        transform: translateY(-50%);
+    }
+}
+
+/* RESPONSIVE PALETTE SELECTOR */
+@media (max-width: 768px) {
+    .palette-selector {
+        width: 220px;
+    }
+
+    .palette-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .palette-toggle-btn span {
+        display: none;
+    }
+}
+
+/* DESACTIVAR HOVER EN DISPOSITIVOS TÁCTILES */
+@media (hover: none) and (pointer: coarse) {
+
+    .header-nav .nav-link:hover,
+    .palette-toggle-btn:hover,
+    .palette-option:hover,
+    .lang-option:hover,
+    .user-dropdown-item:hover {
+        background-color: unset;
+        transform: none;
+        box-shadow: none;
+        filter: none;
+    }
 }
