@@ -30,7 +30,8 @@ window.I18N = {
             address: "Dirección: Calle 123",
             email: "Correo: info@culturLan.com",
             contact: "Tel: 928 67 67 67",
-            backToTop: "Volver arriba"
+            backToTop: "Volver arriba",
+            autor: "Web creada por: Fernando M. M."
         },
 
         // Palettes
@@ -152,7 +153,8 @@ window.I18N = {
             address: "Address: 123 Street",
             email: "Email: info@culturLan.com",
             contact: "Phone: +34 928 67 67 67",
-            backToTop: "Back to Top"
+            backToTop: "Back to Top",
+            autor: "Web created by: Fernando M. M."
         },
 
         // Palettes
