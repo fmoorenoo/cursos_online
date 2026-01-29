@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plataforma de Cursos Online</title>
     <!-- Vue.js CDN -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -27,10 +28,10 @@
             </button>
 
             <nav class="header-nav" :class="{ open: isMobileMenuOpen }">
-                <a class="nav-link" href="#" @click.prevent="scrollTo('app')">{{ t.nav.home }}</a>
-                <a class="nav-link" href="#" @click.prevent="scrollTo('catalog')">{{ t.nav.courses }}</a>
+                <a class="nav-link" href="#" @click.prevent="scrollTo('app'); closeMobileMenu()">{{ t.nav.home }}</a>
+                <a class="nav-link" href="#" @click.prevent="scrollTo('catalog'); closeMobileMenu()">{{ t.nav.courses }}</a>
                 <a class="nav-link" href="#">{{ t.nav.about }}</a>
-                <a class="nav-link cart-link" href="#" @click.prevent="goTo('cart')">
+                <a class="nav-link cart-link" href="#" @click.prevent="goTo('cart'); closeMobileMenu()">
                     {{ t.nav.cart }}
                     <span v-if="cartItems.length > 0" class="cart-badge">{{ cartItems.length }}</span>
                 </a>
@@ -80,7 +81,7 @@
                     </div>
                 </div>
 
-                <a v-else class="nav-link login-link" href="#" @click.prevent="openLogin">
+                <a v-else class="nav-link login-link" href="#" @click.prevent="openLogin(); closeMobileMenu()">
                     <span class="login-desktop">{{ t.nav.login }}</span>
                     <span class="login-mobile">Login</span>
                 </a>

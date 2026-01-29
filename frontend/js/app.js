@@ -163,7 +163,21 @@ createApp({
         });
 
         document.addEventListener('click', (event) => {
-            /* ===== PALETTE SELECTOR ===== */
+            // Cerrar menú hamburguesa al clicar fuera
+            const headerNav = document.querySelector('.header-nav');
+            const hamburgerBtn = document.querySelector('.hamburger-btn');
+
+            if (
+                this.isMobileMenuOpen &&
+                headerNav &&
+                hamburgerBtn &&
+                !headerNav.contains(event.target) &&
+                !hamburgerBtn.contains(event.target)
+            ) {
+                this.isMobileMenuOpen = false;
+            }
+
+            /* Selector de paleta de colores */
             const paletteSelector = document.querySelector('.palette-selector');
             const paletteToggle = document.querySelector('.palette-toggle-btn');
 

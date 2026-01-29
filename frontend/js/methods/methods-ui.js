@@ -158,4 +158,8 @@ window.uiMethods = {
             default: return '';
         }
     },
+
+    closeMobileMenu() {
+        this.isMobileMenuOpen = false;
+    },
 };
