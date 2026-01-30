@@ -118,7 +118,8 @@
                     <div class="carousel-track" :style="trackStyle">
                         <div v-for="(curso, index) in cursos" :key="curso.id" class="carousel-slide"
                             :class="getSlideClass(index)">
-                            <div class="featured-course-card" @click="index === currentSlide ? selectCourse(curso) : goToSlide(index)">
+                            <div class="featured-course-card"
+                                @click="index === currentSlide ? selectCourse(curso) : goToSlide(index)">
                                 <div class="course-card-content">
                                     <div class="course-image-container">
                                         <img :src="curso.imagen" :alt="curso.titulo" class="course-image">
@@ -201,7 +202,8 @@
                                                     {{ filters.precioMax ? filters.precioMax + ' €' : '0€' }}
                                                 </span>
                                             </div>
-                                            <input type="range" min="0" max="500" step="10" v-model.number="filters.precioMax">
+                                            <input type="range" min="0" max="500" step="10"
+                                                v-model.number="filters.precioMax">
                                         </div>
                                     </div>
                                 </div>
@@ -215,11 +217,13 @@
 
                     <!-- PAGINACIÓN -->
                     <div v-if="!selectedCourse && totalPages > 1" class="pagination-controls">
-                        <button class="pagination-btn" :disabled="currentPage === 1" @click="currentPage--; showMessage('info', t.messages.pageInfo .replace('{current}', currentPage) .replace('{total}', totalPages));">
+                        <button class="pagination-btn" :disabled="currentPage === 1"
+                            @click="currentPage--; showMessage('info', t.messages.pageInfo .replace('{current}', currentPage) .replace('{total}', totalPages));">
                             <i class="fas fa-chevron-left"></i>
                         </button>
                         <span class="pagination-info">{{ currentPage }} / {{ totalPages }}</span>
-                        <button class="pagination-btn" :disabled="currentPage === totalPages" @click="currentPage++; showMessage('info', t.messages.pageInfo .replace('{current}', currentPage) .replace('{total}', totalPages));">
+                        <button class="pagination-btn" :disabled="currentPage === totalPages"
+                            @click="currentPage++; showMessage('info', t.messages.pageInfo .replace('{current}', currentPage) .replace('{total}', totalPages));">
                             <i class="fas fa-chevron-right"></i>
                         </button>
                     </div>
@@ -301,19 +305,8 @@
 
                     <!-- GRID DE CURSOS -->
                     <div class="courses-grid" v-if="!selectedCourse && paginatedCursos.length > 0">
-                        <div v-for="curso in paginatedCursos" :key="curso.id" class="course-card" @click="selectCourse(curso)">
-                            <img :src="curso.imagen" :alt="curso.titulo" class="course-thumbnail">
-                            <div class="course-card-content">
-                                <h3 class="course-title">{{ curso.titulo }}</h3>
-                                <p class="course-description">{{ curso.descripcion }}</p>
-                                <div class="course-card-footer">
-                                    <span class="course-price">{{ curso.precio }}</span>
-                                    <div style="display: flex; gap: 10px; align-items: center;">
-                                        <span class="course-duration">{{ Math.round(parseInt(curso.duracion) / 60) }}h</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <course-card v-for="curso in paginatedCursos" :key="curso.id" :curso="curso"
+                            @select="selectCourse" />
                     </div>
 
                     <!-- Mensaje cuando no hay resultados en la búsqueda -->
@@ -325,12 +318,14 @@
                 </div>
                 <!-- PAGINACIÓN INFERIOR -->
                 <div v-if="!selectedCourse && totalPages > 1" class="pagination-controls">
-                    <button class="pagination-btn" :disabled="currentPage === 1" @click="currentPage--; scrollTo('catalog');
+                    <button class="pagination-btn" :disabled="currentPage === 1"
+                        @click="currentPage--; scrollTo('catalog');
                      showMessage('info', t.messages.pageInfo .replace('{current}', currentPage) .replace('{total}', totalPages));">
                         <i class="fas fa-chevron-left"></i>
                     </button>
                     <span class="pagination-info">{{ currentPage }} / {{ totalPages }}</span>
-                    <button class="pagination-btn" :disabled="currentPage === totalPages" @click="currentPage++; scrollTo('catalog'); 
+                    <button class="pagination-btn" :disabled="currentPage === totalPages"
+                        @click="currentPage++; scrollTo('catalog'); 
                     showMessage('info', t.messages.pageInfo .replace('{current}', currentPage) .replace('{total}', totalPages));">
                         <i class="fas fa-chevron-right"></i>
                     </button>
@@ -519,6 +514,29 @@
     <script src="js/methods/methods-validation.js"></script>
     <!-- Script principal -->
     <script src="js/app.js"></script>
+
+    <!-- TEMPLATE: Course Card (Grid) -->
+    <template id="tpl-course-card">
+        <div class="course-card" @click="$emit('select', curso)">
+            <img :src="curso.imagen" :alt="curso.titulo" class="course-thumbnail">
+
+            <div class="course-card-content">
+                <h3 class="course-title">{{ curso.titulo }}</h3>
+
+                <p class="course-description">{{ curso.descripcion }}</p>
+
+                <div class="course-card-footer">
+                    <span class="course-price">{{ curso.precio }}</span>
+
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <span class="course-duration">
+                            {{ Math.round(parseInt(curso.duracion) / 60) }}h
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
 </body>
 
 </html>

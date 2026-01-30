@@ -2,6 +2,12 @@
 
 // Punto de entrada de la aplicación Vue
 const { createApp } = Vue;
+const CourseCard = {
+    template: '#tpl-course-card',
+    props: {
+        curso: { type: Object, required: true }
+    }
+};
 
 createApp({
     data() {
@@ -159,6 +165,10 @@ createApp({
         ...window.cartMethods,
         ...window.uiMethods,
         ...window.validationMethods
+    },
+
+    components: {
+        'course-card': CourseCard
     },
 
     watch: {
