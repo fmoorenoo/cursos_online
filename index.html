@@ -139,11 +139,52 @@
                     <div class="page-header-row">
                         <h1 class="page-title" v-if="!selectedCourse">{{ t.course.catalogTitle }}</h1>
                         <h1 class="page-title" v-else>{{ t.course.selectedCourse }}</h1>
-                        
                         <div class="search-container" v-if="!selectedCourse">
-                            <i class="fas fa-search search-icon"></i>
-                            <input type="text" v-model="searchQuery" :placeholder="t.course.searchPlaceholder" 
-                                class="course-search-input">
+                            <!-- BOTÓN FILTRO -->
+                            <button class="filter-btn" @click="showFilters = !showFilters" :title="t.course.filters">
+                                <i class="fas fa-filter"></i>
+                            </button>
+                            <!-- INPUT BÚSQUEDA -->
+                            <div class="search-container" v-if="!selectedCourse">
+                                <i class="fas fa-search search-icon"></i>
+                                <input type="text" v-model="searchQuery" :placeholder="t.course.searchPlaceholder"
+                                    class="course-search-input">
+                            </div>
+                            <!-- PANEL DE FILTROS -->
+                            <div v-if="showFilters" class="filters-panel">
+                                <div class="filters-grid">
+                                    <!-- TIPOS -->
+                                    <div class="filter-column">
+                                        <span class="filter-title">{{ t.course.type }}</span>
+
+                                        <label v-for="tipo in availableTipos" :key="tipo" class="checkbox-row">
+                                            <input type="checkbox" :value="tipo" v-model="filters.tipo">
+                                            <span>{{ t.course['type' + tipo] }}</span>
+                                        </label>
+                                    </div>
+                                    <!-- OPCIONES -->
+                                    <div class="filter-column">
+                                        <!-- CERTIFICADO -->
+                                        <div class="switch-row">
+                                            <span>{{ t.course.onlyCertified }}</span>
+                                            <label class="switch">
+                                                <input type="checkbox" v-model="filters.soloCertificado">
+                                                <span class="slider"></span>
+                                            </label>
+                                        </div>
+                                        <!-- PRECIO -->
+                                        <div class="range-group">
+                                            <div class="range-label">
+                                                <label>{{ t.course.maxPrice }}</label>
+                                                <span class="range-value">
+                                                    {{ filters.precioMax ? filters.precioMax + ' €' : '0€' }}
+                                                </span>
+                                            </div>
+                                            <input type="range" min="0" max="500" step="10" v-model.number="filters.precioMax">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <button v-if="selectedCourse" class="close-selected-course-btn" @click="selectedCourse = null">
@@ -226,17 +267,17 @@
                         </div>
                     </div>
 
+                    <!-- GRID DE CURSOS -->
                     <div class="courses-grid" v-if="!selectedCourse && filteredCursos.length > 0">
                         <div v-for="curso in filteredCursos" :key="curso.id" class="course-card" @click="selectCourse(curso)">
                             <img :src="curso.imagen" :alt="curso.titulo" class="course-thumbnail">
                             <div class="course-card-content">
                                 <h3 class="course-title">{{ curso.titulo }}</h3>
                                 <p class="course-description">{{ curso.descripcion }}</p>
-                                <div class="courses-grid .course-card-footer">
+                                <div class="course-card-footer">
                                     <span class="course-price">{{ curso.precio }}</span>
                                     <div style="display: flex; gap: 10px; align-items: center;">
-                                        <span class="course-duration">{{ Math.round(parseInt(curso.duracion) / 60)
-                                            }}h</span>
+                                        <span class="course-duration">{{ Math.round(parseInt(curso.duracion) / 60) }}h</span>
                                     </div>
                                 </div>
                             </div>

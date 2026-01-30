@@ -126,6 +126,7 @@ window.uiMethods = {
                 disponible: curso.disponible == 1,
                 imagen: curso.imagen_url,
                 nivel: Number(curso.nivel),
+                tipo: Number(curso.tipo),
                 certificado: curso.certificado == 1,
                 idioma: curso.idioma
             }));

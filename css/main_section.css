@@ -434,6 +434,130 @@
     font-weight: 400;
 }
 
+.filter-btn {
+    background: var(--surface-card);
+    border: 1px solid var(--surface-overlay);
+    border-radius: 10px;
+    padding: 10px 12px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.filter-btn i {
+    font-size: 16px;
+    color: var(--color-primary);
+}
+
+.filters-panel {
+    position: absolute;
+    top: 48px;
+    left: 0px;
+    background: var(--surface-card);
+    border: 1px solid var(--surface-overlay);
+    border-radius: 14px;
+    padding: 18px;
+    width: 350px;
+    box-shadow: 0 14px 40px rgba(0,0,0,0.18);
+    z-index: 20;
+}
+
+.filters-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 20px;
+}
+
+.filter-column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.filter-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.checkbox-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.switch-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+
+.switch {
+    position: relative;
+    width: 44px;
+    height: 24px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    inset: 0;
+    background: var(--surface-overlay);
+    border-radius: 999px;
+    transition: 0.3s;
+}
+
+.slider::before {
+    content: '';
+    position: absolute;
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    top: 3px;
+    background: white;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.switch input:checked + .slider {
+    background: var(--color-primary);
+}
+
+.switch input:checked + .slider::before {
+    transform: translateX(20px);
+}
+
+/* RANGE PRECIO */
+.range-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 14px;
+}
+
+.range-group input[type="range"] {
+    width: 100%;
+}
+
+.range-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.range-value {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
 /* RESPONSIVE INFO CURSO */
 @media (max-width: 1024px) {
     .selected-course-container {

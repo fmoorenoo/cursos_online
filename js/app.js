@@ -42,18 +42,47 @@ createApp({
                 timeoutId: null
             },
             selectedCourse: null,
-            searchQuery: ''
+            searchQuery: '',
+            showFilters: false,
+            filters: {
+                tipo: [],
+                soloCertificado: false,
+                precioMax: null
+            }
         };
     },
 
     computed: {
         filteredCursos() {
-            if (!this.searchQuery) return this.cursos;
-            const query = this.searchQuery.toLowerCase();
-            return this.cursos.filter(curso => 
-                curso.titulo.toLowerCase().includes(query)
-            );
+            let result = this.cursos;
+            // Búsqueda por texto
+            if (this.searchQuery) {
+                const query = this.searchQuery.toLowerCase();
+                result = result.filter(c =>
+                    c.titulo.toLowerCase().includes(query)
+                );
+            }
+            // Filtro por tipo
+            if (this.filters.tipo.length > 0) {
+                result = result.filter(c =>
+                    this.filters.tipo.includes(c.tipo)
+                );
+            }
+            // Solo con certificado
+            if (this.filters.soloCertificado) {
+                result = result.filter(c => c.certificado);
+            }
+            // Precio máximo
+            if (this.filters.precioMax) {
+                result = result.filter(c => {
+                    const precio = parseFloat(c.precio.replace('€', ''));
+                    return precio <= this.filters.precioMax;
+                });
+            }
+
+            return result;
         },
+
 
         // Aquí se calculan propiedades a partir de data(), se recalculan solo cuando estas cambian
         t() {
@@ -103,6 +132,11 @@ createApp({
         allItemsAvailable() {
             if (!this.cartItems || !Array.isArray(this.cartItems)) return false;
             return this.cartItems.every(item => item && item.disponible);
+        },
+
+        availableTipos() {
+            const tipos = new Set(this.cursos.map(c => c.tipo));
+            return Array.from(tipos).sort();
         }
     },
 
@@ -129,6 +163,14 @@ createApp({
             } else {
                 this.stopAutoSlide();
             }
+
+            if (newView === 'cart') {
+                this.searchQuery = '';
+                this.filters.tipo = [];
+                this.filters.soloCertificado = false;
+                this.filters.precioMax = null;
+            }
+
             this.showUserMenu = false;
             this.isMobileMenuOpen = false;
         },

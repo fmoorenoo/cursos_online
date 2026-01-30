@@ -100,13 +100,17 @@ window.I18N = {
             yes: "Sí",
             no: "No",
             addToCart: "Añadir al Carrito",
-            courseFeatures: "Características del Curso",
-            lifetimeAccess: "Acceso de por vida",
-            downloadableResources: "Recursos descargables",
-            quizzesAndExercises: "Cuestionarios y ejercicios",
-            certificateCompletion: "Certificado de finalización",
             searchPlaceholder: "Buscar curso por nombre...",
-            noResults: "No se han encontrado cursos que coincidan con tu búsqueda"
+            noResults: "No se han encontrado cursos que coincidan con tu búsqueda",
+            filters: "Filtros",
+            type: "Tipo de curso",
+            onlyCertified: "Certificado",
+            maxPrice: "Precio máx.",
+            type1: "Tecnología",
+            type2: "Diseño y Creatividad",
+            type3: "Negocio y Marketing",
+            type4: "Educación y Formación",
+            type5: "Idiomas y Comunicación"
         },
 
         // Messages
@@ -225,13 +229,17 @@ window.I18N = {
             yes: "Yes",
             no: "No",
             addToCart: "Add to Cart",
-            courseFeatures: "Course Features",
-            lifetimeAccess: "Lifetime Access",
-            downloadableResources: "Downloadable Resources",
-            quizzesAndExercises: "Quizzes and Exercises",
-            certificateCompletion: "Certificate of Completion",
             searchPlaceholder: "Search courses by name...",
-            noResults: "No courses found matching your search"
+            noResults: "No courses found matching your search",
+            filters: "Filters",
+            type: "Course type",
+            onlyCertified: "Certificate",
+            maxPrice: "Max price",
+            type1: "Technology",
+            type2: "Design & Creativity",
+            type3: "Business & Marketing",
+            type4: "Education & Training",
+            type5: "Languages & Communication"
         },
 
         // Messages
