@@ -195,4 +195,14 @@ window.uiMethods = {
             this.scrollTo('catalog');
         });
     },
+
+    resetFilters() {
+        this.filters.tipo = [];
+        this.filters.soloCertificado = false;
+        this.filters.precioMax = null;
+        this.currentPage = 1;
+        this.showFilters = false;
+
+        this.showMessage('info', this.t.course.filtersReset || 'Filtros restablecidos');
+    },
 };

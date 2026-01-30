@@ -205,6 +205,11 @@
                                             <input type="range" min="0" max="500" step="10"
                                                 v-model.number="filters.precioMax">
                                         </div>
+
+                                        <!-- BOTÓN RESET FILTROS -->
+                                        <button class="reset-filters-btn" @click="resetFilters">
+                                            {{ t.course.resetFilters }}
+                                        </button>
                                     </div>
                                 </div>
                             </div>

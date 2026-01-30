@@ -602,6 +602,23 @@
     color: var(--text-secondary);
 }
 
+.reset-filters-btn {
+    margin-top: 14px;
+    width: 100%;
+    padding: 6px 8px;
+    background: transparent;
+    border: 1px solid var(--color-primary);
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    color: var(--text-primary);
+    transition: all 0.2s ease;
+}
+
+.reset-filters-btn:hover {
+    background: var(--surface-overlay);
+}
+
 /* RESPONSIVE INFO CURSO */
 @media (max-width: 1024px) {
     .selected-course-container {
