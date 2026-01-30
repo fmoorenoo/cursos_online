@@ -116,7 +116,7 @@
                 <h2 class="section-title">{{ t.featuredCourses }}</h2>
                 <div class="carousel-container" @mouseenter="stopAutoSlide" @mouseleave="startAutoSlide">
                     <div class="carousel-track" :style="trackStyle">
-                        <div v-for="(curso, index) in cursos" :key="curso.id" class="carousel-slide"
+                        <div v-for="(curso, index) in featuredCursos" :key="curso.id" class="carousel-slide"
                             :class="getSlideClass(index)">
                             <div class="featured-course-card"
                                 @click="index === currentSlide ? selectCourse(curso) : goToSlide(index)">
@@ -147,7 +147,7 @@
                     <button class="carousel-btn prev-btn" @click="prevSlide"><i
                             class="fas fa-chevron-left"></i></button>
                     <div class="carousel-dots">
-                        <div v-for="(curso, index) in cursos" :key="'dot-' + curso.id" class="carousel-dot"
+                        <div v-for="(curso, index) in featuredCursos" :key="'dot-' + curso.id" class="carousel-dot"
                             v-bind:class="{ active: currentSlide === index }" @click="goToSlide(index)"></div>
                     </div>
                     <button class="carousel-btn next-btn" @click="nextSlide"><i

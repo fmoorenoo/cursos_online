@@ -62,6 +62,36 @@ createApp({
     },
 
     computed: {
+        featuredCursos() {
+            if (!this.cursos.length) return [];
+            const MAX = 6;
+            const byType = {};
+            this.cursos.forEach(curso => {
+                if (!byType[curso.tipo]) {
+                    byType[curso.tipo] = [];
+                }
+                byType[curso.tipo].push(curso);
+            });
+
+            const result = [];
+
+            Object.keys(byType).forEach(tipo => {
+                if (result.length < MAX) {
+                    result.push(byType[tipo][0]);
+                }
+            });
+
+            if (result.length < MAX) {
+                const restantes = this.cursos.filter(c => !result.includes(c));
+                for (const curso of restantes) {
+                    if (result.length >= MAX) break;
+                    result.push(curso);
+                }
+            }
+
+            return result;
+        },
+
         filteredCursos() {
             let result = this.cursos;
             // Búsqueda por texto
