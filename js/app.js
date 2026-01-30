@@ -193,7 +193,7 @@ createApp({
         searchQuery() {
             this.currentPage = 1;
         },
-        
+
         filters: {
             deep: true,
             handler() {
@@ -290,6 +290,20 @@ createApp({
                 !courseToggle.contains(event.target)
             ) {
                 this.showCourseTypeSelector = false;
+            }
+
+            /* ===== FILTERS PANEL ===== */
+            const filtersPanel = document.querySelector('.filters-panel');
+            const filterBtn = document.querySelector('.filter-btn');
+
+            if (
+                this.showFilters &&
+                filtersPanel &&
+                filterBtn &&
+                !filtersPanel.contains(event.target) &&
+                !filterBtn.contains(event.target)
+            ) {
+                this.showFilters = false;
             }
         });
     },
