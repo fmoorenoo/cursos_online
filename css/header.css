@@ -404,23 +404,11 @@
 
 /* TAMAÑO FUENTE MAYOR */
 @media (max-width: 830px) {
-    .header {
-        padding: 18px 20px;
-    }
-
-    .header-logo {
-        font-size: 30px;
-    }
-
     .hamburger-btn {
         padding: 10px;
 
-        --bar-height: 4px;
-        --bar-gap: 7px;
-    }
-
-    .hamburger-btn span {
-        width: 32px;
+        --bar-height: 3px;
+        --bar-gap: 6px;
     }
 
     .header-nav {
