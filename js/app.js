@@ -62,6 +62,10 @@ createApp({
     },
 
     computed: {
+        hasCartItems() {
+            return this.cartItems.length > 0;
+        },
+
         featuredCursos() {
             if (!this.cursos.length) return [];
             const MAX = 6;

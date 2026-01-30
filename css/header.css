@@ -269,13 +269,14 @@
     gap: var(--bar-gap);
     background: none;
     border: none;
+    padding: 10px;
     cursor: pointer;
     z-index: 2001;
     --bar-height: 3px;
     --bar-gap: 6px;
 }
 
-.hamburger-btn span {
+.hamburger-btn .hamburguer-span {
     width: 26px;
     height: var(--bar-height);
     background-color: var(--text-on-dark);
@@ -284,17 +285,38 @@
     transform-origin: center;
 }
 
-.hamburger-btn.open span:nth-child(1) {
+.hamburger-btn.open .hamburguer-span:nth-child(1) {
     transform: translateY(calc(var(--bar-height) + var(--bar-gap))) rotate(45deg);
 }
 
-.hamburger-btn.open span:nth-child(2) {
+.hamburger-btn.open .hamburguer-span:nth-child(2) {
     opacity: 0;
     transform: scaleX(0);
 }
 
-.hamburger-btn.open span:nth-child(3) {
+.hamburger-btn.open .hamburguer-span:nth-child(3) {
     transform: translateY(calc(-1 * (var(--bar-height) + var(--bar-gap)))) rotate(-45deg);
+}
+
+.hamburger-btn {
+    position: relative;
+}
+
+.hamburger-cart-badge {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: var(--color-danger);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
 }
 
 .login-mobile {
@@ -405,8 +427,6 @@
 /* TAMAÑO FUENTE MAYOR */
 @media (max-width: 830px) {
     .hamburger-btn {
-        padding: 10px;
-
         --bar-height: 3px;
         --bar-gap: 6px;
     }

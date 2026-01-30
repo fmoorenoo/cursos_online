@@ -23,9 +23,13 @@
             <div class="header-logo">{{ t.siteName }}</div>
             <button class="hamburger-btn" v-bind:class="{ open: isMobileMenuOpen }"
                 v-on:click="isMobileMenuOpen = !isMobileMenuOpen">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span class="hamburguer-span"></span>
+                <span class="hamburguer-span"></span>
+                <span class="hamburguer-span"></span>
+                <!-- BADGE CARRITO EN HAMBURGUESA -->
+                <span v-if="hasCartItems && !isMobileMenuOpen" class="cart-badge hamburger-cart-badge">
+                    {{ cartItems.length }}
+                </span>
             </button>
 
             <nav class="header-nav" :class="{ open: isMobileMenuOpen }">
@@ -55,7 +59,7 @@
                 <!-- Carrito -->
                 <a class="nav-link cart-link" href="#" @click.prevent="goTo('cart'); closeMobileMenu()">
                     {{ t.nav.cart }}
-                    <span v-if="cartItems.length > 0" class="cart-badge">{{ cartItems.length }}</span>
+                    <span v-if="hasCartItems" class="cart-badge">{{ cartItems.length }}</span>
                 </a>
                 <!-- Selector de paleta de colores -->
                 <div class="palette-selector-container">
