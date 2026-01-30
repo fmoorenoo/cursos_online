@@ -97,7 +97,7 @@
                     <div class="carousel-track" :style="trackStyle">
                         <div v-for="(curso, index) in cursos" :key="curso.id" class="carousel-slide"
                             :class="getSlideClass(index)">
-                            <div class="featured-course-card" @click="selectCourse(curso)">
+                            <div class="featured-course-card" @click="index === currentSlide ? selectCourse(curso) : goToSlide(index)">
                                 <div class="course-card-content">
                                     <div class="course-image-container">
                                         <img :src="curso.imagen" :alt="curso.titulo" class="course-image">
