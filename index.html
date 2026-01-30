@@ -136,17 +136,17 @@
             <!-- CATÁLOGO DE TODOS LOS CURSOS -->
             <main class="main-content" id="catalog">
                 <div class="content-section">
-                    <h1 class="page-title" v-if="!selectedCourse">{{ t.course.catalogTitle }}</h1>
-                    <h1 class="page-title" v-else>{{ t.course.selectedCourse }}</h1>
+                    <div class="page-header-row">
+                        <h1 class="page-title" v-if="!selectedCourse">{{ t.course.catalogTitle }}</h1>
+                        <h1 class="page-title" v-else>{{ t.course.selectedCourse }}</h1>
+                        
+                        <button v-if="selectedCourse" class="close-selected-course-btn" @click="selectedCourse = null">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
 
                     <!-- CURSO SELECCIONADO -->
                     <div v-if="selectedCourse" class="selected-course-wrapper">
-                        <div class="selected-course-header">
-                            <button class="close-selected-course-btn" @click="selectedCourse = null">
-                                <i class="fas fa-times"></i>
-                            </button>
-                        </div>
-
                         <div class="selected-course-container">
                             <div class="selected-course-image-container">
                                 <img :src="selectedCourse.imagen" :alt="selectedCourse.titulo"

@@ -22,8 +22,15 @@
 .page-title {
     font-size: 32px;
     font-weight: 700;
-    margin-bottom: 30px;
     color: var(--text-primary);
+    margin: 0;
+}
+
+.page-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
     padding-bottom: 15px;
     border-bottom: 1px solid var(--surface-overlay);
 }
@@ -146,13 +153,6 @@
 }
 
 /* Estilos para el curso seleccionado */
-.selected-course-header {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
 .close-selected-course-btn {
     background: var(--color-danger);
     color: white;
