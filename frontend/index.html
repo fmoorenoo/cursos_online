@@ -20,8 +20,8 @@
         <!-- MENÚ SUPERIOR -->
         <header class="header">
             <div class="header-logo">{{ t.siteName }}</div>
-            <button class="hamburger-btn" :class="{ open: isMobileMenuOpen }"
-                @click="isMobileMenuOpen = !isMobileMenuOpen">
+            <button class="hamburger-btn" v-bind:class="{ open: isMobileMenuOpen }"
+                v-on:click="isMobileMenuOpen = !isMobileMenuOpen">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -62,9 +62,9 @@
                 <!-- SELECTOR DE IDIOMA -->
                 <div id="lang">
                     <div id="es" class="lang-option" :class="{ active: selectedLang === 'es' }"
-                        @click="selectedLang = 'es'" data-lang="es">ES</div>
+                        v-on:click="selectedLang = 'es'" data-lang="es">ES</div>
                     <div id="en" class="lang-option" :class="{ active: selectedLang === 'en' }"
-                        @click="selectedLang = 'en'" data-lang="en">EN</div>
+                        v-on:click="selectedLang = 'en'" data-lang="en">EN</div>
                 </div>
 
                 <!-- LOGIN / USUARIO -->
@@ -126,7 +126,7 @@
                             class="fas fa-chevron-left"></i></button>
                     <div class="carousel-dots">
                         <div v-for="(curso, index) in cursos" :key="'dot-' + curso.id" class="carousel-dot"
-                            :class="{ active: currentSlide === index }" @click="goToSlide(index)"></div>
+                            v-bind:class="{ active: currentSlide === index }" @click="goToSlide(index)"></div>
                     </div>
                     <button class="carousel-btn next-btn" @click="nextSlide"><i
                             class="fas fa-chevron-right"></i></button>
@@ -208,8 +208,8 @@
                                     </div>
 
                                     <button class="btn-add-to-cart-large" @click="addToCart(selectedCourse)"
-                                        :disabled="!selectedCourse.disponible"
-                                        :class="{ 'disabled': !selectedCourse.disponible }">
+                                        v-bind:disabled="!selectedCourse.disponible"
+                                        v-bind:class="{ 'disabled': !selectedCourse.disponible }">
                                         <i class="fas fa-cart-plus btn-icon"></i>
                                         <span class="btn-text">
                                             {{ selectedCourse.disponible ? t.addToCart : t.unavailable }}
@@ -273,7 +273,7 @@
                             </div>
                             <div class="cart-item-actions">
                                 <span class="cart-item-price">{{ item.precio }}</span>
-                                <button class="btn-remove" @click="removeFromCart(index)" :title="t.cart.remove">
+                                <button class="btn-remove" v-on:click="removeFromCart(index)" :title="t.cart.remove">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </div>
