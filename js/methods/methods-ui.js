@@ -114,7 +114,7 @@ window.uiMethods = {
 
     async cargarCursos() {
         try {
-            const res = await fetch('../backend/getCursos.php');
+            const res = await fetch('backend/getCursos.php');
             const data = await res.json();
 
             this.cursos = data.map(curso => ({

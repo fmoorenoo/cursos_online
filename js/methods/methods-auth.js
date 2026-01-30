@@ -39,7 +39,7 @@ window.authMethods = {
             if (!this.isRegisterFormValid) return;
 
             try {
-                const res = await fetch('../backend/auth/register.php', {
+                const res = await fetch('backend/auth/register.php', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -70,7 +70,7 @@ window.authMethods = {
 
         // Modo login
         try {
-            const res = await fetch('../backend/auth/login.php', {
+            const res = await fetch('backend/auth/login.php', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
