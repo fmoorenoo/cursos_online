@@ -35,12 +35,81 @@
     border-bottom: 1px solid var(--surface-overlay);
 }
 
+.search-container {
+    position: relative;
+    width: 350px;
+    display: flex;
+    align-items: center;
+}
+
+.search-icon {
+    position: absolute;
+    left: 15px;
+    color: var(--text-secondary);
+    font-size: 14px;
+    pointer-events: none;
+}
+
+.course-search-input {
+    width: 100%;
+    padding: 12px 15px 12px 40px;
+    border-radius: 12px;
+    border: 1px solid var(--surface-overlay);
+    background-color: var(--surface-card);
+    color: var(--text-primary);
+    font-size: 14px;
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+.course-search-input:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.1);
+}
+
+.course-search-input::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
 /* GRID DE CURSOS */
 .courses-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 32px;
     margin-top: 30px;
+}
+
+/* MENSAJE SIN RESULTADOS */
+.no-results {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: var(--surface-card);
+    border-radius: 16px;
+    border: 1px solid var(--surface-overlay);
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.no-results i {
+    font-size: 64px;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+    opacity: 0.3;
+}
+
+.no-results h3 {
+    font-size: 24px;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+}
+
+.no-results p {
+    color: var(--text-secondary);
+    font-size: 16px;
 }
 
 /* TARJETA DE CURSO (CATÁLOGO) */

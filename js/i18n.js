@@ -104,7 +104,9 @@ window.I18N = {
             lifetimeAccess: "Acceso de por vida",
             downloadableResources: "Recursos descargables",
             quizzesAndExercises: "Cuestionarios y ejercicios",
-            certificateCompletion: "Certificado de finalización"
+            certificateCompletion: "Certificado de finalización",
+            searchPlaceholder: "Buscar curso por nombre...",
+            noResults: "No se han encontrado cursos que coincidan con tu búsqueda"
         },
 
         // Messages
@@ -227,7 +229,9 @@ window.I18N = {
             lifetimeAccess: "Lifetime Access",
             downloadableResources: "Downloadable Resources",
             quizzesAndExercises: "Quizzes and Exercises",
-            certificateCompletion: "Certificate of Completion"
+            certificateCompletion: "Certificate of Completion",
+            searchPlaceholder: "Search courses by name...",
+            noResults: "No courses found matching your search"
         },
 
         // Messages

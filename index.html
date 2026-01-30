@@ -140,6 +140,12 @@
                         <h1 class="page-title" v-if="!selectedCourse">{{ t.course.catalogTitle }}</h1>
                         <h1 class="page-title" v-else>{{ t.course.selectedCourse }}</h1>
                         
+                        <div class="search-container" v-if="!selectedCourse">
+                            <i class="fas fa-search search-icon"></i>
+                            <input type="text" v-model="searchQuery" :placeholder="t.course.searchPlaceholder" 
+                                class="course-search-input">
+                        </div>
+
                         <button v-if="selectedCourse" class="close-selected-course-btn" @click="selectedCourse = null">
                             <i class="fas fa-times"></i>
                         </button>
@@ -220,8 +226,8 @@
                         </div>
                     </div>
 
-                    <div class="courses-grid" v-if="!selectedCourse">
-                        <div v-for="curso in cursos" :key="curso.id" class="course-card" @click="selectCourse(curso)">
+                    <div class="courses-grid" v-if="!selectedCourse && filteredCursos.length > 0">
+                        <div v-for="curso in filteredCursos" :key="curso.id" class="course-card" @click="selectCourse(curso)">
                             <img :src="curso.imagen" :alt="curso.titulo" class="course-thumbnail">
                             <div class="course-card-content">
                                 <h3 class="course-title">{{ curso.titulo }}</h3>
@@ -235,6 +241,13 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    <!-- Mensaje cuando no hay resultados en la búsqueda -->
+                    <div v-if="!selectedCourse && filteredCursos.length === 0" class="no-results">
+                        <i class="fas fa-search"></i>
+                        <h3>{{ t.course.noResults }}</h3>
+                        <p v-if="searchQuery">{{ t.course.searchPlaceholder }}</p>
                     </div>
                 </div>
             </main>

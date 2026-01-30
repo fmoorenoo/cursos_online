@@ -41,11 +41,20 @@ createApp({
                 text: '',
                 timeoutId: null
             },
-            selectedCourse: null
+            selectedCourse: null,
+            searchQuery: ''
         };
     },
 
     computed: {
+        filteredCursos() {
+            if (!this.searchQuery) return this.cursos;
+            const query = this.searchQuery.toLowerCase();
+            return this.cursos.filter(curso => 
+                curso.titulo.toLowerCase().includes(query)
+            );
+        },
+
         // Aquí se calculan propiedades a partir de data(), se recalculan solo cuando estas cambian
         t() {
             return this.translations?.[this.selectedLang]
