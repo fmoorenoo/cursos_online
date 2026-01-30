@@ -535,6 +535,50 @@
     transform: translateX(20px);
 }
 
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin: 10px 0 25px;
+}
+
+.pagination-btn {
+    background: var(--surface-card);
+    border: 1px solid var(--surface-overlay);
+    border-radius: 8px;
+    width: 38px;
+    height: 38px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.2s;
+}
+
+.pagination-btn i {
+    color: var(--color-primary);
+}
+
+.pagination-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.pagination-btn:not(:disabled):hover {
+    background: var(--color-primary);
+}
+
+.pagination-btn:not(:disabled):hover i {
+    color: white;
+}
+
+.pagination-info {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
 /* RANGE PRECIO */
 .range-group {
     display: flex;

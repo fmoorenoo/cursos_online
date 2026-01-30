@@ -213,6 +213,17 @@
                         </button>
                     </div>
 
+                    <!-- PAGINACIÓN -->
+                    <div v-if="!selectedCourse && totalPages > 1" class="pagination-controls">
+                        <button class="pagination-btn" :disabled="currentPage === 1" @click="currentPage--">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <span class="pagination-info">{{ currentPage }} / {{ totalPages }}</span>
+                        <button class="pagination-btn" :disabled="currentPage === totalPages" @click="currentPage++">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+
                     <!-- CURSO SELECCIONADO -->
                     <div v-if="selectedCourse" class="selected-course-wrapper">
                         <div class="selected-course-container">
@@ -289,8 +300,8 @@
                     </div>
 
                     <!-- GRID DE CURSOS -->
-                    <div class="courses-grid" v-if="!selectedCourse && filteredCursos.length > 0">
-                        <div v-for="curso in filteredCursos" :key="curso.id" class="course-card" @click="selectCourse(curso)">
+                    <div class="courses-grid" v-if="!selectedCourse && paginatedCursos.length > 0">
+                        <div v-for="curso in paginatedCursos" :key="curso.id" class="course-card" @click="selectCourse(curso)">
                             <img :src="curso.imagen" :alt="curso.titulo" class="course-thumbnail">
                             <div class="course-card-content">
                                 <h3 class="course-title">{{ curso.titulo }}</h3>
@@ -311,6 +322,16 @@
                         <h3>{{ t.course.noResults }}</h3>
                         <p v-if="searchQuery">{{ t.course.searchPlaceholder }}</p>
                     </div>
+                </div>
+                <!-- PAGINACIÓN INFERIOR -->
+                <div v-if="!selectedCourse && totalPages > 1" class="pagination-controls">
+                    <button class="pagination-btn" :disabled="currentPage === 1" @click="currentPage--">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <span class="pagination-info">{{ currentPage }} / {{ totalPages }}</span>
+                    <button class="pagination-btn" :disabled="currentPage === totalPages" @click="currentPage++">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
             </main>
         </div>

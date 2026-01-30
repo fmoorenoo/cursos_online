@@ -50,6 +50,8 @@ createApp({
                 precioMax: null
             },
             showCourseTypeSelector: false,
+            currentPage: 1,
+            pageSize: 6,
         };
     },
 
@@ -84,6 +86,14 @@ createApp({
             return result;
         },
 
+        paginatedCursos() {
+            const start = (this.currentPage - 1) * this.pageSize;
+            return this.filteredCursos.slice(start, start + this.pageSize);
+        },
+
+        totalPages() {
+            return Math.ceil(this.filteredCursos.length / this.pageSize) || 1;
+        },
 
         // Aquí se calculan propiedades a partir de data(), se recalculan solo cuando estas cambian
         t() {
@@ -178,7 +188,18 @@ createApp({
 
         selectedLang(newLang) {
             localStorage.setItem('selectedLang', newLang);
-        }
+        },
+
+        searchQuery() {
+            this.currentPage = 1;
+        },
+        
+        filters: {
+            deep: true,
+            handler() {
+                this.currentPage = 1;
+            }
+        },
     },
 
     mounted: async function () {

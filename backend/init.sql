@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-01-2026 a las 18:50:39
+-- Tiempo de generación: 30-01-2026 a las 19:44:45
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -38,20 +38,29 @@ CREATE TABLE `cursos` (
   `creado_en` timestamp NOT NULL DEFAULT current_timestamp(),
   `certificado` tinyint(1) NOT NULL DEFAULT 0,
   `idioma` varchar(50) NOT NULL DEFAULT 'Español',
-  `nivel` tinyint(4) NOT NULL COMMENT '1=facil, 2=intermedio, 3=dificil'
+  `nivel` tinyint(4) NOT NULL COMMENT '1=facil, 2=intermedio, 3=dificil',
+  `tipo` int(11) NOT NULL DEFAULT 1 COMMENT '1=Tecnología, 2=Diseño & Creatividad, 3=Negocio & Marketing, 4=Educación & Formación, 5=Idiomas & Comunicación'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `cursos`
 --
 
-INSERT INTO `cursos` (`id`, `nombre`, `descripcion`, `precio`, `disponible`, `duracion`, `imagen_url`, `creado_en`, `certificado`, `idioma`, `nivel`) VALUES
-(1, 'Desarrollo Web Full Stack', 'Aprende a crear aplicaciones web completas desde el frontend hasta el backend.', 299.01, 1, 4800, 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=400&fit=crop', '2026-01-22 20:17:47', 0, 'Español', 1),
-(2, 'Machine Learning con Python', 'Domina los fundamentos del machine learning y crea modelos predictivos.', 349.00, 1, 3600, 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400&h=400&fit=crop', '2026-01-22 20:17:47', 1, 'Inglés', 2),
-(3, 'Diseño UI/UX Avanzado', 'Crea experiencias de usuario excepcionales.', 249.00, 0, 2400, 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=400&fit=crop', '2026-01-22 20:17:47', 1, 'Español', 3),
-(4, 'DevOps y CI/CD', 'Implementa pipelines de integración y despliegue continuo.', 399.00, 1, 4200, 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=400&fit=crop', '2026-01-22 20:17:47', 0, 'Español', 1),
-(5, 'Ciberseguridad para Desarrolladores', 'Protege tus aplicaciones de vulnerabilidades comunes.', 279.00, 1, 3000, 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&h=400&fit=crop', '2026-01-22 20:17:47', 1, 'Inglés', 2),
-(6, 'React Native: Apps Móviles', 'Desarrolla aplicaciones móviles para iOS y Android con React Native.', 229.00, 1, 2800, 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=400&fit=crop', '2026-01-22 20:17:47', 1, 'Español', 3);
+INSERT INTO `cursos` (`id`, `nombre`, `descripcion`, `precio`, `disponible`, `duracion`, `imagen_url`, `creado_en`, `certificado`, `idioma`, `nivel`, `tipo`) VALUES
+(1, 'Desarrollo Web Full Stack', 'Aprende a crear aplicaciones web completas desde el frontend hasta el backend.', 299.01, 1, 4800, 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=400&fit=crop', '2026-01-22 20:17:47', 0, 'Español', 1, 1),
+(2, 'Machine Learning con Python', 'Domina los fundamentos del machine learning y crea modelos predictivos.', 349.00, 1, 3600, 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400&h=400&fit=crop', '2026-01-22 20:17:47', 1, 'Inglés', 2, 1),
+(3, 'Diseño UI/UX Avanzado', 'Crea experiencias de usuario excepcionales.', 249.00, 0, 2400, 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=400&fit=crop', '2026-01-22 20:17:47', 1, 'Español', 3, 2),
+(4, 'DevOps y CI/CD', 'Implementa pipelines de integración y despliegue continuo.', 399.00, 1, 4200, 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=400&fit=crop', '2026-01-22 20:17:47', 0, 'Español', 1, 1),
+(5, 'Ciberseguridad para Desarrolladores', 'Protege tus aplicaciones de vulnerabilidades comunes.', 279.00, 1, 3000, 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&h=400&fit=crop', '2026-01-22 20:17:47', 1, 'Inglés', 2, 1),
+(6, 'React Native: Apps Móviles', 'Desarrolla aplicaciones móviles para iOS y Android con React Native.', 229.00, 1, 2800, 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=400&fit=crop', '2026-01-22 20:17:47', 1, 'Español', 3, 1),
+(7, 'Diseño Gráfico Profesional', 'Aprende diseño gráfico desde cero utilizando herramientas profesionales y principios visuales.', 199.00, 1, 2600, 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=400&h=400&fit=crop', '2026-01-30 18:33:48', 1, 'Español', 1, 2),
+(8, 'UX Research y Prototipado', 'Investiga, diseña y valida productos digitales centrados en el usuario.', 279.00, 1, 3000, 'https://images.unsplash.com/photo-1559028012-481c04fa702d?w=400&h=400&fit=crop', '2026-01-30 18:33:48', 1, 'Inglés', 2, 2),
+(9, 'Marketing Digital Estratégico', 'Domina SEO, SEM y redes sociales para hacer crecer proyectos digitales.', 219.00, 1, 2400, 'https://images.unsplash.com/photo-1557838923-2985c318be48?w=400&h=400&fit=crop', '2026-01-30 18:33:48', 1, 'Español', 1, 3),
+(10, 'Gestión de Proyectos con Agile', 'Aprende a gestionar proyectos utilizando metodologías ágiles como Scrum y Kanban.', 249.00, 1, 2800, 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400&h=400&fit=crop', '2026-01-30 18:33:48', 1, 'Inglés', 2, 3),
+(11, 'Competencia Digital Docente', 'Desarrolla habilidades digitales para la enseñanza moderna.', 189.00, 1, 2200, 'https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?w=400&h=400&fit=crop', '2026-01-30 18:33:48', 0, 'Español', 1, 4),
+(12, 'Metodologías Activas en el Aula', 'Aplica metodologías innovadoras como ABP y flipped classroom.', 229.00, 1, 2600, 'https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=400&h=400&fit=crop', '2026-01-30 18:33:48', 1, 'Español', 2, 4),
+(13, 'Inglés Técnico para Profesionales', 'Mejora tu inglés enfocado al entorno laboral y tecnológico.', 209.00, 1, 2400, 'https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=400&h=400&fit=crop', '2026-01-30 18:33:48', 1, 'Inglés', 2, 5),
+(14, 'Comunicación Efectiva y Presentaciones', 'Aprende a comunicar ideas con claridad y seguridad en público.', 179.00, 1, 2000, 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&h=400&fit=crop', '2026-01-30 18:33:48', 0, 'Español', 1, 5);
 
 -- --------------------------------------------------------
 
@@ -105,7 +114,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `cursos`
 --
 ALTER TABLE `cursos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
