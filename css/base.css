@@ -52,7 +52,7 @@ img {
 
 .message {
     position: fixed;
-    top: 35px;
+    top: 60px;
     left: 50%;
     transform: translateX(-50%);
     padding: 12px 20px;

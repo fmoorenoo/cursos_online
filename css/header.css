@@ -115,11 +115,11 @@
 /* ======================================================
    SELECTOR DE PALETAS
    ====================================================== */
-.palette-selector-container {
+.palette-selector-container, .course-type-selector-container {
     position: relative;
 }
 
-.palette-toggle-btn.nav-link {
+.palette-toggle-btn.nav-link, .course-type-toggle-btn.nav-link {
     background: transparent;
     color: var(--text-on-dark);
     border: none;
@@ -137,7 +137,7 @@
     transform: scale(1.08);
 }
 
-.palette-selector {
+.palette-selector, .course-type-selector {
     position: absolute;
     top: 100%;
     right: 0;

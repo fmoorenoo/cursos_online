@@ -19,6 +19,7 @@
     <div id="app">
         <!-- MENÚ SUPERIOR -->
         <header class="header">
+            <!-- Logo -->
             <div class="header-logo">{{ t.siteName }}</div>
             <button class="hamburger-btn" v-bind:class="{ open: isMobileMenuOpen }"
                 v-on:click="isMobileMenuOpen = !isMobileMenuOpen">
@@ -28,15 +29,35 @@
             </button>
 
             <nav class="header-nav" :class="{ open: isMobileMenuOpen }">
+                <!-- Inicio -->
                 <a class="nav-link" href="#" @click.prevent="scrollTo('app'); closeMobileMenu()">{{ t.nav.home }}</a>
-                <a class="nav-link" href="#" @click.prevent="scrollTo('catalog'); closeMobileMenu()">{{ t.nav.courses }}</a>
+                <!-- Ver cursos -->
+                <div class="course-type-selector-container">
+                    <button class="course-type-toggle-btn nav-link" @click="toggleCourseTypeSelector">
+                        {{ t.nav.courses }}
+                    </button>
+                    <div v-if="showCourseTypeSelector" class="course-type-selector">
+                        <div class="palette-grid">
+                            <!-- TODOS -->
+                            <div class="palette-option" @click="selectCourseType(null)">
+                                <span class="palette-name">{{ t.course.allCourses || 'Todos los cursos' }}</span>
+                            </div>
+                            <!-- TIPOS -->
+                            <div v-for="tipo in availableTipos" :key="'nav-tipo-' + tipo" class="palette-option"
+                                @click="selectCourseType(tipo)">
+                                <span class="palette-name">{{ t.course['type' + tipo] }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Acerca de -->
                 <a class="nav-link" href="#">{{ t.nav.about }}</a>
+                <!-- Carrito -->
                 <a class="nav-link cart-link" href="#" @click.prevent="goTo('cart'); closeMobileMenu()">
                     {{ t.nav.cart }}
                     <span v-if="cartItems.length > 0" class="cart-badge">{{ cartItems.length }}</span>
                 </a>
-
-                <!-- SELECTOR DE PALETA DE COLORES -->
+                <!-- Selector de paleta de colores -->
                 <div class="palette-selector-container">
                     <button class="nav-link palette-toggle-btn" @click="togglePaletteSelector">{{ t.nav.theme
                         }}</button>

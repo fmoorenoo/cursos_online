@@ -63,6 +63,8 @@ window.uiMethods = {
 
     togglePaletteSelector() {
         this.showPaletteSelector = !this.showPaletteSelector;
+        this.showCourseTypeSelector = false;
+        this.showUserMenu = false;
     },
 
     getPaletteColor(paletteKey, role) {
@@ -162,5 +164,35 @@ window.uiMethods = {
 
     closeMobileMenu() {
         this.isMobileMenuOpen = false;
+    },
+
+    toggleCourseTypeSelector() {
+        this.showCourseTypeSelector = !this.showCourseTypeSelector;
+        this.showPaletteSelector = false;
+        this.showUserMenu = false;
+    },
+
+    selectCourseType(tipo) {
+        this.selectedCourse = null;
+        this.searchQuery = '';
+        this.filters.soloCertificado = false;
+        this.filters.precioMax = null;
+
+        if (tipo === null) {
+            this.filters.tipo = [];
+            this.showMessage('info', this.t.course.allCoursesMessage || 'Mostrando todos los cursos');
+        } else {
+            this.filters.tipo = [tipo];
+            this.showMessage('info', this.t.course.showingTypeMessage?.replace('{type}', this.t.course['type' + tipo])
+                || `Mostrando cursos de ${this.t.course['type' + tipo]}`
+            );
+        }
+
+        this.showCourseTypeSelector = false;
+        this.currentView = 'home';
+
+        this.$nextTick(() => {
+            this.scrollTo('catalog');
+        });
     },
 };

@@ -110,7 +110,10 @@ window.I18N = {
             type2: "Diseño y Creatividad",
             type3: "Negocio y Marketing",
             type4: "Educación y Formación",
-            type5: "Idiomas y Comunicación"
+            type5: "Idiomas y Comunicación",
+            allCourses: "Todos los cursos",
+            allCoursesMessage: "Mostrando todos los cursos",
+            showingTypeMessage: "Mostrando cursos de {type}",
         },
 
         // Messages
@@ -239,7 +242,10 @@ window.I18N = {
             type2: "Design & Creativity",
             type3: "Business & Marketing",
             type4: "Education & Training",
-            type5: "Languages & Communication"
+            type5: "Languages & Communication",
+            allCourses: "All courses",
+            allCoursesMessage: "Showing all courses",
+            showingTypeMessage: "Showing {type} courses",
         },
 
         // Messages

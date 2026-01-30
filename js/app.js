@@ -48,7 +48,8 @@ createApp({
                 tipo: [],
                 soloCertificado: false,
                 precioMax: null
-            }
+            },
+            showCourseTypeSelector: false,
         };
     },
 
@@ -254,6 +255,20 @@ createApp({
                 !userToggle.contains(event.target)
             ) {
                 this.showUserMenu = false;
+            }
+
+            /* ===== COURSE TYPE SELECTOR ===== */
+            const courseSelector = document.querySelector('.course-type-selector');
+            const courseToggle = document.querySelector('.course-type-toggle-btn');
+
+            if (
+                this.showCourseTypeSelector &&
+                courseSelector &&
+                courseToggle &&
+                !courseSelector.contains(event.target) &&
+                !courseToggle.contains(event.target)
+            ) {
+                this.showCourseTypeSelector = false;
             }
         });
     },
