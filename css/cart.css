@@ -94,8 +94,8 @@
     color: var(--text-secondary);
     margin: 0;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -267,4 +267,15 @@
 .btn-continue-shopping:hover {
     background-color: var(--color-primary);
     color: white;
+}
+
+@media (max-width: 1080px) {
+    .cart-container {
+        grid-template-columns: 1fr;
+    }
+
+    .cart-summary {
+        position: static;
+        margin-top: 20px;
+    }
 }
