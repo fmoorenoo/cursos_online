@@ -112,7 +112,7 @@ createApp({
                 result = result.filter(c => c.certificado);
             }
             // Precio máximo
-            if (this.filters.precioMax) {
+            if (this.filters.precioMax !== null && this.filters.precioMax !== undefined) {
                 result = result.filter(c => {
                     const precio = parseFloat(c.precio.replace('€', ''));
                     return precio <= this.filters.precioMax;
