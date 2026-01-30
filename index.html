@@ -215,11 +215,11 @@
 
                     <!-- PAGINACIÓN -->
                     <div v-if="!selectedCourse && totalPages > 1" class="pagination-controls">
-                        <button class="pagination-btn" :disabled="currentPage === 1" @click="currentPage--">
+                        <button class="pagination-btn" :disabled="currentPage === 1" @click="currentPage--; showMessage('info', t.messages.pageInfo .replace('{current}', currentPage) .replace('{total}', totalPages));">
                             <i class="fas fa-chevron-left"></i>
                         </button>
                         <span class="pagination-info">{{ currentPage }} / {{ totalPages }}</span>
-                        <button class="pagination-btn" :disabled="currentPage === totalPages" @click="currentPage++">
+                        <button class="pagination-btn" :disabled="currentPage === totalPages" @click="currentPage++; showMessage('info', t.messages.pageInfo .replace('{current}', currentPage) .replace('{total}', totalPages));">
                             <i class="fas fa-chevron-right"></i>
                         </button>
                     </div>
@@ -325,11 +325,13 @@
                 </div>
                 <!-- PAGINACIÓN INFERIOR -->
                 <div v-if="!selectedCourse && totalPages > 1" class="pagination-controls">
-                    <button class="pagination-btn" :disabled="currentPage === 1" @click="currentPage--">
+                    <button class="pagination-btn" :disabled="currentPage === 1" @click="currentPage--; scrollTo('catalog');
+                     showMessage('info', t.messages.pageInfo .replace('{current}', currentPage) .replace('{total}', totalPages));">
                         <i class="fas fa-chevron-left"></i>
                     </button>
                     <span class="pagination-info">{{ currentPage }} / {{ totalPages }}</span>
-                    <button class="pagination-btn" :disabled="currentPage === totalPages" @click="currentPage++">
+                    <button class="pagination-btn" :disabled="currentPage === totalPages" @click="currentPage++; scrollTo('catalog'); 
+                    showMessage('info', t.messages.pageInfo .replace('{current}', currentPage) .replace('{total}', totalPages));">
                         <i class="fas fa-chevron-right"></i>
                     </button>
                 </div>

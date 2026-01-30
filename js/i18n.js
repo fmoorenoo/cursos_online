@@ -127,7 +127,8 @@ window.I18N = {
             cartUnavailable: "Algunos cursos seleccionados no están disponibles",
             logout: "Sesión cerrada correctamente",
             paymentSuccess: "Pago procesado por {total}€. ¡Gracias por tu compra!",
-            removeFromCart: "”{course}”  eliminado del carrito"
+            removeFromCart: "”{course}”  eliminado del carrito",
+            pageInfo: "Página {current} de {total}",
         }
     },
 
@@ -259,7 +260,8 @@ window.I18N = {
             cartUnavailable: "Some selected courses are unavailable",
             logout: "Session closed successfully",
             paymentSuccess: "Payment processed for €{total}. Thank you for your purchase!",
-            removeFromCart: "“{course}”  removed from cart"
+            removeFromCart: "“{course}”  removed from cart",
+            pageInfo: "Page {current} of {total}",
         }
     }
 };
