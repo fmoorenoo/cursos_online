@@ -122,14 +122,14 @@
     border-radius: 16px;
     overflow: hidden;
     border: 1px solid var(--surface-overlay);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     transition: all 0.18s ease;
     cursor: pointer;
 }
 
 .courses-grid .course-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 14px 30px rgba(0,0,0,0.12);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
 }
 
 /* IMAGEN DEL CURSO */
@@ -458,7 +458,7 @@
     border-radius: 14px;
     padding: 18px;
     width: 350px;
-    box-shadow: 0 14px 40px rgba(0,0,0,0.18);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.18);
     z-index: 20;
 }
 
@@ -502,6 +502,10 @@
     height: 24px;
 }
 
+.switch:hover {
+    cursor: pointer;
+}
+
 .switch input {
     opacity: 0;
     width: 0;
@@ -528,11 +532,11 @@
     transition: 0.3s;
 }
 
-.switch input:checked + .slider {
+.switch input:checked+.slider {
     background: var(--color-primary);
 }
 
-.switch input:checked + .slider::before {
+.switch input:checked+.slider::before {
     transform: translateX(20px);
 }
 
@@ -626,6 +630,25 @@
     background: var(--surface-overlay);
 }
 
+.close-filters-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 14px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-size: 35px;
+    line-height: 1;
+    padding: 4px;
+    transition: transform 0.1s ease;
+}
+
+.close-filters-btn:hover {
+    color: var(--color-danger);
+    transform: scale(1.05);
+}
+
 .course-types-info-row {
     display: flex;
     align-items: center;
@@ -647,11 +670,11 @@
         grid-template-columns: 1fr;
         gap: 30px;
     }
-    
+
     .selected-course-image {
         height: 300px;
     }
-    
+
     .selected-course-title {
         font-size: 28px;
     }
@@ -677,11 +700,11 @@
     .selected-course-actions {
         flex-direction: column;
     }
-    
+
     .btn-add-to-cart-large {
         width: 100%;
     }
-    
+
     .selected-course-meta-grid {
         grid-template-columns: 1fr;
     }

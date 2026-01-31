@@ -129,7 +129,8 @@
                                 @click="index === currentSlide ? selectCourse(curso) : goToSlide(index)">
                                 <div class="course-card-content">
                                     <div class="course-image-container">
-                                        <img :src="curso.imagen" :alt="curso.titulo" class="course-image" @error="handleImageError">
+                                        <img :src="curso.imagen" :alt="curso.titulo" class="course-image"
+                                            @error="handleImageError">
                                     </div>
                                     <div class="course-info-container">
                                         <h3 class="course-title">{{ curso.titulo }}</h3>
@@ -216,6 +217,11 @@
                                         <!-- BOTÓN RESET FILTROS -->
                                         <button class="reset-filters-btn" @click="resetFilters">
                                             {{ t.course.resetFilters }}
+                                        </button>
+                                        <!-- BOTÓN CERRAR -->
+                                        <button class="close-filters-btn" @click="showFilters = false"
+                                            :title="t.course.closeFilters">
+                                            <i class="fas fa-times"></i>
                                         </button>
                                     </div>
                                 </div>
@@ -399,8 +405,10 @@
                         <div class="about-block about-contact">
                             <h3 class="about-subtitle">{{ t.about.contactTitle }}</h3>
                             <form class="about-form" @submit.prevent="submitAboutForm">
-                                <input type="email" v-model="aboutForm.email" :placeholder="t.about.contactEmail" required/>
-                                <textarea rows="4" v-model="aboutForm.message" :placeholder="t.about.contactMessage" required></textarea>
+                                <input type="email" v-model="aboutForm.email" :placeholder="t.about.contactEmail"
+                                    required />
+                                <textarea rows="4" v-model="aboutForm.message" :placeholder="t.about.contactMessage"
+                                    required></textarea>
                                 <button type="submit" class="about-submit-btn">
                                     {{ t.about.contactSend }}
                                 </button>
