@@ -223,6 +223,11 @@
                             <i class="fas fa-times"></i>
                         </button>
                     </div>
+                    <!-- INFO DE TIPOS MOSTRADOS -->
+                    <div v-if="!selectedCourse" class="course-types-info-row">
+                        <i class="fas fa-filter"></i>
+                        <span>{{ visibleCourseTypesLabel }}</span>
+                    </div>
 
                     <!-- PAGINACIÓN -->
                     <div v-if="!selectedCourse && totalPages > 1" class="pagination-controls">

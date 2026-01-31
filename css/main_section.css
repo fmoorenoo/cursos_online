@@ -31,7 +31,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 17px;
     padding-bottom: 15px;
     border-bottom: 1px solid var(--surface-overlay);
 }
@@ -122,7 +122,7 @@
     border-radius: 16px;
     overflow: hidden;
     border: 1px solid var(--surface-overlay);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
     transition: all 0.18s ease;
     cursor: pointer;
 }
@@ -541,7 +541,7 @@
     justify-content: center;
     align-items: center;
     gap: 16px;
-    margin: 10px 0 25px;
+    margin: 5px 0 20px;
 }
 
 .pagination-btn {
@@ -620,6 +620,21 @@
     background: var(--surface-overlay);
 }
 
+.course-types-info-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: -10px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    width: fit-content;
+}
+
+.course-types-info-row i {
+    color: var(--text-primary);
+    font-size: 14px;
+}
+
 /* RESPONSIVE INFO CURSO */
 @media (max-width: 1024px) {
     .selected-course-container {
@@ -641,6 +656,14 @@
         flex-direction: column;
         align-items: center;
         gap: 20px;
+    }
+
+    .pagination-controls {
+        margin: 5px 0 10px;
+    }
+
+    .courses-grid {
+        margin-top: 10px;
     }
 }
 
@@ -673,7 +696,6 @@
     }
 
     .page-header-row {
-        margin-bottom: 0px;
         padding-bottom: 10px;
     }
 }

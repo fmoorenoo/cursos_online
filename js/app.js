@@ -192,6 +192,18 @@ createApp({
         availableTipos() {
             const tipos = new Set(this.cursos.map(c => c.tipo));
             return Array.from(tipos).sort();
+        },
+
+        visibleCourseTypesLabel() {
+            if (!this.filters.tipo || this.filters.tipo.length === 0) {
+                return this.t.course.showingAllTypes;
+            }
+
+            const names = this.filters.tipo.map(tipo =>
+                this.t.course['type' + tipo]
+            );
+
+            return this.t.course.showingTypes.replace('{types}', names.join(', '));
         }
     },
 

@@ -116,6 +116,8 @@ window.I18N = {
             allCourses: "Ver Todos",
             allCoursesMessage: "Mostrando todos los cursos",
             showingTypeMessage: "Mostrando cursos de {type}",
+            showingAllTypes: "Mostrando todos los tipos",
+            showingTypes: "Mostrando: {types}",
         },
 
         // Messages
@@ -268,6 +270,8 @@ window.I18N = {
             allCourses: "All courses",
             allCoursesMessage: "Showing all courses",
             showingTypeMessage: "Showing {type} courses",
+            showingAllTypes: "Showing all types",
+            showingTypes: "Showing: {types}",
         },
 
         // Messages
