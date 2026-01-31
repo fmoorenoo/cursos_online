@@ -163,6 +163,14 @@
         grid-template-columns: 1fr;
         gap: 40px;
     }
+    .about-contact {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .about-form {
+        width: 100%;
+    }
 }
 
 @media (max-width: 768px) {

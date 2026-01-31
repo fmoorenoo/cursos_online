@@ -390,13 +390,13 @@
                     </div>
                     <div class="about-bottom-row">
                         <!-- BLOQUE 3: ESTADÍSTICAS -->
-                        <div class="about-stats">
+                        <div class="about-stats" ref="aboutStatsBlock">
                             <div class="stat-item">
-                                <span class="stat-number">{{ cursos.length }}</span>
+                                <span class="stat-number">{{ aboutStats.courses }}</span>
                                 <span class="stat-label">{{ t.about.statsCourses }}</span>
                             </div>
                             <div class="stat-item">
-                                <span class="stat-number">1.250+</span>
+                                <span class="stat-number">+{{ aboutStats.users }}</span>
                                 <span class="stat-label">{{ t.about.statsUsers }}</span>
                             </div>
                         </div>

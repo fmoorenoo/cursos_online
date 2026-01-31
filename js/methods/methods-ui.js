@@ -211,5 +211,31 @@ window.uiMethods = {
             event.target.dataset.fallback = 'true';
             event.target.src = 'assets/course_image_error.png';
         }
+    },
+
+    animateStat(key, target, duration = 1000) {
+        const startTime = performance.now();
+
+        const step = (now) => {
+            const progress = Math.min((now - startTime) / duration, 1);
+            this.aboutStats[key] = Math.floor(progress * target);
+
+            if (progress < 1) {
+                requestAnimationFrame(step);
+            } else {
+                this.aboutStats[key] = target;
+            }
+        };
+
+        requestAnimationFrame(step);
+    },
+
+    startAboutStatsAnimation() {
+        if (this.aboutStatsAnimated) return;
+
+        this.aboutStatsAnimated = true;
+
+        this.animateStat('courses', this.cursos.length);
+        this.animateStat('users', 1250);
     }
 };

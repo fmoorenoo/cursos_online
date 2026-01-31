@@ -70,6 +70,11 @@ createApp({
                 email: '',
                 message: ''
             },
+            aboutStats: {
+                courses: 0,
+                users: 0
+            },
+            aboutStatsAnimated: false
         };
     },
 
@@ -382,6 +387,26 @@ createApp({
                 this.showFilters = false;
             }
         });
+
+        this.$nextTick(() => {
+            const el = this.$refs.aboutStatsBlock;
+            if (!el) return;
+
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    const entry = entries[0];
+                    if (entry && entry.isIntersecting) {
+                        this.startAboutStatsAnimation();
+                        observer.disconnect();
+                    }
+                },
+                {
+                    threshold: 0.6
+                }
+            );
+            observer.observe(el);
+            this._aboutObserver = observer;
+        });
     },
 
     beforeUnmount() {
@@ -389,6 +414,11 @@ createApp({
         if (this.slideInterval) {
             clearInterval(this.slideInterval);
             this.slideInterval = null;
+        }
+
+        if (this._aboutObserver) {
+            this._aboutObserver.disconnect();
+            this._aboutObserver = null;
         }
     }
 }).mount('#app');
