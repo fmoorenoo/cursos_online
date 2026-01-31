@@ -126,7 +126,7 @@
                                 @click="index === currentSlide ? selectCourse(curso) : goToSlide(index)">
                                 <div class="course-card-content">
                                     <div class="course-image-container">
-                                        <img :src="curso.imagen" :alt="curso.titulo" class="course-image">
+                                        <img :src="curso.imagen" :alt="curso.titulo" class="course-image" @error="handleImageError">
                                     </div>
                                     <div class="course-info-container">
                                         <h3 class="course-title">{{ curso.titulo }}</h3>
@@ -247,7 +247,7 @@
                         <div class="selected-course-container">
                             <div class="selected-course-image-container">
                                 <img :src="selectedCourse.imagen" :alt="selectedCourse.titulo"
-                                    class="selected-course-image">
+                                    class="selected-course-image" @error="handleImageError">
                                 <div class="image-overlay">
                                     <span class="image-badge" v-if="selectedCourse.disponible">
                                         <i class="fas fa-check-circle"></i> {{ t.course.available }}
@@ -427,7 +427,7 @@
                     <div class="cart-items">
                         <div v-for="(item, index) in cartItems" :key="item.id" class="cart-item">
                             <div class="cart-item-image">
-                                <img :src="item.imagen" :alt="item.titulo">
+                                <img :src="item.imagen" :alt="item.titulo" @error="handleImageError">
                             </div>
                             <div class="cart-item-info">
                                 <h3 class="cart-item-title">{{ item.titulo }}</h3>
@@ -593,7 +593,7 @@
     <!-- TEMPLATE: Course Card (Grid) -->
     <template id="tpl-course-card">
         <div class="course-card" @click="$emit('select', curso)">
-            <img :src="curso.imagen" :alt="curso.titulo" class="course-thumbnail">
+            <img :src="curso.imagen" :alt="curso.titulo" class="course-thumbnail" @error="handleImageError">
 
             <div class="course-card-content">
                 <h3 class="course-title">{{ curso.titulo }}</h3>

@@ -6,6 +6,14 @@ const CourseCard = {
     template: '#tpl-course-card',
     props: {
         curso: { type: Object, required: true }
+    },
+    methods: {
+        handleImageError(event) {
+            if (!event.target.dataset.fallback) {
+                event.target.dataset.fallback = 'true';
+                event.target.src = 'assets/course_image_error.png';
+            }
+        }
     }
 };
 
@@ -66,6 +74,7 @@ createApp({
     },
 
     computed: {
+        // Aquí se calculan propiedades a partir de data(), se recalculan solo cuando estas cambian
         hasCartItems() {
             return this.cartItems.length > 0;
         },
@@ -139,7 +148,6 @@ createApp({
             return Math.ceil(this.filteredCursos.length / this.pageSize) || 1;
         },
 
-        // Aquí se calculan propiedades a partir de data(), se recalculan solo cuando estas cambian
         t() {
             return this.translations?.[this.selectedLang]
                 || this.translations?.es

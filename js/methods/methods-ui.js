@@ -205,4 +205,11 @@ window.uiMethods = {
 
         this.showMessage('info', this.t.course.filtersReset || 'Filtros restablecidos');
     },
+
+    handleImageError(event) {
+        if (!event.target.dataset.fallback) {
+            event.target.dataset.fallback = 'true';
+            event.target.src = 'assets/course_image_error.png';
+        }
+    }
 };
