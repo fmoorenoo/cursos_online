@@ -95,6 +95,27 @@
     cursor: pointer;
 }
 
+.course-price-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.course-type {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--color-secondary);
+}
+
+.course-type i {
+    color: var(--text-secondary);
+    font-size: 20px;
+}
+
 /* Solo la tarjeta activa tiene hover completo */
 .active-slide .featured-course-card:hover {
     box-shadow:
@@ -160,8 +181,8 @@
     line-height: 1.6;
     margin-bottom: 20px;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -190,7 +211,7 @@
     gap: 8px;
     background: var(--color-secondary);
     color: var(--text-on-dark);
-    padding: 10px 20px;
+    padding: 7px 10px;
     border-radius: 8px;
     font-size: 14px;
     font-weight: 600;
@@ -201,7 +222,7 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 10px 20px;
+    padding: 7px 10px;
     border-radius: 8px;
     font-size: 14px;
     font-weight: 600;
@@ -302,6 +323,12 @@
         padding: 30px 15px;
     }
 
+    .course-price-row {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
     .featured-courses-section h2 {
         font-size: 24px;
         margin-bottom: 10px;
@@ -336,11 +363,6 @@
         padding: 0;
         border-radius: 10px;
         overflow: hidden;
-    }
-
-    .featured-course-card p {
-        -webkit-line-clamp: 1;
-        line-clamp: 1;
     }
 
     .carousel-btn {

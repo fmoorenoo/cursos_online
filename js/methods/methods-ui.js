@@ -237,5 +237,15 @@ window.uiMethods = {
 
         this.animateStat('courses', this.cursos.length);
         this.animateStat('users', 1250);
+    },
+
+    getCourseTypeIcon(tipo) {
+        const icons = {
+            1: 'fas fa-laptop-code',
+            2: 'fas fa-chalkboard',
+            3: 'fas fa-video' 
+        };
+
+        return icons[tipo] || 'fas fa-book';
     }
 };

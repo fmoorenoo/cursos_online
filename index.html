@@ -135,7 +135,13 @@
                                     <div class="course-info-container">
                                         <h3 class="course-title">{{ curso.titulo }}</h3>
                                         <p class="course-description">{{ curso.descripcion }}</p>
-                                        <span class="course-price">{{ curso.precio }}</span>
+                                        <div class="course-price-row">
+                                            <span class="course-price">{{ curso.precio }}</span>
+                                            <div class="course-type">
+                                                <i :class="getCourseTypeIcon(curso.tipo)"></i>
+                                                <span>{{ t.course['type' + curso.tipo] }}</span>
+                                            </div>
+                                        </div>
                                         <div class="course-meta-info">
                                             <span class="course-duration">
                                                 {{ Math.round(parseInt(curso.duracion) / 60) }} {{ t.hours }}
