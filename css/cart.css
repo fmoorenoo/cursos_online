@@ -205,24 +205,25 @@
 }
 
 .cart-warning {
-    background-color: #fef3c7;
+    background-color: #fff8d8;
     border: 1px solid #f59e0b;
     border-radius: 8px;
     padding: 12px;
     margin: 20px 0;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
 }
 
 .cart-warning i {
-    color: #f59e0b;
+    color: #af6f00;
     font-size: 18px;
 }
 
 .cart-warning p {
     margin: 0;
-    color: #92400e;
+    color: #af6f00;
+    font-weight: bold;
     font-size: 14px;
     flex: 1;
 }
@@ -268,6 +269,19 @@
 .btn-continue-shopping:hover {
     background-color: var(--color-primary);
     color: white;
+}
+
+.cart-warning {
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.cart-warning:hover {
+    background-color: #ffeca1;
+}
+
+.cart-warning:hover p {
+    text-decoration: underline;
 }
 
 @media (max-width: 1000px) {

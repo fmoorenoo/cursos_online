@@ -377,19 +377,19 @@
                         <h3 class="about-subtitle">{{ t.about.offersTitle }}</h3>
                         <div class="about-features">
                             <div class="feature-item">
-                                <i class="fa-solid fa-certificate"></i>
+                                <i class="fa-solid fa-certificate fa-beat"></i>
                                 <span>{{ t.about.featureCertificate }}</span>
                             </div>
                             <div class="feature-item">
-                                <i class="fa-solid fa-clock"></i>
+                                <i class="fa-solid fa-clock fa-beat"></i>
                                 <span>{{ t.about.featureFlexible }}</span>
                             </div>
                             <div class="feature-item">
-                                <i class="fa-solid fa-layer-group"></i>
+                                <i class="fa-solid fa-layer-group fa-beat"></i>
                                 <span>{{ t.about.featureLevels }}</span>
                             </div>
                             <div class="feature-item">
-                                <i class="fa-solid fa-cart-shopping"></i>
+                                <i class="fa-solid fa-cart-shopping fa-beat"></i>
                                 <span>{{ t.about.featureEasy }}</span>
                             </div>
                         </div>
@@ -474,8 +474,8 @@
                             <span>{{ cartTotal }}€</span>
                         </div>
 
-                        <div class="cart-warning" v-if="!isLoggedIn">
-                            <i class="fas fa-exclamation-triangle"></i>
+                        <div class="cart-warning" v-if="!isLoggedIn" @click="openLogin">
+                            <i class="fa-solid fa-arrow-right-to-bracket fa-beat-fade"></i>
                             <p>{{ t.cart.loginRequired }}</p>
                         </div>
 

@@ -79,7 +79,7 @@ window.I18N = {
             orderSummary: "Resumen del Pedido",
             total: "Total",
             remove: "Eliminar",
-            loginRequired: "Debes iniciar sesión para proceder al pago",
+            loginRequired: "Inicia sesión para proceder al pago",
             checkout: "Proceder al Pago",
             continueShopping: "Seguir Comprando"
         },
@@ -235,7 +235,7 @@ window.I18N = {
             orderSummary: "Order Summary",
             total: "Total",
             remove: "Remove",
-            loginRequired: "You must be logged in to proceed with payment",
+            loginRequired: "Login in to proceed with payment",
             checkout: "Proceed to Checkout",
             continueShopping: "Continue Shopping"
         },
