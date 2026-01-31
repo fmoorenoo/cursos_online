@@ -229,13 +229,14 @@
 
 /* USER DROPDOWN LIKE PALETTE */
 .user-dropdown-like {
-    width: 220px;
+    width: 180px;
     padding: 10px;
 }
 
 .user-dropdown-item {
     width: 100%;
     background: var(--color-danger);
+    color: var(--text-on-dark);
     border: none;
     border-radius: 8px;
     padding: 12px 14px;
@@ -243,6 +244,7 @@
     font-weight: 500;
     cursor: pointer;
     display: flex;
+    justify-content: center;
     align-items: center;
     gap: 10px;
     transition: all 0.25s ease;

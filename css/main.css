@@ -12,11 +12,14 @@
 /* Contenido principal */
 @import url('main_section.css');
 
-/* Estilos de login y registro */
-@import url('login.css');
+/* Sobre Nosotros */
+@import url('about.css');
 
 /* Estilos del carrito de compras */
 @import url('cart.css');
+
+/* Estilos de login y registro */
+@import url('login.css');
 
 /* Footer */
 @import url('footer.css');

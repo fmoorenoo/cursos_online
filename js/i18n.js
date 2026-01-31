@@ -131,6 +131,23 @@ window.I18N = {
             paymentSuccess: "Pago procesado por {total}€. ¡Gracias por tu compra!",
             removeFromCart: "”{course}”  eliminado del carrito",
             pageInfo: "Página {current} de {total}",
+        },
+
+        about: {
+            title: "Sobre la plataforma",
+            description: "Ofrecemos cursos online pensados para aprender de forma clara, práctica y a tu ritmo, con contenidos accesibles desde cualquier lugar.",
+            offersTitle: "Qué ofrecemos",
+            featureCertificate: "Cursos con certificado al finalizar",
+            featureFlexible: "Aprende a tu ritmo, sin horarios",
+            featureLevels: "Cursos para distintos niveles",
+            featureEasy: "Compra sencilla y acceso inmediato",
+            statsCourses: "Cursos disponibles",
+            statsUsers: "Usuarios registrados",
+            contactTitle: "Contáctanos",
+            contactEmail: "Tu correo electrónico",
+            contactMessage: "Escribe aquí tu duda o problema",
+            contactSend: "Enviar mensaje",
+            contactSuccess: "Gracias por contactarnos. Responderemos lo antes posible."
         }
     },
 
@@ -266,6 +283,23 @@ window.I18N = {
             paymentSuccess: "Payment processed for €{total}. Thank you for your purchase!",
             removeFromCart: "“{course}”  removed from cart",
             pageInfo: "Page {current} of {total}",
+        },
+
+        about: {
+            title: "About the platform",
+            description: "We offer online courses designed to help you learn in a clear, practical and flexible way, accessible from anywhere.",
+            offersTitle: "What we offer",
+            featureCertificate: "Certified courses upon completion",
+            featureFlexible: "Learn at your own pace",
+            featureLevels: "Courses for different levels",
+            featureEasy: "Easy purchase and instant access",
+            statsCourses: "Available courses",
+            statsUsers: "Registered users",
+            contactTitle: "Contact Us",
+            contactEmail: "Your email address",
+            contactMessage: "Write your question or issue here",
+            contactSend: "Send message",
+            contactSuccess: "Thank you for contacting us. We will get back to you shortly."
         }
     }
 };

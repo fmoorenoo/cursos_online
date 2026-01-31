@@ -1,0 +1,177 @@
+.about-section {
+    width: 100%;
+    padding: 30px 40px;
+    background-color: var(--surface-page);
+    display: flex;
+    justify-content: center;
+}
+
+.about-container {
+    max-width: 1300px;
+    width: 100%;
+    background-color: var(--surface-section);
+    border-radius: 16px;
+    padding: 60px;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--surface-overlay);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* BLOQUES */
+.about-block {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* TÍTULOS */
+.about-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.about-subtitle {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* TEXTO */
+.about-text {
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+/* FEATURES */
+.about-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: var(--surface-card);
+    padding: 16px 18px;
+    border-radius: 12px;
+    border: 1px solid var(--surface-overlay);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.feature-item i {
+    font-size: 18px;
+    color: var(--color-primary);
+}
+
+.about-bottom-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: stretch;
+}
+
+/* ESTADÍSTICAS */
+.about-stats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding: 30px 20px;
+    background-color: var(--surface-overlay);
+    border-radius: 14px;
+    height: 100%;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.stat-number {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--color-primary);
+}
+
+.stat-label {
+    font-size: 17px;
+    color: var(--text-secondary);
+}
+
+/* FORMULARIO */
+.about-contact {
+    height: 100%;
+    justify-content: center;
+}
+
+.about-form {
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.about-form input,
+.about-form textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 2px solid var(--color-secondary);
+    font-size: 16px;
+    font-family: inherit;
+    background-color: var(--surface-page);
+    color: var(--text-primary);
+    outline: none;
+    resize: none;
+}
+
+.about-form input:focus,
+.about-form textarea:focus {
+    border-color: var(--color-primary);
+}
+
+.about-submit-btn {
+    align-self: flex-start;
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.about-submit-btn:hover {
+    background-color: var(--color-secondary);
+}
+
+/* RESPONSIVE */
+@media (max-width: 950px) {
+    .about-bottom-row {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-container {
+        padding: 40px 25px;
+    }
+
+    .about-stats {
+        flex-direction: column;
+        gap: 25px;
+    }
+}

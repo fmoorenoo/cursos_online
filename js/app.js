@@ -58,6 +58,10 @@ createApp({
             showCourseTypeSelector: false,
             currentPage: 1,
             pageSize: 6,
+            aboutForm: {
+                email: '',
+                message: ''
+            },
         };
     },
 

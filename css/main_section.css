@@ -1,7 +1,7 @@
 /* CONTENEDOR GENERAL */
 .main-content {
     display: grid;
-    padding: 60px 40px;
+    padding: 60px 40px 0px 40px;
     margin: 0 auto;
     width: 100%;
     justify-items: center;
@@ -16,6 +16,7 @@
     border-radius: 16px;
     box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
     border: 1px solid var(--surface-overlay);
+    margin-bottom: 10px;
 }
 
 /* TÍTULO DE PÁGINA */

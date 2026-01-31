@@ -69,4 +69,14 @@ window.validationMethods = {
     validatePassword2(pass1, pass2) {
         return this.validatePassword(pass2) && (pass1 === pass2);
     },
+
+    submitAboutForm() {
+        if (!this.aboutForm.email || !this.aboutForm.message) {
+            this.showMessage('warning', this.t.messages.genericError);
+            return;
+        }
+        this.showMessage('success', this.t.about.contactSuccess);
+        this.aboutForm.email = '';
+        this.aboutForm.message = '';
+    },
 };

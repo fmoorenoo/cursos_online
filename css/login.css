@@ -36,6 +36,7 @@
 .auth-modal input {
     padding: 10px 12px;
     border-radius: 8px;
+    font-size: 16px;
     border: 2px solid var(--surface-dark);
 }
 
