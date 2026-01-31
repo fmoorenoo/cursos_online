@@ -291,6 +291,16 @@ createApp({
         this.loadCartItems();
         this.syncCartAvailability();
 
+        this.$nextTick(() => {
+            setTimeout(() => {
+                if (!this.aboutStatsAnimated) {
+                    this.aboutStats.courses = this.cursos.length;
+                    this.aboutStats.users = 1250;
+                    this.aboutStatsAnimated = true;
+                }
+            }, 1200);
+        });
+
         const savedUser = sessionStorage.getItem('sessionUser');
         if (savedUser) {
             this.sessionUser = JSON.parse(savedUser);
