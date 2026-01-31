@@ -184,6 +184,7 @@
     font-weight: 800;
     color: var(--color-primary);
     font-size: clamp(24px, 3vw, 32px);
+    margin-bottom: 15px;
 }
 
 /* META INFORMACIÓN DEL CURSO MEJORADA */
@@ -318,6 +319,10 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+    }
+
+    .featured-course-card .course-price {
+        margin-bottom: 0px;
     }
 
     .featured-courses-section h2 {
