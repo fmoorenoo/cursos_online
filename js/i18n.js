@@ -1,7 +1,7 @@
 window.I18N = {
     es: {
         // Header
-        siteName: "CulturLan",
+        siteName: "CertiFer",
         nav: {
             home: "Inicio",
             courses: "Cursos",
@@ -26,9 +26,9 @@ window.I18N = {
 
         // Footer
         footer: {
-            rights: "© 2026 CulturLan",
+            rights: "© 2026 CertiFer",
             address: "Dirección: Calle 123",
-            email: "Correo: info@culturLan.com",
+            email: "Correo: info@certifer.com",
             contact: "Tel: 928 67 67 67",
             backToTop: "Volver arriba",
             autor: "Web creada por: Fernando M. M."
@@ -155,7 +155,7 @@ window.I18N = {
 
     en: {
         // Header
-        siteName: "CulturLan",
+        siteName: "CertiFer",
         nav: {
             home: "Home",
             courses: "Courses",
@@ -180,9 +180,9 @@ window.I18N = {
 
         // Footer
         footer: {
-            rights: "© 2026 CulturLan",
+            rights: "© 2026 CertiFer",
             address: "Address: 123 Street",
-            email: "Email: info@culturLan.com",
+            email: "Email: info@certifer.com",
             contact: "Phone: +34 928 67 67 67",
             backToTop: "Back to Top",
             autor: "Web created by: Fernando M. M."
