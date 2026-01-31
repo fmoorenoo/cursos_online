@@ -48,6 +48,7 @@
     background-color: var(--color-primary);
     color: white;
     font-weight: 600;
+    font-size: 16px;
     cursor: pointer;
     transition: all 0.2s ease;
 }
@@ -59,7 +60,7 @@
 
 .auth-mode-switch {
     margin-top: 20px;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .auth-mode-switch a {
@@ -69,16 +70,16 @@
 }
 
 .auth-modal input.is-valid {
-  border: solid 2px var(--color-success);
+    border: solid 2px var(--color-success);
 }
 
 .auth-modal input.is-invalid {
-  border: solid 2px var(--color-danger);
+    border: solid 2px var(--color-danger);
 }
 
 .auth-modal button:disabled {
-  background-color: var(--text-on-light);
-  cursor: not-allowed;
+    background-color: var(--text-on-light);
+    cursor: not-allowed;
 }
 
 .auth-modal input.is-valid:focus {
@@ -123,4 +124,12 @@
     transform: scale(1.07);
     color: var(--color-secondary);
 
+}
+
+@media (max-width: 650px) {
+    .auth-modal {
+        max-height: 45vh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
 }

@@ -111,3 +111,7 @@ textarea,
 select {
     font-size: 16px;
 }
+
+i {
+    user-select: none;
+}

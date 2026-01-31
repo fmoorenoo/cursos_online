@@ -40,6 +40,7 @@ createApp({
                 nombre: '',
                 email: '',
                 telefono: '',
+                iban: '',
                 password: '',
                 password2: ''
             },
@@ -182,6 +183,7 @@ createApp({
                 && this.validateNombre(this.auth.nombre)
                 && this.validateEmail(this.auth.email)
                 && this.validateTelefono(this.auth.telefono)
+                && this.validateIBAN(this.auth.iban)
                 && this.validatePassword(this.auth.password)
                 && this.validatePassword2(this.auth.password, this.auth.password2);
         },

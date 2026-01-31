@@ -510,6 +510,9 @@
                     <input v-if="authMode === 'register'" type="text" :placeholder="t.register.telefono"
                         v-model="auth.telefono" :class="inputClass('telefono')" required title="Teléfono español">
 
+                    <input v-if="authMode === 'register'" type="text" :placeholder="t.register.iban" v-model="auth.iban"
+                        :class="inputClass('iban')" required title="IBAN válido (ej: ES76 1234 5678 9012 3456 78)">
+
                     <!-- CAMPOS DE CONTRASEÑA -->
                     <input type="password" :placeholder="t.login.password" v-model="auth.password"
                         :class="inputClass('password')" required>
