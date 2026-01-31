@@ -580,6 +580,12 @@
     color: var(--text-secondary);
 }
 
+#pagination-controls-bottom {
+    width: 100%;
+    padding-bottom: 17px;
+    border-bottom: 1px solid var(--surface-overlay);
+}
+
 /* RANGE PRECIO */
 .range-group {
     display: flex;

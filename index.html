@@ -331,7 +331,7 @@
                     </div>
                 </div>
                 <!-- PAGINACIÓN INFERIOR -->
-                <div v-if="!selectedCourse && totalPages > 1" class="pagination-controls">
+                <div v-if="!selectedCourse" class="pagination-controls" id="pagination-controls-bottom">
                     <button class="pagination-btn" :disabled="currentPage === 1"
                         @click="currentPage--; scrollTo('catalog');
                      showMessage('info', t.messages.pageInfo .replace('{current}', currentPage) .replace('{total}', totalPages));">

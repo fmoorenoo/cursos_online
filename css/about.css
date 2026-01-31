@@ -175,3 +175,13 @@
         gap: 25px;
     }
 }
+
+@media (max-width: 520px) {
+    .about-section {
+        padding: 30px 0px;
+    }
+
+    .about-container {
+        border-radius: 0%;
+    }
+}
