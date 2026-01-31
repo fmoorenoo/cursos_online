@@ -115,3 +115,28 @@ select {
 i {
     user-select: none;
 }
+
+/* ======================================================
+   MENSAJES – AJUSTES RESPONSIVE
+   ====================================================== */
+@media (max-width: 600px) {
+    .message {
+        top: 70px;
+        left: 10px;
+        right: 10px;
+        transform: none;
+        width: auto;
+        max-width: none;
+        padding: 10px 14px;
+        font-size: 15px;
+        border-radius: 10px;
+    }
+
+    .message i {
+        font-size: 18px;
+    }
+
+    .message-text {
+        font-size: 15px;
+    }
+}

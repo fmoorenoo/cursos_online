@@ -14,7 +14,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background-image: linear-gradient(to top, var(--color-primary) 0%, transparent 40%);
+    background-image: linear-gradient(to top, var(--color-primary) 0%, transparent 25%);
     z-index: 10;
     pointer-events: none;
 }
@@ -107,8 +107,8 @@
     align-items: center;
     gap: 8px;
     font-size: 17px;
-    font-weight: 600;
-    color: var(--color-secondary);
+    font-weight: 500;
+    color: var(--text-secondary);
 }
 
 .course-type i {
@@ -138,14 +138,6 @@
     position: relative;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     transform: translateZ(0);
-}
-
-.course-image-container::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(45deg, transparent, rgba(0, 0, 0, 0.1));
-    pointer-events: none;
 }
 
 .course-image {
@@ -192,7 +184,6 @@
     font-weight: 800;
     color: var(--color-primary);
     font-size: clamp(24px, 3vw, 32px);
-    margin-bottom: 15px;
 }
 
 /* META INFORMACIÓN DEL CURSO MEJORADA */
