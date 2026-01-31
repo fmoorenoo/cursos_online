@@ -263,7 +263,7 @@
 
 .selected-course-image-container {
     position: relative;
-    border-radius: 16px;
+    border-radius: 14px;
     overflow: hidden;
 }
 
@@ -271,8 +271,7 @@
     width: 100%;
     height: 400px;
     object-fit: cover;
-    border-radius: 16px;
-    transition: transform 0.3s ease;
+    border-radius: 14px;
 }
 
 .image-overlay {
@@ -664,24 +663,28 @@
     font-size: 14px;
 }
 
-/* RESPONSIVE INFO CURSO */
 @media (max-width: 1024px) {
     .selected-course-container {
         grid-template-columns: 1fr;
         gap: 30px;
+        padding: 30px;
     }
 
     .selected-course-image {
-        height: 300px;
+        height: 280px;
     }
 
     .selected-course-title {
-        font-size: 28px;
+        font-size: 26px;
+    }
+
+    .selected-course-description {
+        font-size: 15px;
     }
 }
 
 @media (max-width: 840px) {
-    .page-header-row {
+    .content-section:not(:has(.selected-course-wrapper)) .page-header-row {
         flex-direction: column;
         align-items: center;
         gap: 20px;
@@ -697,20 +700,48 @@
 }
 
 @media (max-width: 768px) {
+    .selected-course-container {
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .selected-course-meta-grid {
+        padding: 15px;
+    }
+
     .selected-course-actions {
         flex-direction: column;
+        padding: 15px;
+        gap: 15px;
+    }
+
+    .selected-course-price {
+        font-size: 26px;
+        text-align: center;
     }
 
     .btn-add-to-cart-large {
         width: 100%;
+        font-size: 16px;
+        min-height: 60px;
     }
 
-    .selected-course-meta-grid {
-        grid-template-columns: 1fr;
+    .selected-course-image {
+        height: 220px;
+    }
+
+    .image-overlay {
+        top: 10px;
+        right: 10px;
+    }
+
+    .image-badge {
+        font-size: 12px;
+        padding: 6px 12px;
     }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 550px) {
     .main-content {
         padding: 0;
     }
@@ -726,5 +757,42 @@
 
     .page-header-row {
         padding-bottom: 10px;
+    }
+
+    .selected-course-title {
+        font-size: 22px;
+        text-align: center;
+    }
+
+    .selected-course-description {
+        font-size: 14px;
+        text-align: left;
+    }
+
+    .meta-value {
+        font-size: 14px;
+    }
+
+    .meta-label {
+        font-size: 11px;
+    }
+
+    .selected-course-image {
+        height: 200px;
+    }
+
+    .selected-course-actions {
+        margin-bottom: 0px;
+    }
+}
+
+@media (max-width: 430px) {
+    .selected-course-meta-grid {
+        grid-template-columns: 1fr;
+        margin-bottom: 15px;
+    }
+
+    .selected-course-image {
+        height: 150px;
     }
 }
