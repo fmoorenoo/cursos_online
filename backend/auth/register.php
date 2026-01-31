@@ -10,6 +10,7 @@ if (
     empty($data['nombre']) ||
     empty($data['email']) ||
     empty($data['telefono']) ||
+    empty($data['iban']) ||
     empty($data['password'])
 ) {
     echo json_encode([
@@ -23,7 +24,7 @@ $dni = strtoupper(trim($data['dni']));
 $nombre = trim($data['nombre']);
 $email = strtolower(trim($data['email']));
 $telefono = trim($data['telefono']);
-$iban = null;
+$iban = strtoupper(trim($data['iban']));
 
 // Encriptar contraseña
 $hash = password_hash($data['password'], PASSWORD_DEFAULT);

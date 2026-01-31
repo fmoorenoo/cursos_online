@@ -28,6 +28,7 @@ window.authMethods = {
             nombre: '',
             email: '',
             telefono: '',
+            iban: '',
             password: '',
             password2: ''
         };
@@ -47,6 +48,7 @@ window.authMethods = {
                         nombre: this.auth.nombre,
                         email: this.auth.email,
                         telefono: this.auth.telefono,
+                        iban: this.auth.iban,
                         password: this.auth.password
                     })
                 });
