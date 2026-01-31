@@ -58,7 +58,7 @@
     border: 1px solid var(--surface-overlay);
     background-color: var(--surface-card);
     color: var(--text-primary);
-    font-size: 14px;
+    font-size: 16px;
     transition: all 0.2s ease;
     outline: none;
 }
