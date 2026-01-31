@@ -222,7 +222,15 @@ createApp({
         ...window.authMethods,
         ...window.cartMethods,
         ...window.uiMethods,
-        ...window.validationMethods
+        ...window.validationMethods,
+        reloadPage() {
+            this.currentView = 'home';
+            this.selectedCourse = null;
+            this.isMobileMenuOpen = false;
+            this.showFilters = false;
+            this.searchQuery = '';
+            window.location.reload();
+        }
     },
 
     components: {

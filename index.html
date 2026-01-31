@@ -20,7 +20,10 @@
         <!-- MENÚ SUPERIOR -->
         <header class="header">
             <!-- Logo -->
-            <div class="header-logo">{{ t.siteName }}</div>
+            <div class="header-brand" @click="reloadPage">
+                <img src="assets/logo.png" alt="Certifer logo" class="brand-logo">
+                <span class="brand-text">{{ t.siteName }}</span>
+            </div>
             <button class="hamburger-btn" v-bind:class="{ open: isMobileMenuOpen }"
                 v-on:click="isMobileMenuOpen = !isMobileMenuOpen">
                 <span class="hamburguer-span"></span>

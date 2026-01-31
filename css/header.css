@@ -13,11 +13,32 @@
     z-index: 1000;
 }
 
-.header-logo {
+.header-brand {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s ease;
+}
+
+.header-brand:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+
+.brand-logo {
+    height: 40px;
+    width: auto;
+}
+
+.brand-text {
     color: var(--text-on-dark);
     font-size: 26px;
     font-weight: 800;
     letter-spacing: 1px;
+    white-space: nowrap;
+    transition: font-size 0.2s ease;
 }
 
 .header-nav {
@@ -482,6 +503,12 @@
 
     .palette-toggle-btn span {
         display: none;
+    }
+}
+
+@media (max-width: 520px) {
+    .brand-text {
+        font-size: 22px;
     }
 }
 
