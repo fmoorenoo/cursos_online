@@ -213,7 +213,7 @@ window.uiMethods = {
         }
     },
 
-    animateStat(key, target, duration = 1000) {
+    animateStat(key, target, duration = 1500) {
         const startTime = performance.now();
 
         const step = (now) => {
