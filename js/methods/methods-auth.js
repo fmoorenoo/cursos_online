@@ -1,7 +1,10 @@
 'use strict';
 
-// Métodos de autenticación y sesión
+// MÉTODOS DE AUTENTICACIÓN Y SESIÓN DE USUARIO
 window.authMethods = {
+    // =========================================================
+    // APERTURA / CIERRE DEL MODAL DE AUTENTICACIÓN
+    // =========================================================
     openLogin() {
         this.resetAuthForm();
         this.authMode = 'login';
@@ -19,6 +22,9 @@ window.authMethods = {
         this.showAuthModal = false;
     },
 
+    // =========================================================
+    // RESET DEL FORMULARIO DE AUTENTICACIÓN
+    // =========================================================
     resetAuthForm() {
         this.auth = {
             dni: '',
@@ -31,8 +37,13 @@ window.authMethods = {
         };
     },
 
+    // =========================================================
+    // ENVÍO DEL FORMULARIO (LOGIN / REGISTRO)
+    // =========================================================
     async submitAuth() {
-        // Modo registro
+        // -----------------------------------------------------
+        // REGISTRO DE USUARIO
+        // -----------------------------------------------------
         if (this.authMode === 'register') {
             if (!this.isRegisterFormValid) return;
 
@@ -67,7 +78,9 @@ window.authMethods = {
             return;
         }
 
-        // Modo login
+        // -----------------------------------------------------
+        // LOGIN DE USUARIO
+        // -----------------------------------------------------
         try {
             const res = await fetch('backend/auth/login.php', {
                 method: 'POST',
@@ -99,10 +112,16 @@ window.authMethods = {
         }
     },
 
+    // =========================================================
+    // MENSAJES DE ERROR / TRADUCCIONES
+    // =========================================================
     getAuthMessage(key) {
         return this.t.messages[key] || this.t.messages.genericError;
     },
 
+    // =========================================================
+    // SESIÓN DE USUARIO
+    // =========================================================
     logout() {
         sessionStorage.removeItem('sessionUser');
         this.sessionUser = null;

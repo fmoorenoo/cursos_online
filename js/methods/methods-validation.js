@@ -1,7 +1,10 @@
 'use strict';
 
-// Métodos de validación de formularios
+// MÉTODOS DE VALIDACIÓN DE FORMULARIOS
 window.validationMethods = {
+    // =========================================================
+    // CLASE CSS DE INPUTS (FEEDBACK VISUAL)
+    // =========================================================
     inputClass(field) {
         if (this.authMode === 'login') {
             return '';
@@ -15,6 +18,9 @@ window.validationMethods = {
         return this.isFieldValid(field) ? 'is-valid' : 'is-invalid';
     },
 
+    // =========================================================
+    // VALIDACIÓN GENÉRICA POR CAMPO
+    // =========================================================
     isFieldValid(field) {
         switch (field) {
             case 'dni': return this.validateDNI(this.auth.dni);
@@ -28,7 +34,10 @@ window.validationMethods = {
         }
     },
 
-    // ====== VALIDACIONES CON REGEX ======
+    // =========================================================
+    // VALIDACIONES ESPECÍFICAS (LOGIN / REGISTRO)
+    // =========================================================
+    // ===== DNI =====
     validateDNI(dniRaw) {
         const dni = (dniRaw || '').trim().toUpperCase();
         const re = /^\d{8}[A-Z]$/;
@@ -52,6 +61,7 @@ window.validationMethods = {
         return letras[num % 23];
     },
 
+    // ===== NOMBRE =====
     validateNombre(nombreRaw) {
         const nombre = (nombreRaw || '').trim();
         // 1 o más palabras, solo letras (incluye tildes/ñ) y espacios entre palabras
@@ -59,6 +69,7 @@ window.validationMethods = {
         return re.test(nombre);
     },
 
+    // ===== EMAIL =====
     validateEmail(emailRaw) {
         const email = (emailRaw || '').trim();
         // Regex práctica (sin espacios, con @ y dominio)
@@ -66,6 +77,7 @@ window.validationMethods = {
         return re.test(email);
     },
 
+    // ===== TELÉFONO =====
     validateTelefono(telRaw) {
         // Permitimos +34 opcional y quitamos espacios
         const tel = (telRaw || '').replace(/\s+/g, '');
@@ -73,6 +85,7 @@ window.validationMethods = {
         return re.test(tel);
     },
 
+    // ===== IBAN =====
     validateIBAN(ibanRaw) {
         const iban = (ibanRaw || '')
             .toUpperCase()
@@ -83,6 +96,7 @@ window.validationMethods = {
         return re.test(iban);
     },
 
+    // ===== CONTRASEÑAS =====
     validatePassword(passRaw) {
         const pass = (passRaw || '');
         return pass.length >= 4;
@@ -92,6 +106,9 @@ window.validationMethods = {
         return this.validatePassword(pass2) && (pass1 === pass2);
     },
 
+    // =========================================================
+    // FORMULARIO ABOUT / CONTACTO
+    // =========================================================
     submitAboutForm() {
         if (!this.aboutForm.email || !this.aboutForm.message) {
             this.showMessage('warning', this.t.messages.genericError);

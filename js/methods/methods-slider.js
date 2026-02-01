@@ -1,7 +1,10 @@
 'use strict';
 
-// Métodos relacionados con el carrusel
+// MÉTODOS DEL CARRUSEL DE CURSOS DESTACADOS
 window.sliderMethods = {
+    // =========================================================
+    // NAVEGACIÓN DIRECTA ENTRE SLIDES
+    // =========================================================
     goToSlide(index) {
         const total = this.featuredCursos.length;
         if (!total) return;
@@ -19,6 +22,9 @@ window.sliderMethods = {
         this.goToSlide(this.currentSlide - 1);
     },
 
+    // =========================================================
+    // AUTOPLAY DEL CARRUSEL
+    // =========================================================
     startAutoSlide() {
         if (this.currentView !== 'home') return;
         if (!this.featuredCursos.length) return;
@@ -43,6 +49,9 @@ window.sliderMethods = {
         this.startAutoSlide();
     },
 
+    // =========================================================
+    // CLASE CSS DE CADA SLIDE (ESTADO VISUAL)
+    // =========================================================
     getSlideClass(index) {
         const totalSlides = this.featuredCursos.length;
 
