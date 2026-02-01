@@ -73,3 +73,30 @@ textarea,
 select {
     font-size: 16px;
 }
+
+/* Barra de scroll personalizada */
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-primary) var(--color-secondary);
+}
+
+/* Chrome, Edge, Safari */
+*::-webkit-scrollbar {
+    width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--color-secondary);
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--color-primary);
+    border-radius: 8px;
+    border: 2px solid var(--color-secondary);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-primary);
+    opacity: 0.85;
+}

@@ -772,6 +772,10 @@
         gap: 20px;
     }
 
+    .courses-grid .course-card:hover {
+        transform: none;
+    }
+
     .selected-course-meta-grid {
         padding: 15px;
     }
@@ -838,12 +842,18 @@
         border-radius: 0;
     }
 
+    .not-cart-content-section {
+        border-left: none;
+        border-right: none;
+    }
+
     .page-title {
         font-size: 28px;
     }
 
     .page-header-row {
         padding-bottom: 10px;
+        border: none;
     }
 
     .selected-course-title {
