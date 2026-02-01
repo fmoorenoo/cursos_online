@@ -121,7 +121,7 @@
             <!-- CARRUSEL DE CURSOS DESTACADOS -->
             <section class="featured-courses-section">
                 <h2 class="section-title">{{ t.featuredCourses }}</h2>
-                <div class="carousel-container" @mouseenter="stopAutoSlide" @mouseleave="startAutoSlide">
+                <div class="carousel-container">
                     <div class="carousel-track" :style="trackStyle">
                         <div v-for="(curso, index) in featuredCursos" :key="curso.id" class="carousel-slide"
                             :class="getSlideClass(index)">
