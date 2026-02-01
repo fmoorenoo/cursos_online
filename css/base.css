@@ -50,7 +50,7 @@ html, body {
     overflow: hidden;
 }
 
-img, i {
+img, i, button {
     user-select: none;
 }
 
