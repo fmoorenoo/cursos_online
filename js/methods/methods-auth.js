@@ -6,20 +6,17 @@ window.authMethods = {
         this.resetAuthForm();
         this.authMode = 'login';
         this.showAuthModal = true;
-        document.body.classList.add('no-scroll');
     },
 
     openRegister() {
         this.resetAuthForm();
         this.authMode = 'register';
         this.showAuthModal = true;
-        document.body.classList.add('no-scroll');
     },
 
     closeAuth() {
         this.resetAuthForm();
         this.showAuthModal = false;
-        document.body.classList.remove('no-scroll');
     },
 
     resetAuthForm() {

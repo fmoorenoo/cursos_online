@@ -283,6 +283,14 @@ createApp({
                 this.currentPage = 1;
             }
         },
+
+        showAuthModal(isOpen) {
+            if (isOpen) {
+                document.body.classList.add('no-scroll');
+            } else {
+                document.body.classList.remove('no-scroll');
+            }
+        }
     },
 
     mounted: async function () {
@@ -290,6 +298,7 @@ createApp({
         await this.cargarCursos();
         this.loadCartItems();
         this.syncCartAvailability();
+        document.body.classList.remove('no-scroll');
 
         this.$nextTick(() => {
             setTimeout(() => {
