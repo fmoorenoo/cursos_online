@@ -246,6 +246,9 @@ createApp({
 
     watch: {
         // Aquí se observan cambios en datos concretos y ejecuta código como reacción a esos cambios
+        showAuthModal: 'updateBodyScroll',
+        isMobileMenuOpen: 'updateBodyScroll',
+
         currentView(newView) {
             // Guardar vista actual en sessionStorage
             sessionStorage.setItem('currentView', newView);
@@ -281,14 +284,6 @@ createApp({
             deep: true,
             handler() {
                 this.currentPage = 1;
-            }
-        },
-
-        showAuthModal(isOpen) {
-            if (isOpen) {
-                document.body.classList.add('no-scroll');
-            } else {
-                document.body.classList.remove('no-scroll');
             }
         }
     },

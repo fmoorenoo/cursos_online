@@ -249,5 +249,13 @@ window.uiMethods = {
         };
 
         return icons[tipo] || 'fas fa-book';
+    },
+
+    updateBodyScroll() {
+        if (this.showAuthModal || this.isMobileMenuOpen) {
+            document.body.classList.add('no-scroll');
+        } else {
+            document.body.classList.remove('no-scroll');
+        }
     }
 };
