@@ -129,17 +129,17 @@ window.PALETTES = {
             /* Marca */
             colorPrimary: '#972424',
             colorSecondary: '#7a2a2a',
-            colorSecondaryLight: '#e4b4b4',
+            colorSecondaryLight: '#503030',
 
             /* Superficies */
             surfacePage: '#2b2b2b',
             surfaceSection: '#343434',
-            surfaceCard: '#f5f5f5',
+            surfaceCard: '#1a1a1a',
             surfaceDark: '#1a1a1a',
-            surfaceOverlay: '#e9e9e9',
+            surfaceOverlay: '#2b2b2b',
 
             /* Texto */
-            textPrimary: '#0f0f0f',
+            textPrimary: '#f5f5f5',
             textSecondary: '#8d8d8d',
             textOnLight: '#0f0f0f',
             textOnDark: '#f5f5f5',
