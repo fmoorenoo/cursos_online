@@ -549,12 +549,6 @@
                             :class="inputClass('telefono')" required>
                         <span v-if="auth.telefono && !isFieldValid('telefono')" class="field-error">{{ t.register.msgTel }}</span>
                     </div>
-                    <!-- ===== Iban ===== -->
-                    <div v-if="authMode === 'register'" class="auth-field">
-                        <input type="text" :placeholder="t.register.iban" v-model="auth.iban"
-                            :class="inputClass('iban')" required>
-                        <span v-if="auth.iban && !isFieldValid('iban')" class="field-error">{{ t.register.msgIBAN }}</span>
-                    </div>
                     <!-- ===== Contraseña ===== -->
                     <div class="auth-field">
                         <input type="password" :placeholder="t.login.password" v-model="auth.password"

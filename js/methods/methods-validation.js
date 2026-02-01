@@ -27,7 +27,6 @@ window.validationMethods = {
             case 'nombre': return this.validateNombre(this.auth.nombre);
             case 'email': return this.validateEmail(this.auth.email);
             case 'telefono': return this.validateTelefono(this.auth.telefono);
-            case 'iban': return this.validateIBAN(this.auth.iban);
             case 'password': return this.validatePassword(this.auth.password);
             case 'password2': return this.validatePassword2(this.auth.password, this.auth.password2);
             default: return false;
