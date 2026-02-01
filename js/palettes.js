@@ -2,7 +2,7 @@ window.PALETTES = {
 
     /* =====================================================
        MINIMALISTA AZUL (CLARA)
-       ===================================================== */
+    ===================================================== */
     'minimalista-azul': {
         nameKey: 'palette.minimalistaAzul',
         colors: {
@@ -31,7 +31,37 @@ window.PALETTES = {
     },
 
     /* =====================================================
-        TECNOLOGÍA VERDE (CLARA)
+       PÚRPURA OSCURA (OSCURA)
+    ===================================================== */
+    'purpura-oscura': {
+        nameKey: 'palette.purpuraOscura',
+        colors: {
+            /* Marca */
+            colorPrimary: '#8b7cf6',
+            colorSecondary: '#1e1b4b',
+            colorSecondaryLight: '#312e81',
+
+            /* Superficies */
+            surfacePage: '#0b0a1a',
+            surfaceSection: '#11112b',
+            surfaceCard: '#181642',
+            surfaceDark: '#070615',
+            surfaceOverlay: '#2a2765',
+
+            /* Texto */
+            textPrimary: '#e5e7eb',
+            textSecondary: '#a5b4fc',
+            textOnLight: '#0b0a1a',
+            textOnDark: '#ffffff',
+
+            /* Estados */
+            colorSuccess: '#36bd4c',
+            colorDanger: '#f87171'
+        }
+    },
+
+    /* =====================================================
+       TECNOLOGÍA VERDE (CLARA)
     ===================================================== */
     'tecnologia-verde': {
         nameKey: 'palette.tecnologiaVerde',
@@ -61,68 +91,68 @@ window.PALETTES = {
     },
 
     /* =====================================================
-        PÚRPURA OSCURA (OSCURA)
+       CARBÓN MODERNO (OSCURA)
     ===================================================== */
-    'purpura-oscura': {
-        nameKey: 'palette.purpuraOscura',
+    'carbon-moderno': {
+        nameKey: 'palette.carbonModerno',
         colors: {
             /* Marca */
-            colorPrimary: '#8b7cf6',
-            colorSecondary: '#1e1b4b',
-            colorSecondaryLight: '#312e81',
+            colorPrimary: '#9ca3af',
+            colorSecondary: '#4b5563',
+            colorSecondaryLight: '#d1d5db',
 
             /* Superficies */
-            surfacePage: '#0b0a1a',
-            surfaceSection: '#11112b',
-            surfaceCard: '#181642',
-            surfaceDark: '#070615',
-            surfaceOverlay: '#2a2765',
+            surfacePage: '#2b2b2b',
+            surfaceSection: '#343434',
+            surfaceCard: '#1f1f1f',
+            surfaceDark: '#161616',
+            surfaceOverlay: '#3a3a3a',
 
             /* Texto */
-            textPrimary: '#e5e7eb',
-            textSecondary: '#a5b4fc',
-            textOnLight: '#0b0a1a',
-            textOnDark: '#ffffff',
+            textPrimary: '#f3f4f6',
+            textSecondary: '#d1d5db',
+            textOnLight: '#111827',
+            textOnDark: '#f9fafb',
 
             /* Estados */
-            colorSuccess: '#4ade80',
+            colorSuccess: '#22c55e',
             colorDanger: '#f87171'
         }
     },
 
     /* =====================================================
-       MODERNA NARANJA (CLARA)
-       ===================================================== */
-    'moderna-naranja': {
-        nameKey: 'palette.modernaNaranja',
+       ENERGÉTICO ROJO (CLARA)
+    ===================================================== */
+    'energetico-rojo': {
+        nameKey: 'palette.energeticoRojo',
         colors: {
             /* Marca */
-            colorPrimary: '#d97706',
-            colorSecondary: '#b45309',
-            colorSecondaryLight: '#f59e0b',
+            colorPrimary: '#972424',
+            colorSecondary: '#7a2a2a',
+            colorSecondaryLight: '#e4b4b4',
 
             /* Superficies */
-            surfacePage: '#fffbeb',
-            surfaceSection: '#ffffff',
-            surfaceCard: '#ffffff',
-            surfaceDark: '#78350f',
-            surfaceOverlay: '#fef3c7',
+            surfacePage: '#2b2b2b',
+            surfaceSection: '#343434',
+            surfaceCard: '#f5f5f5',
+            surfaceDark: '#1a1a1a',
+            surfaceOverlay: '#e9e9e9',
 
             /* Texto */
-            textPrimary: '#451a03',
-            textSecondary: '#92400e',
-            textOnLight: '#451a03',
-            textOnDark: '#fffbeb',
+            textPrimary: '#0f0f0f',
+            textSecondary: '#8d8d8d',
+            textOnLight: '#0f0f0f',
+            textOnDark: '#f5f5f5',
 
             /* Estados */
-            colorSuccess: '#059669',
+            colorSuccess: '#22c55e',
             colorDanger: '#dc2626'
         }
     },
 
     /* =====================================================
        FRESCA TURQUESA (CLARA)
-       ===================================================== */
+    ===================================================== */
     'fresca-turquesa': {
         nameKey: 'palette.frescaTurquesa',
         colors: {
@@ -151,38 +181,8 @@ window.PALETTES = {
     },
 
     /* =====================================================
-       ENERGÉTICO ROJO (CLARA) – MEJORADA
-       ===================================================== */
-    'energetico-rojo': {
-        nameKey: 'palette.energeticoRojo',
-        colors: {
-            /* Marca */
-            colorPrimary: '#af2d2d',
-            colorSecondary: '#991b1b',
-            colorSecondaryLight: '#f87171',
-
-            /* Superficies */
-            surfacePage: '#292828',
-            surfaceSection: '#792222',
-            surfaceCard: '#fffafa',
-            surfaceDark: '#7f1d1d',
-            surfaceOverlay: '#fee2e2',
-
-            /* Texto */
-            textPrimary: '#181818',
-            textSecondary: '#c7c7c7',
-            textOnLight: '#b4b4b4',
-            textOnDark: '#fffafa',
-
-            /* Estados */
-            colorSuccess: '#16a34a',
-            colorDanger: '#dc2626'
-        }
-    },
-
-    /* =====================================================
        PROFESIONAL ÍNDIGO (CLARA)
-       ===================================================== */
+    ===================================================== */
     'profesional-indigo': {
         nameKey: 'palette.profesionalIndigo',
         colors: {
@@ -211,32 +211,32 @@ window.PALETTES = {
     },
 
     /* =====================================================
-       CARBÓN MODERNO (OSCURA) - NUEVA PALETA
-       ===================================================== */
-    'carbon-moderno': {
-        nameKey: 'palette.carbonModerno',
+       MODERNA NARANJA (CLARA)
+    ===================================================== */
+    'moderna-naranja': {
+        nameKey: 'palette.modernaNaranja',
         colors: {
             /* Marca */
-            colorPrimary: '#394250',
-            colorSecondary: '#475569',
-            colorSecondaryLight: '#94a3b8',
+            colorPrimary: '#d97706',
+            colorSecondary: '#b45309',
+            colorSecondaryLight: '#f59e0b',
 
             /* Superficies */
-            surfacePage: '#2e3035',
-            surfaceSection: '#343a42',
-            surfaceCard: '#000000',
-            surfaceDark: '#1b1c22',
-            surfaceOverlay: '#475569',
+            surfacePage: '#fffbeb',
+            surfaceSection: '#ffffff',
+            surfaceCard: '#ffffff',
+            surfaceDark: '#78350f',
+            surfaceOverlay: '#fef3c7',
 
             /* Texto */
-            textPrimary: '#f1f5f9',
-            textSecondary: '#cbd5e1',
-            textOnLight: '#0f172a',
-            textOnDark: '#f8fafc',
+            textPrimary: '#451a03',
+            textSecondary: '#92400e',
+            textOnLight: '#451a03',
+            textOnDark: '#fffbeb',
 
             /* Estados */
-            colorSuccess: '#22c55e',
-            colorDanger: '#f87171'
+            colorSuccess: '#059669',
+            colorDanger: '#dc2626'
         }
     },
 };
