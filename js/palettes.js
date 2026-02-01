@@ -61,6 +61,36 @@ window.PALETTES = {
     },
 
     /* =====================================================
+       ENERGÉTICO ROJO (CLARA)
+    ===================================================== */
+    'energetico-rojo': {
+        nameKey: 'palette.energeticoRojo',
+        colors: {
+            /* Marca */
+            colorPrimary: '#972424',
+            colorSecondary: '#7a2a2a',
+            colorSecondaryLight: '#503030',
+
+            /* Superficies */
+            surfacePage: '#2b2b2b',
+            surfaceSection: '#343434',
+            surfaceCard: '#1a1a1a',
+            surfaceDark: '#1a1a1a',
+            surfaceOverlay: '#2b2b2b',
+
+            /* Texto */
+            textPrimary: '#f5f5f5',
+            textSecondary: '#8d8d8d',
+            textOnLight: '#0f0f0f',
+            textOnDark: '#f5f5f5',
+
+            /* Estados */
+            colorSuccess: '#22c55e',
+            colorDanger: '#dc2626'
+        }
+    },
+
+    /* =====================================================
        TECNOLOGÍA VERDE (CLARA)
     ===================================================== */
     'tecnologia-verde': {
@@ -117,36 +147,6 @@ window.PALETTES = {
             /* Estados */
             colorSuccess: '#22c55e',
             colorDanger: '#f87171'
-        }
-    },
-
-    /* =====================================================
-       ENERGÉTICO ROJO (CLARA)
-    ===================================================== */
-    'energetico-rojo': {
-        nameKey: 'palette.energeticoRojo',
-        colors: {
-            /* Marca */
-            colorPrimary: '#972424',
-            colorSecondary: '#7a2a2a',
-            colorSecondaryLight: '#503030',
-
-            /* Superficies */
-            surfacePage: '#2b2b2b',
-            surfaceSection: '#343434',
-            surfaceCard: '#1a1a1a',
-            surfaceDark: '#1a1a1a',
-            surfaceOverlay: '#2b2b2b',
-
-            /* Texto */
-            textPrimary: '#f5f5f5',
-            textSecondary: '#8d8d8d',
-            textOnLight: '#0f0f0f',
-            textOnDark: '#f5f5f5',
-
-            /* Estados */
-            colorSuccess: '#22c55e',
-            colorDanger: '#dc2626'
         }
     },
 
