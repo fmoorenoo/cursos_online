@@ -456,6 +456,11 @@ createApp({
             observer.observe(el);
             this._aboutObserver = observer;
         });
+
+        // INICIALIZAR SWIPE EN CARRUSEL
+        this.$nextTick(() => {
+            this.initTouchSlider();
+        });
     },
 
     // Aquí se hace limpieza de algunos valores antes de destruir el componente

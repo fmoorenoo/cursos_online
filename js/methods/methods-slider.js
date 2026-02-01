@@ -64,4 +64,61 @@ window.sliderMethods = {
         if (index === nextIndex) return 'next-slide';
         return 'hidden-slide';
     },
+
+    // =========================================================
+    // SOPORTE TÁCTIL (SWIPE CON DETECCIÓN DE TAP)
+    // =========================================================
+    initTouchSlider() {
+        const track = document.querySelector('.carousel-track');
+        if (!track) return;
+
+        let startX = 0;
+        let startY = 0;
+        let deltaX = 0;
+        let deltaY = 0;
+        let isTouching = false;
+        let hasMoved = false;
+
+        const SWIPE_THRESHOLD = 50;
+        const TAP_TOLERANCE = 10;
+
+        track.addEventListener('touchstart', (e) => {
+            if (e.touches.length !== 1) return;
+
+            this.stopAutoSlide();
+
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+            deltaX = 0;
+            deltaY = 0;
+            hasMoved = false;
+            isTouching = true;
+        }, { passive: true });
+
+        track.addEventListener('touchmove', (e) => {
+            if (!isTouching) return;
+
+            deltaX = e.touches[0].clientX - startX;
+            deltaY = e.touches[0].clientY - startY;
+
+            if (Math.abs(deltaX) > TAP_TOLERANCE || Math.abs(deltaY) > TAP_TOLERANCE) {
+                hasMoved = true;
+            }
+        }, { passive: true });
+
+        track.addEventListener('touchend', () => {
+            if (!isTouching) return;
+
+            if (hasMoved && Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > SWIPE_THRESHOLD) {
+                if (deltaX < 0) {
+                    this.nextSlide();
+                } else {
+                    this.prevSlide();
+                }
+            }
+
+            isTouching = false;
+            this.startAutoSlide();
+        });
+    },
 };
