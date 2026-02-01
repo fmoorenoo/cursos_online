@@ -836,8 +836,6 @@
     .content-section {
         padding: 15px 20px;
         border-radius: 0;
-        border-left: none;
-        border-right: none;
     }
 
     .page-title {
@@ -846,7 +844,6 @@
 
     .page-header-row {
         padding-bottom: 10px;
-        border: none;
     }
 
     .selected-course-title {
@@ -884,10 +881,5 @@
 
     .selected-course-image {
         height: 150px;
-    }
-
-    .content-section {
-        padding: 15px 10px;
-        border-radius: 0;
     }
 }
