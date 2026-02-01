@@ -1,7 +1,10 @@
 'use strict';
 
-// Métodos de interfaz y navegación
+// MÉTODOS DE INTERFAZ (UI) Y NAVEGACIÓN
 window.uiMethods = {
+    // =========================================================
+    // NAVEGACIÓN GENERAL / CAMBIO DE VISTAS
+    // =========================================================
     goTo(view) {
         this.currentView = view;
 
@@ -40,6 +43,37 @@ window.uiMethods = {
         }
     },
 
+    reloadPage() {
+            this.currentView = 'home';
+            this.selectedCourse = null;
+            this.isMobileMenuOpen = false;
+            this.showFilters = false;
+            this.searchQuery = '';
+            window.location.reload();
+    },
+
+    closeMobileMenu() {
+        this.isMobileMenuOpen = false;
+    },
+
+    // =========================================================
+    // HEADER · MENÚS DESPLEGABLES
+    // =========================================================
+    togglePaletteSelector() {
+        this.showPaletteSelector = !this.showPaletteSelector;
+        this.showCourseTypeSelector = false;
+        this.showUserMenu = false;
+    },
+
+    toggleCourseTypeSelector() {
+        this.showCourseTypeSelector = !this.showCourseTypeSelector;
+        this.showPaletteSelector = false;
+        this.showUserMenu = false;
+    },
+
+    // =========================================================
+    // PALETAS DE COLORES
+    // =========================================================
     changePalette(paletteKey) {
         this.selectedPalette = paletteKey;
         this.applyPalette();
@@ -59,12 +93,6 @@ window.uiMethods = {
         // Guardar en localStorage
         localStorage.setItem('selectedPalette', this.selectedPalette);
         this.showPaletteSelector = false;
-    },
-
-    togglePaletteSelector() {
-        this.showPaletteSelector = !this.showPaletteSelector;
-        this.showCourseTypeSelector = false;
-        this.showUserMenu = false;
     },
 
     getPaletteColor(paletteKey, role) {
@@ -101,6 +129,9 @@ window.uiMethods = {
         return translated;
     },
 
+    // =========================================================
+    // CATÁLOGO DE CURSOS / FILTROS
+    // =========================================================
     selectCourse(curso) {
         this.selectedCourse = curso;
         this.$nextTick(() => {
@@ -112,66 +143,6 @@ window.uiMethods = {
                 });
             }
         });
-    },
-
-    async cargarCursos() {
-        try {
-            const res = await fetch('backend/getCursos.php');
-            const data = await res.json();
-
-            this.cursos = data.map(curso => ({
-                id: curso.id,
-                titulo: curso.nombre,
-                descripcion: curso.descripcion,
-                precio: `${curso.precio}€`,
-                duracion: `${curso.duracion} min`,
-                disponible: curso.disponible == 1,
-                imagen: curso.imagen_url,
-                nivel: Number(curso.nivel),
-                tipo: Number(curso.tipo),
-                certificado: curso.certificado == 1,
-                idioma: curso.idioma
-            }));
-        } catch (error) {
-            console.error('Error cargando cursos:', error);
-        }
-    },
-
-    showMessage(type, text, duration = 3000, goToCart = false) {
-        if (this.message.timeoutId) {
-            clearTimeout(this.message.timeoutId);
-        }
-
-        this.message.type = type;
-        this.message.text = text;
-        this.message.goToCart = goToCart;
-        this.message.show = true;
-
-        this.message.timeoutId = setTimeout(() => {
-            this.message.show = false;
-            this.message.timeoutId = null;
-            this.message.goToCart = false;
-        }, duration);
-    },
-
-    getMessageIconClass(type) {
-        switch (type) {
-            case 'success': return 'fas fa-check-circle';
-            case 'info': return 'fas fa-info-circle';
-            case 'warning': return 'fas fa-exclamation-triangle';
-            case 'error': return 'fas fa-times-circle';
-            default: return '';
-        }
-    },
-
-    closeMobileMenu() {
-        this.isMobileMenuOpen = false;
-    },
-
-    toggleCourseTypeSelector() {
-        this.showCourseTypeSelector = !this.showCourseTypeSelector;
-        this.showPaletteSelector = false;
-        this.showUserMenu = false;
     },
 
     selectCourseType(tipo) {
@@ -208,13 +179,65 @@ window.uiMethods = {
         this.showMessage('info', this.t.course.filtersReset || 'Filtros restablecidos');
     },
 
-    handleImageError(event) {
-        if (!event.target.dataset.fallback) {
-            event.target.dataset.fallback = 'true';
-            event.target.src = 'assets/course_image_error.png';
+    // =========================================================
+    // CARGA DE DATOS (CURSOS)
+    // =========================================================
+    async cargarCursos() {
+        try {
+            const res = await fetch('backend/getCursos.php');
+            const data = await res.json();
+
+            this.cursos = data.map(curso => ({
+                id: curso.id,
+                titulo: curso.nombre,
+                descripcion: curso.descripcion,
+                precio: `${curso.precio}€`,
+                duracion: `${curso.duracion} min`,
+                disponible: curso.disponible == 1,
+                imagen: curso.imagen_url,
+                nivel: Number(curso.nivel),
+                tipo: Number(curso.tipo),
+                certificado: curso.certificado == 1,
+                idioma: curso.idioma
+            }));
+        } catch (error) {
+            console.error('Error cargando cursos:', error);
         }
     },
 
+    // =========================================================
+    // MENSAJES / FEEDBACK AL USUARIO
+    // =========================================================
+    showMessage(type, text, duration = 3000, goToCart = false) {
+        if (this.message.timeoutId) {
+            clearTimeout(this.message.timeoutId);
+        }
+
+        this.message.type = type;
+        this.message.text = text;
+        this.message.goToCart = goToCart;
+        this.message.show = true;
+
+        this.message.timeoutId = setTimeout(() => {
+            this.message.show = false;
+            this.message.timeoutId = null;
+            this.message.goToCart = false;
+        }, duration);
+    },
+
+    getMessageIconClass(type) {
+        switch (type) {
+            case 'success': return 'fas fa-check-circle';
+            case 'info': return 'fas fa-info-circle';
+            case 'warning': return 'fas fa-exclamation-triangle';
+            case 'error': return 'fas fa-times-circle';
+            default: return '';
+        }
+    },
+
+    // =========================================================
+    // ABOUT / ESTADÍSTICAS
+    // =========================================================
     animateStat(key, target, duration = 1500) {
         const startTime = performance.now();
 
@@ -239,6 +262,16 @@ window.uiMethods = {
 
         this.animateStat('courses', this.cursos.length);
         this.animateStat('users', 1250);
+    },
+
+    // =========================================================
+    // UTILIDADES GENERALES
+    // =========================================================
+    handleImageError(event) {
+        if (!event.target.dataset.fallback) {
+            event.target.dataset.fallback = 'true';
+            event.target.src = 'assets/course_image_error.png';
+        }
     },
 
     getCourseTypeIcon(tipo) {
