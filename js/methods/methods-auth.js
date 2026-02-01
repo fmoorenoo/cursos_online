@@ -56,15 +56,15 @@ window.authMethods = {
                 const data = await res.json();
 
                 if (data.success) {
-                    this.showMessage('success', this.t.messages.registerSuccess, 3000);
+                    this.showMessage('success', this.t.messages.registerSuccess, 4000);
                     this.authMode = 'login';
                     this.resetAuthForm();
                 } else {
-                    this.showMessage('error', this.t.messages.genericError, 2000);
+                    this.showMessage('error', this.getAuthMessage(data.error), 3000);
                 }
 
             } catch (error) {
-                this.showMessage('error', this.t.messages.genericError, 2000);
+                this.showMessage('error', this.getAuthMessage(data.error), 3000);
             }
 
             return;
@@ -93,13 +93,17 @@ window.authMethods = {
 
                 this.closeAuth();
             } else {
-                this.showMessage('error', this.t.messages.loginError, 4000);
+                this.showMessage('error', this.getAuthMessage(data.error), 4000);
             }
 
 
         } catch (error) {
-            this.showMessage('error', this.t.messages.genericError, 2000);
+            this.showMessage('error', this.getAuthMessage(data.error), 3000);
         }
+    },
+
+    getAuthMessage(key) {
+        return this.t.messages[key] || this.t.messages.genericError;
     },
 
     logout() {

@@ -68,7 +68,15 @@ window.I18N = {
             password2: "Confirmar Contraseña",
             registerButton: "Registrarse",
             question: "¿Ya tienes cuenta?",
-            loginLink: "Inicia sesión aquí"
+            loginLink: "Inicia sesión aquí",
+            msgDNI: '8 números y una letra válida',
+            msgDNILetter: "Letra correcta:",
+            msgName: 'Solo letras y espacios',
+            msgEmail: 'Correo electrónico válido',
+            msgTel: 'Teléfono español válido',
+            msgIBAN: 'IBAN válido (ES + 22 dígitos)',
+            msgPass: 'Mínimo 4 caracteres',
+            msgRepPass: 'Las contraseñas no coinciden'
         },
 
         // Cart
@@ -124,18 +132,24 @@ window.I18N = {
 
         // Messages
         messages: {
+            genericError: "Ocurrió un error, intenta de nuevo",
+            serverError: "Error del servidor. Inténtalo más tarde",
             loginSuccess: "¡Login correcto!",
             loginError: "Credenciales incorrectas",
-            genericError: "Ocurrió un error, intenta de nuevo",
-            registerSuccess: "Registro realizado con éxito. Ya puedes iniciar sesión.",
-            cartAdded: "”{course}”  añadido al carrito",
+            registerSuccess: "Registro realizado. Ya puedes iniciar sesión",
+            logout: "Sesión cerrada correctamente",
+            missingData: "Faltan datos obligatorios",
+            userAlreadyExists: "El usuario ya existe",
+            dniAlreadyExists: "El DNI ya está registrado",
+            emailAlreadyExists: "El correo electrónico ya está registrado",
+            incorrectCredentials: "Usuario o contraseña incorrectos",
+            cartAdded: "”{course}” añadido al carrito",
             cartAlready: "Este curso ya está en tu carrito",
             cartUnavailable: "Algunos cursos seleccionados no están disponibles",
-            logout: "Sesión cerrada correctamente",
+            removeFromCart: "”{course}” eliminado del carrito",
+            goToCart: "Ver carrito",
             paymentSuccess: "Pago procesado por {total}€. ¡Gracias por tu compra!",
-            removeFromCart: "”{course}”  eliminado del carrito",
-            pageInfo: "Página {current} de {total}",
-            goToCart: "Ver carrito"
+            pageInfo: "Página {current} de {total}"
         },
 
         about: {
@@ -225,7 +239,15 @@ window.I18N = {
             password2: "Confirm Password",
             registerButton: "Register",
             question: "Already have an account?",
-            loginLink: "Login here"
+            loginLink: "Login here",
+            msgDNI: '8 digits and one valid letter',
+            msgDNILetter: "Correct letter:",
+            msgName: 'Letters and spaces only',
+            msgEmail: 'Valid email format',
+            msgTel: 'Valid Spanish phone number',
+            msgIBAN: 'Valid IBAN (ES + 22 digits)',
+            msgPass: 'Minimum 4 characters',
+            msgRepPass: 'Passwords do not match'
         },
 
         // Cart
@@ -281,18 +303,24 @@ window.I18N = {
 
         // Messages
         messages: {
+            genericError: "An error occurred, please try again",
+            serverError: "Server error. Please try again later",
             loginSuccess: "Login successful!",
             loginError: "Incorrect credentials",
-            genericError: "An error occurred, please try again",
-            registerSuccess: "Registration successful. You can now log in.",
-            cartAdded: "“{course}”  added to cart",
+            registerSuccess: "Registration successful. You can now log in",
+            logout: "Session closed successfully",
+            missingData: "Required data is missing",
+            userAlreadyExists: "User already exists",
+            dniAlreadyExists: "ID already registered",
+            emailAlreadyExists: "Email address already registered",
+            incorrectCredentials: "Incorrect email or password",
+            cartAdded: "“{course}” added to cart",
             cartAlready: "This course is already in your cart",
             cartUnavailable: "Some selected courses are unavailable",
-            logout: "Session closed successfully",
+            removeFromCart: "“{course}” removed from cart",
+            goToCart: "Go to cart",
             paymentSuccess: "Payment processed for €{total}. Thank you for your purchase!",
-            removeFromCart: "“{course}”  removed from cart",
-            pageInfo: "Page {current} of {total}",
-            goToCart: "Go to cart"
+            pageInfo: "Page {current} of {total}"
         },
 
         about: {

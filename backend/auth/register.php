@@ -15,7 +15,7 @@ if (
 ) {
     echo json_encode([
         'success' => false,
-        'message' => 'Datos incompletos'
+        'error' => 'missingData'
     ]);
     exit;
 }
@@ -30,19 +30,37 @@ $iban = strtoupper(trim($data['iban']));
 $hash = password_hash($data['password'], PASSWORD_DEFAULT);
 
 try {
-    // Comprobar si ya existe usuario por email o dni
+    // Comprobar si ya existe usuario por dni o email
     $check = $pdo->prepare(
-        "SELECT dni FROM usuarios WHERE dni = :dni OR email = :email"
+        "SELECT dni, email FROM usuarios WHERE dni = :dni OR email = :email"
     );
     $check->execute([
         ':dni' => $dni,
         ':email' => $email
     ]);
 
-    if ($check->fetch()) {
+    $existingUser = $check->fetch(PDO::FETCH_ASSOC);
+
+    if ($existingUser) {
+        if ($existingUser['dni'] === $dni) {
+            echo json_encode([
+                'success' => false,
+                'error' => 'dniAlreadyExists'
+            ]);
+            exit;
+        }
+
+        if ($existingUser['email'] === $email) {
+            echo json_encode([
+                'success' => false,
+                'error' => 'emailAlreadyExists'
+            ]);
+            exit;
+        }
+
         echo json_encode([
             'success' => false,
-            'message' => 'El usuario ya existe'
+            'error' => 'userAlreadyExists'
         ]);
         exit;
     }
@@ -65,13 +83,12 @@ try {
     ]);
 
     echo json_encode([
-        'success' => true,
-        'message' => 'Registro correcto'
+        'success' => true
     ]);
 
 } catch (PDOException $e) {
     echo json_encode([
         'success' => false,
-        'message' => $e->getMessage()
+        'error' => 'serverError'
     ]);
 }

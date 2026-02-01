@@ -11,7 +11,7 @@ $password = $data['password'] ?? '';
 if (!$email || !$password) {
     echo json_encode([
         'success' => false,
-        'message' => 'Datos incompletos'
+        'error' => 'missingData'
     ]);
     exit;
 }
@@ -28,7 +28,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 if (!$user || !password_verify($password, $user['hash_contrasena'])) {
     echo json_encode([
         'success' => false,
-        'message' => 'Usuario o contraseña incorrectos'
+        'error' => 'incorrectCredentials'
     ]);
     exit;
 }

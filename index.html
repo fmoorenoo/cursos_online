@@ -504,27 +504,59 @@
                 <form @submit.prevent="submitAuth" class="auth-form">
 
                     <!-- CAMPOS SOLO PARA REGISTRO -->
-                    <input v-if="authMode === 'register'" type="text" :placeholder="t.register.dni" v-model="auth.dni"
-                        :class="inputClass('dni')" required title="DNI válido (8 números y una letra)">
+                    <div v-if="authMode === 'register'" class="auth-field">
+                        <input type="text" :placeholder="t.register.dni" v-model="auth.dni" :class="inputClass('dni')"
+                            required>
+                        <span v-if="auth.dni && !isFieldValid('dni')" class="field-error">
+                            {{ t.register.msgDNI }}
+                            <span v-if="getDNICorrectLetter(auth.dni)">
+                                · {{ t.register.msgDNILetter }} {{ getDNICorrectLetter(auth.dni) }}
+                            </span>
+                        </span>
+                    </div>
 
-                    <input v-if="authMode === 'register'" type="text" :placeholder="t.register.nombre"
-                        v-model="auth.nombre" :class="inputClass('nombre')" required title="Solo letras y espacios">
+                    <div v-if="authMode === 'register'" class="auth-field">
+                        <input type="text" :placeholder="t.register.nombre" v-model="auth.nombre"
+                            :class="inputClass('nombre')" required>
+                        <span v-if="auth.nombre && !isFieldValid('nombre')" class="field-error">{{ t.register.msgName
+                            }}</span>
+                    </div>
 
-                    <input type="text" :placeholder="t.register.email" v-model="auth.email" :class="inputClass('email')"
-                        required title="Correo electrónico válido">
+                    <div class="auth-field">
+                        <input type="text" :placeholder="t.register.email" v-model="auth.email"
+                            :class="inputClass('email')" required>
+                        <span v-if="auth.email && !isFieldValid('email')" class="field-error">{{ t.register.msgEmail
+                            }}</span>
+                    </div>
 
-                    <input v-if="authMode === 'register'" type="text" :placeholder="t.register.telefono"
-                        v-model="auth.telefono" :class="inputClass('telefono')" required title="Teléfono español">
+                    <div v-if="authMode === 'register'" class="auth-field">
+                        <input type="text" :placeholder="t.register.telefono" v-model="auth.telefono"
+                            :class="inputClass('telefono')" required>
+                        <span v-if="auth.telefono && !isFieldValid('telefono')" class="field-error">{{ t.register.msgTel
+                            }}</span>
+                    </div>
 
-                    <input v-if="authMode === 'register'" type="text" :placeholder="t.register.iban" v-model="auth.iban"
-                        :class="inputClass('iban')" required title="IBAN válido (ej: ES7612345678912345678912)">
+                    <div v-if="authMode === 'register'" class="auth-field">
+                        <input type="text" :placeholder="t.register.iban" v-model="auth.iban"
+                            :class="inputClass('iban')" required>
+                        <span v-if="auth.iban && !isFieldValid('iban')" class="field-error">{{ t.register.msgIBAN
+                            }}</span>
+                    </div>
 
                     <!-- CAMPOS DE CONTRASEÑA -->
-                    <input type="password" :placeholder="t.login.password" v-model="auth.password"
-                        :class="inputClass('password')" required>
+                    <div class="auth-field">
+                        <input type="password" :placeholder="t.login.password" v-model="auth.password"
+                            :class="inputClass('password')" required>
+                        <span v-if="auth.password && !isFieldValid('password')" class="field-error">{{
+                            t.register.msgPass }}</span>
+                    </div>
 
-                    <input v-if="authMode === 'register'" type="password" :placeholder="t.register.password2"
-                        v-model="auth.password2" :class="inputClass('password2')" required>
+                    <div v-if="authMode === 'register'" class="auth-field">
+                        <input type="password" :placeholder="t.register.password2" v-model="auth.password2"
+                            :class="inputClass('password2')" required>
+                        <span v-if="auth.password2 && !isFieldValid('password2')" class="field-error">{{
+                            t.register.msgRepPass}}</span>
+                    </div>
 
                     <button type="submit" class="auth-submit-btn"
                         :disabled="authMode === 'register' && !isRegisterFormValid">

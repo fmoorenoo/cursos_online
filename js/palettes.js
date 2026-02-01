@@ -97,7 +97,7 @@ window.PALETTES = {
         nameKey: 'palette.carbonModerno',
         colors: {
             /* Marca */
-            colorPrimary: '#9ca3af',
+            colorPrimary: '#aeb5c0',
             colorSecondary: '#4b5563',
             colorSecondaryLight: '#d1d5db',
 

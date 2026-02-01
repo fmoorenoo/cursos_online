@@ -41,6 +41,17 @@ window.validationMethods = {
         return letra === letraCorrecta;
     },
 
+    getDNICorrectLetter(dniRaw) {
+        const dni = (dniRaw || '').trim();
+
+        // Solo cuando hay exactamente 8 dígitos
+        if (!/^\d{8}$/.test(dni)) return null;
+
+        const letras = 'TRWAGMYFPDXBNJZSQVHLCKE';
+        const num = parseInt(dni, 10);
+        return letras[num % 23];
+    },
+
     validateNombre(nombreRaw) {
         const nombre = (nombreRaw || '').trim();
         // 1 o más palabras, solo letras (incluye tildes/ñ) y espacios entre palabras

@@ -40,6 +40,19 @@
     border: 2px solid var(--surface-dark);
 }
 
+.auth-field {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.field-error {
+    font-size: 11px;
+    padding-left: 4px;
+    color: var(--color-danger);
+    line-height: 1.2;
+}
+
 .auth-submit-btn {
     margin-top: 10px;
     padding: 12px;
