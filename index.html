@@ -201,7 +201,7 @@
                                         <span class="filter-title">{{ t.course.type }}</span>
 
                                         <label v-for="tipo in availableTipos" :key="tipo" class="checkbox-row">
-                                            <input type="checkbox" :value="tipo" v-model="filters.tipo">
+                                            <input type="checkbox" :value="tipo" v-model="filters.tipo" class="checkbox-filter">
                                             <span>{{ t.course['type' + tipo] }}</span>
                                         </label>
                                     </div>
@@ -211,7 +211,7 @@
                                         <div class="switch-row">
                                             <span>{{ t.course.onlyCertified }}</span>
                                             <label class="switch">
-                                                <input type="checkbox" v-model="filters.soloCertificado">
+                                                <input type="checkbox" v-model="filters.soloCertificado" class="checkbox-filter">
                                                 <span class="slider"></span>
                                             </label>
                                         </div>

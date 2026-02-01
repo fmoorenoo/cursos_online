@@ -489,6 +489,89 @@
     cursor: pointer;
 }
 
+/* CHECKBOX PERSONALIZADO */
+.checkbox-filter {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    width: 18px;
+    height: 18px;
+    border-radius: 5px;
+    border: 2px solid var(--color-primary);
+    background-color: transparent;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+/* Fondo cuando está marcado */
+.checkbox-filter:checked {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.checkbox-filter:checked::after {
+    content: "";
+    position: absolute;
+    right: 4px;
+    top: 1px;
+    width: 4px;
+    height: 9px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* RESET BASE */
+.range-group input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    background: var(--surface-overlay);
+    border-radius: 999px;
+    outline: none;
+    cursor: pointer;
+}
+
+/* TRACK (Chrome, Edge, Safari) */
+.range-group input[type="range"]::-webkit-slider-runnable-track {
+    height: 6px;
+    background: var(--surface-overlay);
+    border-radius: 999px;
+}
+
+/* THUMB (Chrome, Edge, Safari) */
+.range-group input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    border: 3px solid white;
+    margin-top: -6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* TRACK (Firefox) */
+.range-group input[type="range"]::-moz-range-track {
+    height: 6px;
+    background: var(--surface-overlay);
+    border-radius: 999px;
+}
+
+/* THUMB (Firefox) */
+.range-group input[type="range"]::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--color-secondary);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+    cursor: pointer;
+}
+
 .switch-row {
     display: flex;
     justify-content: space-between;
