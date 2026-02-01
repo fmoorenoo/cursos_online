@@ -210,15 +210,14 @@ createApp({
         },
 
         visibleCourseTypesLabel() {
+            const count = this.filteredCursos.length;
             if (!this.filters.tipo || this.filters.tipo.length === 0) {
-                return this.t.course.showingAllTypes;
+                return `${this.t.course.showingAllTypes} (${count})`;
             }
-
             const names = this.filters.tipo.map(tipo =>
                 this.t.course['type' + tipo]
             );
-
-            return this.t.course.showingTypes.replace('{types}', names.join(', '));
+            return `${this.t.course.showingTypes.replace('{types}', names.join(', '))} (${count})`;
         }
     },
 
