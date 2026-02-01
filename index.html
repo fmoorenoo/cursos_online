@@ -549,8 +549,14 @@
         <!-- MENSAJES DE INFORMACIÓN -->
         <transition name="slide-down">
             <div v-if="message.show" :class="['message', message.type]">
-                <i :class="getMessageIconClass(message.type)"></i>
-                <span class="message-text">{{ message.text }}</span>
+                <div class="message-content">
+                    <i :class="getMessageIconClass(message.type)"></i>
+                    <span class="message-text">{{ message.text }}</span>
+                </div>
+
+                <button v-if="message.goToCart" class="message-action-btn" @click="goTo('cart'); message.show = false">
+                    {{ t.messages.goToCart }}
+                </button>
             </div>
         </transition>
 

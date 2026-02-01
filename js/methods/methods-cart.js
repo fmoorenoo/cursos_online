@@ -47,7 +47,7 @@ window.cartMethods = {
         const alreadyInCart = this.cartItems.some(item => item.id === curso.id);
 
         if (alreadyInCart) {
-            this.showMessage('info', this.t.messages.cartAlready, 2500);
+            this.showMessage('info', this.t.messages.cartAlready, 3500, true);
             return;
         }
 
@@ -59,7 +59,7 @@ window.cartMethods = {
 
         this.saveCartItems();
 
-        this.showMessage('success', this.t.messages.cartAdded.replace('{course}', curso.titulo), 2500);
+        this.showMessage('success', this.t.messages.cartAdded.replace('{course}', curso.titulo), 3500, true);
     },
 
     syncCartAvailability() {

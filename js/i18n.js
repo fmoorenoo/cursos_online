@@ -135,6 +135,7 @@ window.I18N = {
             paymentSuccess: "Pago procesado por {total}€. ¡Gracias por tu compra!",
             removeFromCart: "”{course}”  eliminado del carrito",
             pageInfo: "Página {current} de {total}",
+            goToCart: "Ver carrito"
         },
 
         about: {
@@ -291,6 +292,7 @@ window.I18N = {
             paymentSuccess: "Payment processed for €{total}. Thank you for your purchase!",
             removeFromCart: "“{course}”  removed from cart",
             pageInfo: "Page {current} of {total}",
+            goToCart: "Go to cart"
         },
 
         about: {

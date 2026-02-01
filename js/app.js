@@ -54,7 +54,8 @@ createApp({
                 show: false,
                 type: 'info',
                 text: '',
-                timeoutId: null
+                timeoutId: null,
+                goToCart: false
             },
             selectedCourse: null,
             searchQuery: '',

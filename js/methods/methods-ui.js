@@ -137,18 +137,20 @@ window.uiMethods = {
         }
     },
 
-    showMessage(type, text, duration = 3000) {
+    showMessage(type, text, duration = 3000, goToCart = false) {
         if (this.message.timeoutId) {
             clearTimeout(this.message.timeoutId);
         }
 
         this.message.type = type;
         this.message.text = text;
+        this.message.goToCart = goToCart;
         this.message.show = true;
 
         this.message.timeoutId = setTimeout(() => {
             this.message.show = false;
             this.message.timeoutId = null;
+            this.message.goToCart = false;
         }, duration);
     },
 
@@ -243,7 +245,7 @@ window.uiMethods = {
         const icons = {
             1: 'fas fa-laptop-code',
             2: 'fas fa-chalkboard',
-            3: 'fas fa-video' 
+            3: 'fas fa-video'
         };
 
         return icons[tipo] || 'fas fa-book';
