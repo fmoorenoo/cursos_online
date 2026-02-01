@@ -44,6 +44,8 @@ body {
 
 html, body {
     touch-action: manipulation;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 .no-scroll {
