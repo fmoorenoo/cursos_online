@@ -17,13 +17,17 @@
 
 <body>
     <div id="app">
-        <!-- MENÚ SUPERIOR -->
+        <!-- ========================================================= -->
+        <!-- HEADER - Logo, menú principal, carrito, idioma y login-->
+        <!-- ========================================================= -->
         <header class="header">
-            <!-- Logo -->
+            <!-- ===== LOGO Y NOMBRE DEL SITIO ===== -->
             <div class="header-brand" @click="reloadPage">
                 <img src="assets/logo.png" alt="Certifer logo" class="brand-logo">
                 <span class="brand-text">{{ t.siteName }}</span>
             </div>
+
+            <!-- ===== BOTÓN MENÚ HAMBURGUESA ===== -->
             <button class="hamburger-btn" v-bind:class="{ open: isMobileMenuOpen }"
                 v-on:click="isMobileMenuOpen = !isMobileMenuOpen">
                 <span class="hamburguer-span"></span>
@@ -35,10 +39,11 @@
                 </span>
             </button>
 
+            <!-- ===== NAVEGACIÓN PRINCIPAL ===== -->
             <nav class="header-nav" :class="{ open: isMobileMenuOpen }">
-                <!-- Inicio -->
+                <!-- ===== INICIO ===== -->
                 <a class="nav-link" href="#" @click.prevent="scrollTo('app'); closeMobileMenu()">{{ t.nav.home }}</a>
-                <!-- Ver cursos -->
+                <!-- ===== SELECTOR DE TIPO DE CURSO ===== -->
                 <div class="course-type-selector-container">
                     <button class="course-type-toggle-btn nav-link" @click="toggleCourseTypeSelector">
                         {{ t.nav.courses }}
@@ -57,14 +62,14 @@
                         </div>
                     </div>
                 </div>
-                <!-- Acerca de -->
+                <!-- ===== ACERCA DE ===== -->
                 <a class="nav-link" href="#" @click.prevent="scrollTo('about'); closeMobileMenu()">{{ t.nav.about }}</a>
-                <!-- Carrito -->
+                <!-- ===== CARRITO ===== -->
                 <a class="nav-link cart-link" href="#" @click.prevent="goTo('cart'); closeMobileMenu()">
                     {{ t.nav.cart }}
                     <span v-if="hasCartItems" class="cart-badge">{{ cartItems.length }}</span>
                 </a>
-                <!-- Selector de paleta de colores -->
+                <!-- ===== SELECTOR DE PALETA DE COLORES ===== -->
                 <div class="palette-selector-container">
                     <button class="nav-link palette-toggle-btn" @click="togglePaletteSelector">{{ t.nav.theme
                         }}</button>
@@ -74,12 +79,9 @@
                                 @click="changePalette(key)" :class="{ active: selectedPalette === key }"
                                 :title="getPaletteName(key)">
                                 <div class="palette-preview">
-                                    <div class="color-box"
-                                        :style="{ backgroundColor: getPaletteColor(key, 'primary') }"></div>
-                                    <div class="color-box"
-                                        :style="{ backgroundColor: getPaletteColor(key, 'secondary') }"></div>
-                                    <div class="color-box"
-                                        :style="{ backgroundColor: getPaletteColor(key, 'background') }"></div>
+                                    <div class="color-box" :style="{ backgroundColor: getPaletteColor(key, 'primary') }"></div>
+                                    <div class="color-box" :style="{ backgroundColor: getPaletteColor(key, 'secondary') }"></div>
+                                    <div class="color-box" :style="{ backgroundColor: getPaletteColor(key, 'background') }"></div>
                                 </div>
                                 <span class="palette-name">{{ getPaletteName(key) }}</span>
                             </div>
@@ -87,7 +89,7 @@
                     </div>
                 </div>
 
-                <!-- SELECTOR DE IDIOMA -->
+                <!-- ===== SELECTOR DE IDIOMA ===== -->
                 <div id="lang">
                     <div id="es" class="lang-option" :class="{ active: selectedLang === 'es' }"
                         v-on:click="selectedLang = 'es'" data-lang="es">ES</div>
@@ -95,7 +97,7 @@
                         v-on:click="selectedLang = 'en'" data-lang="en">EN</div>
                 </div>
 
-                <!-- LOGIN / USUARIO -->
+                <!-- ===== LOGIN / USUARIO AUTENTICADO ===== -->
                 <div class="palette-selector-container" v-if="isLoggedIn">
                     <button class="nav-link palette-toggle-btn user-name" @click="toggleUserMenu"
                         :title="sessionUser.nombre">
@@ -116,9 +118,11 @@
             </nav>
         </header>
 
-        <!-- VISTA PRINCIPAL -->
+        <!-- ========================================================= -->
+        <!-- HOME - VISTA PRINCIPAL -->
+        <!-- ========================================================= -->
         <div v-if="currentView === 'home'">
-            <!-- CARRUSEL DE CURSOS DESTACADOS -->
+            <!-- ===== CARRUSEL DE CURSOS DESTACADOS ===== -->
             <section class="featured-courses-section">
                 <h2 class="section-title">{{ t.featuredCourses }}</h2>
                 <div class="carousel-container">
@@ -157,6 +161,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- ===== CONTROLES DEL CARRUSEL ===== -->
                 <div class="carousel-controls">
                     <button class="carousel-btn prev-btn" @click="prevSlide"><i
                             class="fas fa-chevron-left"></i></button>
@@ -169,7 +174,9 @@
                 </div>
             </section>
 
-            <!-- CATÁLOGO DE TODOS LOS CURSOS -->
+            <!-- ========================================================= -->
+            <!-- CATÁLOGO DE CURSOS - Búsqueda, filtros, paginación y grid -->
+            <!-- ========================================================= -->
             <main class="main-content" id="catalog">
                 <div class="content-section not-cart-content-section">
                     <div class="page-header-row">
@@ -180,13 +187,13 @@
                             <button class="filter-btn" @click="showFilters = !showFilters" :title="t.course.filters">
                                 <i class="fas fa-filter"></i>
                             </button>
-                            <!-- INPUT BÚSQUEDA -->
+                            <!-- ===== BÚSQUEDA DE CURSOS ===== -->
                             <div class="search-container" v-if="!selectedCourse">
                                 <i class="fas fa-search search-icon"></i>
                                 <input type="text" v-model="searchQuery" :placeholder="t.course.searchPlaceholder"
                                     class="course-search-input">
                             </div>
-                            <!-- PANEL DE FILTROS -->
+                            <!-- ===== PANEL DE FILTROS ===== -->
                             <div v-if="showFilters" class="filters-panel">
                                 <div class="filters-grid">
                                     <!-- TIPOS -->
@@ -198,7 +205,7 @@
                                             <span>{{ t.course['type' + tipo] }}</span>
                                         </label>
                                     </div>
-                                    <!-- OPCIONES -->
+                                    <!-- ===== FILTRO POR CERTIFICADO Y PRECIO ===== -->
                                     <div class="filter-column">
                                         <!-- CERTIFICADO -->
                                         <div class="switch-row">
@@ -208,7 +215,7 @@
                                                 <span class="slider"></span>
                                             </label>
                                         </div>
-                                        <!-- PRECIO -->
+                                        <!-- PRECIO MÁX -->
                                         <div class="range-group">
                                             <div class="range-label">
                                                 <label>{{ t.course.maxPrice }}</label>
@@ -220,11 +227,11 @@
                                                 v-model.number="filters.precioMax">
                                         </div>
 
-                                        <!-- BOTÓN RESET FILTROS -->
+                                        <!-- ===== RESET Y CIERRE DE FILTROS ===== -->
                                         <button class="reset-filters-btn" @click="resetFilters">
                                             {{ t.course.resetFilters }}
                                         </button>
-                                        <!-- BOTÓN CERRAR -->
+
                                         <button class="close-filters-btn" @click="showFilters = false"
                                             :title="t.course.closeFilters">
                                             <i class="fas fa-times"></i>
@@ -238,13 +245,13 @@
                             <i class="fas fa-times"></i>
                         </button>
                     </div>
-                    <!-- INFO DE TIPOS MOSTRADOS -->
+                    <!-- ===== INFO DE TIPOS MOSTRADOS ===== -->
                     <div v-if="!selectedCourse" class="course-types-info-row">
                         <i class="fas fa-filter"></i>
                         <span>{{ visibleCourseTypesLabel }}</span>
                     </div>
 
-                    <!-- PAGINACIÓN -->
+                    <!-- ===== PAGINACIÓN ===== -->
                     <div v-if="!selectedCourse" class="pagination-controls">
                         <button class="pagination-btn" :disabled="currentPage === 1"
                             @click="currentPage--; showMessage('info', t.messages.pageInfo .replace('{current}', currentPage) .replace('{total}', totalPages));">
@@ -257,9 +264,12 @@
                         </button>
                     </div>
 
-                    <!-- CURSO SELECCIONADO -->
+                    <!-- =============================================================== -->
+                    <!-- DETALLE DEL CURSO SELECCIONADO - Vista con información completa -->
+                    <!-- =============================================================== -->
                     <div v-if="selectedCourse" class="selected-course-wrapper">
                         <div class="selected-course-container">
+                            <!-- ===== IMAGEN Y ESTADO DEL CURSO ===== -->
                             <div class="selected-course-image-container">
                                 <img :src="selectedCourse.imagen" :alt="selectedCourse.titulo"
                                     class="selected-course-image" @error="handleImageError">
@@ -273,6 +283,7 @@
                                 </div>
                             </div>
 
+                            <!-- ===== INFORMACIÓN DETALLADA Y ACCIONES ===== -->
                             <div class="selected-course-details">
                                 <div class="course-header">
                                     <h2 class="selected-course-title">{{ selectedCourse.titulo }}</h2>
@@ -314,6 +325,7 @@
                                     </div>
                                 </div>
 
+                                <!-- ===== ACCIONES (PRECIO Y AÑADIR AL CARRITO) ===== -->
                                 <div class="selected-course-actions">
                                     <div class="price-section">
                                         <span class="selected-course-price">{{ selectedCourse.precio }}</span>
@@ -332,7 +344,7 @@
                         </div>
                     </div>
 
-                    <!-- GRID DE CURSOS -->
+                    <!-- ===== GRID DE CURSOS ===== -->
                     <div class="courses-grid" v-if="!selectedCourse && paginatedCursos.length > 0">
                         <course-card v-for="curso in paginatedCursos" :key="curso.id" :curso="curso"
                             @select="selectCourse" />
@@ -345,7 +357,8 @@
                         <p v-if="searchQuery">{{ t.course.searchPlaceholder }}</p>
                     </div>
                 </div>
-                <!-- PAGINACIÓN INFERIOR -->
+
+                <!-- ===== PAGINACIÓN INFERIOR ===== -->
                 <div v-if="!selectedCourse" class="pagination-controls" id="pagination-controls-bottom">
                     <button class="pagination-btn" :disabled="currentPage === 1"
                         @click="currentPage--; scrollTo('catalog');
@@ -425,12 +438,14 @@
             </section>
         </div>
 
+        <!-- ========================================================= -->
         <!-- VISTA DEL CARRITO DE COMPRAS -->
+        <!-- ========================================================= -->
         <section v-else-if="currentView === 'cart'" class="cart-view main-content">
             <div class="content-section">
                 <h1 class="page-title">{{ t.nav.cart }}</h1>
 
-                <!-- Mensaje cuando el carrito está vacío -->
+                <!-- ===== CARRITO VACÍO ===== -->
                 <div v-if="cartItems.length === 0" class="empty-cart">
                     <i class="fas fa-shopping-cart"></i>
                     <h3>{{ t.cart.empty }}</h3>
@@ -438,9 +453,8 @@
                     <button class="btn-primary" @click="continueShopping">{{ t.cart.browseCourses }}</button>
                 </div>
 
-                <!-- Contenido cuando hay items en el carrito -->
+                <!-- ===== LISTA DE CURSOS EN EL CARRITO ===== -->
                 <div v-else class="cart-container">
-                    <!-- Lista de cursos en el carrito -->
                     <div class="cart-items">
                         <div v-for="(item, index) in cartItems" :key="item.id" class="cart-item">
                             <div class="cart-item-image">
@@ -465,7 +479,7 @@
                         </div>
                     </div>
 
-                    <!-- Resumen del pedido -->
+                    <!-- ===== RESUMEN DEL PEDIDO ===== -->
                     <div class="cart-summary">
                         <h3 class="summary-title">{{ t.cart.orderSummary }}</h3>
 
@@ -492,7 +506,9 @@
             </div>
         </section>
 
-        <!-- MODAL LOGIN / REGISTRO -->
+        <!-- ========================================================= -->
+        <!-- MODAL DE AUTENTICACIÓN - Login y Registro de usuario -->
+        <!-- ========================================================= -->
         <div v-if="showAuthModal" class="auth-modal-overlay" @mousedown.self="closeAuth">
             <div class="auth-modal" @mousedown.stop>
 
@@ -502,10 +518,9 @@
                 <h2 class="modal-title">
                     {{ authMode === 'login' ? t.login.title : t.register.title }}
                 </h2>
-
+                <!-- ===== FORMULARIO ===== -->
                 <form @submit.prevent="submitAuth" class="auth-form">
-
-                    <!-- CAMPOS SOLO PARA REGISTRO -->
+                    <!-- ===== DNI ===== -->
                     <div v-if="authMode === 'register'" class="auth-field">
                         <input type="text" :placeholder="t.register.dni" v-model="auth.dni" :class="inputClass('dni')"
                             required>
@@ -516,50 +531,43 @@
                             </span>
                         </span>
                     </div>
-
+                    <!-- ===== Nombre ===== -->
                     <div v-if="authMode === 'register'" class="auth-field">
                         <input type="text" :placeholder="t.register.nombre" v-model="auth.nombre"
                             :class="inputClass('nombre')" required>
-                        <span v-if="auth.nombre && !isFieldValid('nombre')" class="field-error">{{ t.register.msgName
-                            }}</span>
+                        <span v-if="auth.nombre && !isFieldValid('nombre')" class="field-error">{{ t.register.msgName }}</span>
                     </div>
-
+                    <!-- ===== Email ===== -->
                     <div class="auth-field">
                         <input type="text" :placeholder="t.register.email" v-model="auth.email"
                             :class="inputClass('email')" required>
-                        <span v-if="auth.email && !isFieldValid('email')" class="field-error">{{ t.register.msgEmail
-                            }}</span>
+                        <span v-if="auth.email && !isFieldValid('email')" class="field-error">{{ t.register.msgEmail }}</span>
                     </div>
-
+                    <!-- ===== Teléfono ===== -->
                     <div v-if="authMode === 'register'" class="auth-field">
                         <input type="text" :placeholder="t.register.telefono" v-model="auth.telefono"
                             :class="inputClass('telefono')" required>
-                        <span v-if="auth.telefono && !isFieldValid('telefono')" class="field-error">{{ t.register.msgTel
-                            }}</span>
+                        <span v-if="auth.telefono && !isFieldValid('telefono')" class="field-error">{{ t.register.msgTel }}</span>
                     </div>
-
+                    <!-- ===== Iban ===== -->
                     <div v-if="authMode === 'register'" class="auth-field">
                         <input type="text" :placeholder="t.register.iban" v-model="auth.iban"
                             :class="inputClass('iban')" required>
-                        <span v-if="auth.iban && !isFieldValid('iban')" class="field-error">{{ t.register.msgIBAN
-                            }}</span>
+                        <span v-if="auth.iban && !isFieldValid('iban')" class="field-error">{{ t.register.msgIBAN }}</span>
                     </div>
-
-                    <!-- CAMPOS DE CONTRASEÑA -->
+                    <!-- ===== Contraseña ===== -->
                     <div class="auth-field">
                         <input type="password" :placeholder="t.login.password" v-model="auth.password"
                             :class="inputClass('password')" required>
-                        <span v-if="auth.password && !isFieldValid('password')" class="field-error">{{
-                            t.register.msgPass }}</span>
+                        <span v-if="auth.password && !isFieldValid('password')" class="field-error">{{ t.register.msgPass }}</span>
                     </div>
-
+                    <!-- ===== Repetir contraseña ===== -->
                     <div v-if="authMode === 'register'" class="auth-field">
                         <input type="password" :placeholder="t.register.password2" v-model="auth.password2"
                             :class="inputClass('password2')" required>
-                        <span v-if="auth.password2 && !isFieldValid('password2')" class="field-error">{{
-                            t.register.msgRepPass}}</span>
+                        <span v-if="auth.password2 && !isFieldValid('password2')" class="field-error">{{ t.register.msgRepPass }}</span>
                     </div>
-
+                    <!-- ===== BOTÓN ACCEDER ===== -->
                     <button type="submit" class="auth-submit-btn"
                         :disabled="authMode === 'register' && !isRegisterFormValid">
                         {{ authMode === 'login' ? t.login.loginButton : t.register.registerButton }}
@@ -579,7 +587,7 @@
             </div>
         </div>
 
-        <!-- MENSAJES DE INFORMACIÓN -->
+        <!-- ===== MENSAJES DE INFORMACIÓN / FEEDBACK AL USUARIO ===== -->
         <transition name="slide-down">
             <div v-if="message.show" :class="['message', message.type]">
                 <div class="message-content">
@@ -593,7 +601,9 @@
             </div>
         </transition>
 
-        <!-- FOOTER -->
+        <!-- ========================================================= -->
+        <!-- FOOTER - Información legal, contacto y enlaces -->
+        <!-- ========================================================= -->
         <footer class="main-footer">
             <div class="footer-container">
 
@@ -637,19 +647,26 @@
         </footer>
     </div>
 
-    <!-- Cargar scripts en orden correcto -->
+    <!-- ========================================================= -->
+    <!-- SCRIPTS -->
+    <!-- ========================================================= -->
+
+    <!-- ===== INTERNACIONALIZACIÓN (i18n) ===== -->
     <script src="js/i18n.js"></script>
+    <!-- ===== PALETAS DE COLORES ===== -->
     <script src="js/palettes.js"></script>
-    <!-- Todos los métodos/funciones -->
+    <!-- ===== MÉTODOS (SLIDER · AUTH · CART · UI · VALIDACIÓN) ===== -->
     <script src="js/methods/methods-slider.js"></script>
     <script src="js/methods/methods-auth.js"></script>
     <script src="js/methods/methods-cart.js"></script>
     <script src="js/methods/methods-ui.js"></script>
     <script src="js/methods/methods-validation.js"></script>
-    <!-- Script principal -->
+    <!-- ===== APP PRINCIPAL ===== -->
     <script src="js/app.js"></script>
 
-    <!-- TEMPLATE: Course Card (Grid) -->
+    <!-- ========================================================= -->
+    <!-- TEMPLATE: COURSE CARD - Componente reutilizable para el grid de cursos -->
+    <!-- ========================================================= -->
     <template id="tpl-course-card">
         <div class="course-card" @click="$emit('select', curso)">
             <img :src="curso.imagen" :alt="curso.titulo" class="course-thumbnail" @error="handleImageError">
