@@ -283,8 +283,9 @@
 .image-badge {
     background: var(--color-success);
     color: white;
+    border: solid 2px white;
     padding: 8px 16px;
-    border-radius: 20px;
+    border-radius: 10px;
     font-size: 14px;
     font-weight: 600;
     display: flex;
@@ -663,6 +664,57 @@
     font-size: 14px;
 }
 
+.message {
+    position: fixed;
+    top: 60px;
+    justify-self: center;
+    padding: 12px 20px;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: bold;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.message i {
+    font-size: 20px;
+}
+
+.message.warning { color: #000; }
+
+.message-icon {
+    font-size: 18px;
+}
+
+.message-text {
+    font-size: 16px;
+}
+
+/* Colores por tipo */
+.message.info { background-color: #2e95da; }
+.message.success { background-color: #318121; }
+.message.warning { background-color: #af983c; color: #181818; }
+.message.error { background-color: #e74c3c; }
+
+.slide-down-enter-active,
+.slide-down-leave-active {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.slide-down-enter-from, .slide-down-leave-to {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+.slide-down-enter-to, .slide-down-leave-from {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 @media (max-width: 1024px) {
     .selected-course-container {
         grid-template-columns: 1fr;
@@ -738,6 +790,26 @@
     .image-badge {
         font-size: 12px;
         padding: 6px 12px;
+    }
+
+    .message {
+        top: 70px;
+        left: 10px;
+        right: 10px;
+        transform: none;
+        width: auto;
+        max-width: none;
+        padding: 10px 14px;
+        font-size: 15px;
+        border-radius: 10px;
+    }
+
+    .message i {
+        font-size: 18px;
+    }
+
+    .message-text {
+        font-size: 15px;
     }
 }
 

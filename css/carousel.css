@@ -82,9 +82,8 @@
     padding: 35px;
     border-radius: 8px;
     box-shadow:
-        0 30px 80px rgba(0, 0, 0, 0.5),
-        0 10px 30px rgba(0, 0, 0, 0.5);
-
+        0 30px 80px rgba(0, 0, 0, 0.4),
+        0 10px 30px rgba(0, 0, 0, 0.4);
     border: 1px solid rgba(255, 255, 255, 0.1);
     min-height: 360px;
     display: flex;
@@ -119,9 +118,7 @@
 /* Solo la tarjeta activa tiene hover completo */
 .active-slide .featured-course-card:hover {
     box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.15),
-        0 1px 3px rgba(0, 0, 0, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        0 20px 60px rgba(0, 0, 0, 0.15);
 }
 
 .course-card-content {

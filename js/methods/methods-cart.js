@@ -20,7 +20,7 @@ window.cartMethods = {
 
     removeFromCart(index) {
         const courseTitle = this.cartItems[index].titulo;
-        this.showMessage('info', this.t.messages.removeFromCart.replace('{course}', courseTitle), 2000);
+        this.showMessage('info', this.t.messages.removeFromCart.replace('{course}', courseTitle), 2500);
         this.cartItems.splice(index, 1);
         this.saveCartItems();
     },

@@ -42,51 +42,17 @@ body {
     line-height: 1.6;
 }
 
+html, body {
+    touch-action: manipulation;
+}
+
 .no-scroll {
     overflow: hidden;
 }
 
-img {
+img, i {
     user-select: none;
 }
-
-.message {
-    position: fixed;
-    top: 60px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 12px 20px;
-    border-radius: 8px;
-    color: #fff;
-    font-weight: bold;
-    z-index: 9999;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 16px;
-    text-align: center;
-}
-
-.message i {
-    font-size: 20px;
-}
-
-.message.warning { color: #000; }
-
-.message-icon {
-    font-size: 18px;
-}
-
-.message-text {
-    font-size: 16px;
-}
-
-/* Colores por tipo */
-.message.info { background-color: #2e95da; }
-.message.success { background-color: #318121; }
-.message.warning { background-color: #af983c; color: #181818; }
-.message.error { background-color: #e74c3c; }
 
 
 /* ======================================================
@@ -102,41 +68,8 @@ img {
     opacity: 0;
 }
 
-html, body {
-    touch-action: manipulation;
-}
-
 input,
 textarea,
 select {
     font-size: 16px;
-}
-
-i {
-    user-select: none;
-}
-
-/* ======================================================
-   MENSAJES – AJUSTES RESPONSIVE
-   ====================================================== */
-@media (max-width: 600px) {
-    .message {
-        top: 70px;
-        left: 10px;
-        right: 10px;
-        transform: none;
-        width: auto;
-        max-width: none;
-        padding: 10px 14px;
-        font-size: 15px;
-        border-radius: 10px;
-    }
-
-    .message i {
-        font-size: 18px;
-    }
-
-    .message-text {
-        font-size: 15px;
-    }
 }
