@@ -81,4 +81,11 @@ window.cartMethods = {
 
         this.saveCartItems();
     },
+
+    continueShopping() {
+        if (this.selectedCourse) {
+            this.selectedCourse = null;
+        }
+        this.scrollTo('catalog');
+    }
 };

@@ -435,7 +435,7 @@
                     <i class="fas fa-shopping-cart"></i>
                     <h3>{{ t.cart.empty }}</h3>
                     <p>{{ t.cart.emptyMessage }}</p>
-                    <button class="btn-primary" @click="scrollTo('catalog')">{{ t.cart.browseCourses }}</button>
+                    <button class="btn-primary" @click="continueShopping">{{ t.cart.browseCourses }}</button>
                 </div>
 
                 <!-- Contenido cuando hay items en el carrito -->
@@ -484,7 +484,7 @@
                             {{ t.cart.checkout }}
                         </button>
 
-                        <button class="btn-continue-shopping" @click="scrollTo('catalog')">
+                        <button class="btn-continue-shopping" @click="continueShopping">
                             {{ t.cart.continueShopping }}
                         </button>
                     </div>
@@ -496,10 +496,12 @@
         <div v-if="showAuthModal" class="auth-modal-overlay" @mousedown.self="closeAuth">
             <div class="auth-modal" @mousedown.stop>
 
-                <div class="modal-header">
-                    <h2 class="modal-title">{{ authMode === 'login' ? t.login.title : t.register.title }}</h2>
-                    <button class="modal-close-btn" @click="closeAuth" aria-label="Cerrar">&times;</button>
-                </div>
+                <button class="modal-close-btn" @click="closeAuth" aria-label="Cerrar">
+                    <i class="fas fa-times"></i>
+                </button>
+                <h2 class="modal-title">
+                    {{ authMode === 'login' ? t.login.title : t.register.title }}
+                </h2>
 
                 <form @submit.prevent="submitAuth" class="auth-form">
 
@@ -574,7 +576,6 @@
                         <a @click="authMode = 'login'">{{ t.login.loginButton }}</a>
                     </span>
                 </p>
-
             </div>
         </div>
 
