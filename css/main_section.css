@@ -883,6 +883,12 @@
     }
 }
 
+@media (max-width: 470px) {
+    .courses-grid .course-thumbnail {
+        height: 140px;
+}
+}
+
 @media (max-width: 430px) {
     .selected-course-meta-grid {
         grid-template-columns: 1fr;
