@@ -319,6 +319,10 @@ createApp({
         this.loadCartItems();
         this.syncCartAvailability();
 
+        // ESTABLECER ESTADÍSTICAS
+        this.aboutStats.courses = this.cursos.length;
+        this.aboutStats.users = 1250;
+
         // RESTAURAR ESTADO DE SESIÓN (USUARIO, VISTA, IDIOMA)
         const savedUser = sessionStorage.getItem('sessionUser');
         if (savedUser) {
@@ -349,17 +353,6 @@ createApp({
         // CARRUSEL (SOLO SI ESTAMOS EN HOME)
         this.$nextTick(() => {
             if (this.currentView === 'home') this.startAutoSlide();
-        });
-
-        // ESTADÍSTICAS ABOUT (VALORES INICIALES)
-        this.$nextTick(() => {
-            setTimeout(() => {
-                if (!this.aboutStatsAnimated) {
-                    this.aboutStats.courses = this.cursos.length;
-                    this.aboutStats.users = 1250;
-                    this.aboutStatsAnimated = true;
-                }
-            }, 1200);
         });
 
         // CIERRE AUTOMÁTICO DE MENÚS AL CLICAR FUERA
@@ -433,27 +426,6 @@ createApp({
             ) {
                 this.showFilters = false;
             }
-        });  
-
-        // OBSERVER: ANIMACIÓN DE ESTADÍSTICAS (ABOUT)
-        this.$nextTick(() => {
-            const el = this.$refs.aboutStatsBlock;
-            if (!el) return;
-
-            const observer = new IntersectionObserver(
-                (entries) => {
-                    const entry = entries[0];
-                    if (entry && entry.isIntersecting) {
-                        this.startAboutStatsAnimation();
-                        observer.disconnect();
-                    }
-                },
-                {
-                    threshold: 0.6
-                }
-            );
-            observer.observe(el);
-            this._aboutObserver = observer;
         });
 
         // INICIALIZAR SWIPE EN CARRUSEL
@@ -467,11 +439,6 @@ createApp({
         if (this.slideInterval) {
             clearInterval(this.slideInterval);
             this.slideInterval = null;
-        }
-
-        if (this._aboutObserver) {
-            this._aboutObserver.disconnect();
-            this._aboutObserver = null;
         }
     }
 }).mount('#app');
